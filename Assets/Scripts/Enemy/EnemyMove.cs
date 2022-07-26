@@ -18,7 +18,5 @@ public class EnemyMove : MonoBehaviour
     {
         Vector3 direction = player.position - transform.position;
         rigidBody.MovePosition(rigidBody.position + (Vector2)direction.normalized * character.GetSpeed() * Time.deltaTime);
-
-        // 밀리는거 해결
     }
 }

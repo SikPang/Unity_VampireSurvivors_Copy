@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65449227f41cf4f42b7b8c81fbac6c45, type: 3}
   m_Name: Skeleton
   m_EditorClassIdentifier: 
+  characterType: 3
   healthPoint: 800
   attackPower: 150
   defencePower: 150
-  speed: 30
+  speed: 10
   maxHealth: 800
   increaseAttack: 100
   increaseDefence: 50
-  isCollided: 1
