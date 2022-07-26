@@ -1,0 +1,8 @@
+Pixel Art Top Down - Basic
+
+1.0.1
+    - Add Tags & Layers settings to preset
+    - Updated document
+
+1.0
+    - First Release
