@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rigidBody;
-    [SerializeField] Character character;
+    Character character;
 
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        character = GetComponent<CharacterSetting>().GetCharacter();
     }
 
     void Update()
@@ -25,5 +26,7 @@ public class PlayerMove : MonoBehaviour
 
         rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
         rigidBody.velocity = Vector2.zero;
+
+        Debug.Log(character.GetHealthPoint());
     }
 }

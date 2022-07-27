@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    Rigidbody2D rigidBody;
     [SerializeField] Transform player;
-    [SerializeField] Character character;
+    Character character;
+    Rigidbody2D rigidBody;
 
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        character = GetComponent<CharacterSetting>().GetCharacter();
     }
 
     void Update()

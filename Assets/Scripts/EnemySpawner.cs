@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Transform player;
     const float maxX = 10;
     const float maxY = 16;
-    float spawnDelay = 0.5f;
+    float spawnDelay = 1f;
     int stage = 1;
 
     enum Direction
@@ -45,20 +45,18 @@ public class EnemySpawner : MonoBehaviour
                     break;
             }
 
-            newEnemy.transform.position = (Vector3)RandomPosition();
+            newEnemy.transform.position = RandomPosition();
             newEnemy.SetActive(true);
 
             yield return new WaitForSeconds(spawnDelay);
         }
     }
 
-    Vector2 RandomPosition()
+    Vector3 RandomPosition()
     {
-        Vector2 pos = new Vector2();
+        Vector3 pos = new Vector3();
 
         Direction direction = (Direction)Random.Range(0, 4);
-
-        Debug.Log(direction);
 
         switch (direction)
         {

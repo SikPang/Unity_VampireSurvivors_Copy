@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 1
   healthPoint: 400
-  attackPower: 80
+  attackPower: 40
   defencePower: 0
   speed: 20
   maxHealth: 500

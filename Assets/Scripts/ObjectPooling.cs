@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Object Pooling
 public class ObjectPooling : MonoBehaviour
 {
     [SerializeField] GameObject flyingEyePrefab;
@@ -55,6 +54,8 @@ public class ObjectPooling : MonoBehaviour
                 newEnemy = Instantiate(instance.skeletonPrefab);
                 break;
         }
+
+        newEnemy.transform.parent = instance.transform;
         newEnemy.SetActive(false);
 
         return newEnemy;
