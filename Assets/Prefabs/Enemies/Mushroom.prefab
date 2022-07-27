@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 600106028834263164}
   - component: {fileID: 600106028834263167}
   - component: {fileID: -4608786402061151035}
-  - component: {fileID: -1374966954580025599}
+  - component: {fileID: -7793332540705670719}
   - component: {fileID: -7136552708411894929}
   - component: {fileID: -983460149411986204}
   m_Layer: 6
@@ -125,7 +125,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-1374966954580025599
+--- !u!114 &-7793332540705670719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,10 +134,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 600106028834263138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dac564df1170a7b45b17039b6125613d, type: 3}
+  m_Script: {fileID: 11500000, guid: d9a002e04e3d189469289b17a2995ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 11400000, guid: d68fd048adcdec34aaf12ca27b948a60, type: 2}
+  characterData: {fileID: 11400000, guid: d68fd048adcdec34aaf12ca27b948a60, type: 2}
 --- !u!114 &-7136552708411894929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  character: {fileID: 11400000, guid: d68fd048adcdec34aaf12ca27b948a60, type: 2}
 --- !u!114 &-983460149411986204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5ba5b424c8a824db9ad698b4999f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 11400000, guid: d68fd048adcdec34aaf12ca27b948a60, type: 2}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8

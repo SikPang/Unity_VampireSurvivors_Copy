@@ -54,24 +54,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Assets\Bandits - Pixel Art\Demo\Bandit.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyMove.cs" />
-    <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemy\EnemyMove.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterData.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
     <Compile Include="Assets\Assets\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
-    <Compile Include="Assets\Scripts\ObjectPooling.cs" />
-    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\SpawnEnemy\ObjectPooling.cs" />
+    <Compile Include="Assets\Scripts\SpawnEnemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterSetting.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
-    <Compile Include="Assets\Scripts\CharacterSetting.cs" />
+    <Compile Include="Assets\Scripts\Character\Character.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Changelog.txt" />
