@@ -62,7 +62,10 @@
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
     <Compile Include="Assets\Assets\Bandits - Pixel Art\Demo\Sensor_Bandit.cs" />
+    <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\SpawnEnemy\ObjectPooling.cs" />
     <Compile Include="Assets\Scripts\SpawnEnemy\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyAttack.cs" />
@@ -72,9 +75,12 @@
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Character\Character.cs" />
-    <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Character\Weapon\Axe.cs" />
+    <Compile Include="Assets\Scripts\Character\Weapon\Bible.cs" />
+    <Compile Include="Assets\Scripts\Character\Weapon\MagicStaff.cs" />
+    <Compile Include="Assets\Scripts\Character\Weapon\Pigeon.cs" />
+    <Compile Include="Assets\Scripts\Character\Weapon\Lightning.cs" />
+    <Compile Include="Assets\Scripts\Character\Weapon\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Changelog.txt" />

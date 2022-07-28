@@ -3,22 +3,16 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    /*
-     * 성서
-     * 비둘기
-     * 벼락
-     * 마법 지팡이
-     * 도끼
-     */
-
     void Start()
     {
-        StartCoroutine(Attack());
+        
     }
 
-    IEnumerator Attack()
+    void Update()
     {
-
-        yield return null;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gameObject.AddComponent<Axe>();
+        }
     }
 }

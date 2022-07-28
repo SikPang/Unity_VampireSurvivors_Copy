@@ -7,12 +7,12 @@ public class EnemyAttack : MonoBehaviour
     Enemy character;
     Coroutine coroutine;
 
-    private void Awake()
+    void Awake()
     {
         character = GetComponent<Enemy>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
@@ -23,7 +23,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 3)
         {

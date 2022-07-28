@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour
+public class Character : MonoBehaviour
 {
     [SerializeField] CharacterData characterData;
     int healthPoint;
@@ -10,7 +10,7 @@ public abstract class Character : MonoBehaviour
 
     int maxHealth;
 
-    internal void Initialize()
+    internal virtual void Initialize()
     {
         healthPoint = characterData.GetHealthPoint();
         attackPower = characterData.GetAttackPower();
