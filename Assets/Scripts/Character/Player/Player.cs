@@ -14,7 +14,7 @@ public class Player : Character
     internal override void Initialize()
     {
         base.Initialize();
-        attackSpeed = 1f;
+        attackSpeed = 100f;
     }
 
     public float GetAttackSpeed()

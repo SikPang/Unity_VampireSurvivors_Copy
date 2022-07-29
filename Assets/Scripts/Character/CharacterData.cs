@@ -16,9 +16,6 @@ public class CharacterData : ScriptableObject
     [SerializeField] int attackPower;
     [SerializeField] int defencePower;
     [SerializeField] int speed;
-
-    [SerializeField] int increaseAttack;
-    [SerializeField] int increaseDefence;
     
     public int GetHealthPoint()
     {
@@ -38,10 +35,5 @@ public class CharacterData : ScriptableObject
     public int GetSpeed()
     {
         return speed;
-    }
-
-    public void Die()
-    {
-        Debug.Log("Die");
     }
 }
