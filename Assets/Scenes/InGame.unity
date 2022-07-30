@@ -496,6 +496,8 @@ GameObject:
   - component: {fileID: 335220103}
   - component: {fileID: 335220100}
   - component: {fileID: 335220098}
+  - component: {fileID: 335220104}
+  - component: {fileID: 335220101}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -560,6 +562,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d67c4042cd9284383e2873bbfbc17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &335220101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335220096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048cc17f56f7c6b488d99482a17db57b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 113c5bf662c9a8947993daded8366533, type: 2}
 --- !u!50 &335220102
 Rigidbody2D:
   serializedVersion: 4
@@ -594,6 +609,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 62494052cee82c54da7500478fb9eff4, type: 2}
+--- !u!114 &335220104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335220096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aaa7966b47679a46a5872ef51df6b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &486815996 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 186423439856700966, guid: ec70fe3c938acd04fb8297a425422c29,

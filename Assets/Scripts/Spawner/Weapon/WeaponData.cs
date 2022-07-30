@@ -17,6 +17,11 @@ public class WeaponData : ScriptableObject
     [SerializeField] int attackPower;
     [SerializeField] int attackSpeed;
 
+    public WeaponType GetWeaponType()
+    {
+        return weaponType;
+    }
+
     public int GetAttackPower()
     {
         return attackPower;

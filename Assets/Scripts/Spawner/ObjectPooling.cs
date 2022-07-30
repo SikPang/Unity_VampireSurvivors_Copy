@@ -56,47 +56,48 @@ public class ObjectPooling : MonoBehaviour
 
     static GameObject CreateObject<T>(T type)
     {
-        GameObject newEnemy;
+        GameObject newObject;
+
         switch (type)
         {
             default:
             case CharacterData.CharacterType.FlyingEye:
-                newEnemy = Instantiate(instance.flyingEyePrefab);
+                newObject = Instantiate(instance.flyingEyePrefab);
                 break;
             case CharacterData.CharacterType.Goblin:
-                newEnemy = Instantiate(instance.goblinPrefab);
+                newObject = Instantiate(instance.goblinPrefab);
                 break;
             case CharacterData.CharacterType.Mushroom:
-                newEnemy = Instantiate(instance.mushroomPrefab);
+                newObject = Instantiate(instance.mushroomPrefab);
                 break;
             case CharacterData.CharacterType.Skeleton:
-                newEnemy = Instantiate(instance.skeletonPrefab);
+                newObject = Instantiate(instance.skeletonPrefab);
                 break;
 
             case WeaponData.WeaponType.Whip:
-                newEnemy = Instantiate(instance.whipPrefab);
+                newObject = Instantiate(instance.whipPrefab);
                 break;
             case WeaponData.WeaponType.Bible:
-                newEnemy = Instantiate(instance.biblePrefab);
+                newObject = Instantiate(instance.biblePrefab);
                 break;
             case WeaponData.WeaponType.Axe:
-                newEnemy = Instantiate(instance.axePrefab);
+                newObject = Instantiate(instance.axePrefab);
                 break;
             case WeaponData.WeaponType.Pigeon:
-                newEnemy = Instantiate(instance.pigeonPrefab);
+                newObject = Instantiate(instance.pigeonPrefab);
                 break;
             case WeaponData.WeaponType.Lightning:
-                newEnemy = Instantiate(instance.lightningPrefab);
+                newObject = Instantiate(instance.lightningPrefab);
                 break;
             case WeaponData.WeaponType.MagicWand:
-                newEnemy = Instantiate(instance.magicWandPrefab);
+                newObject = Instantiate(instance.magicWandPrefab);
                 break;
         }
 
-        newEnemy.transform.parent = instance.transform;
-        newEnemy.SetActive(false);
+        newObject.transform.parent = instance.transform;
+        newObject.SetActive(false);
 
-        return newEnemy;
+        return newObject;
     }
 
     public static GameObject GetObject<T>(T type)

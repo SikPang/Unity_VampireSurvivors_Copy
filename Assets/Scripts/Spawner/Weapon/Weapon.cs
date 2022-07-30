@@ -27,7 +27,7 @@ public abstract class Weapon : MonoBehaviour
     {
         GameObject weapon;
 
-        weapon = ObjectPooling.GetObject(weaponData);
+        weapon = ObjectPooling.GetObject(weaponData.GetWeaponType());
 
         weapon.SetActive(true);
     }
