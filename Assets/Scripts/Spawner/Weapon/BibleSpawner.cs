@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class BibleSpawner : Weapon
 {
-    void Start()
-    {
-        StartCoroutine(StartAttack());
-    }
-
     internal override IEnumerator StartAttack()
     {
         while (true)

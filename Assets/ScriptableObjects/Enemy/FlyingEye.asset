@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65449227f41cf4f42b7b8c81fbac6c45, type: 3}
   m_Name: FlyingEye
   m_EditorClassIdentifier: 
-  characterType: 1
+  characterType: 0
   healthPoint: 400
   attackPower: 40
   defencePower: 0
   speed: 20
-  maxHealth: 500
-  increaseAttack: 100
-  increaseDefence: 50

@@ -69,6 +69,11 @@ public class Character : MonoBehaviour
         Debug.Log("Die");
     }
 
+    public CharacterData.CharacterType GetCharacterType()
+    {
+        return characterData.GetCharacterType();
+    }
+
     public void IncreaseStats()
     {
         //attackPower += increaseAttack;

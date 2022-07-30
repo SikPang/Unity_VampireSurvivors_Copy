@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65449227f41cf4f42b7b8c81fbac6c45, type: 3}
   m_Name: Bandit
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 5
   healthPoint: 500
   attackPower: 300
   defencePower: 0
   speed: 40
-  maxHealth: 1000
-  increaseAttack: 110
-  increaseDefence: 50

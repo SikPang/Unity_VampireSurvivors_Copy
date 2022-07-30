@@ -31,6 +31,8 @@ public class ObjectPooling : MonoBehaviour
     {
         foreach(CharacterData.CharacterType characterType in Enum.GetValues(typeof(CharacterData.CharacterType)))
         {
+            if (IsPlayer(characterType)) continue;
+
             Queue<GameObject> newQue = new Queue<GameObject>();
 
             for (int j = 0; j < initialNumber; j++)
@@ -115,5 +117,17 @@ public class ObjectPooling : MonoBehaviour
     public static void ReturnObject<T>(GameObject deadEnemy, T type)
     {
         instance.poolingDict[type.ToString()].Enqueue(deadEnemy);
+    }
+
+    bool IsPlayer(CharacterData.CharacterType characterType)
+    {
+        switch (characterType)
+        {
+            case CharacterData.CharacterType.Knight:
+            case CharacterData.CharacterType.Bandit:
+                return true;
+            default:
+                return false;
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Character
 {
-    float attackSpeed;
+    static float attackSpeed;
 
     void Awake()
     {
@@ -17,7 +17,7 @@ public class Player : Character
         attackSpeed = 100f;
     }
 
-    public float GetAttackSpeed()
+    public static float GetAttackSpeed()
     {
         return attackSpeed;
     }

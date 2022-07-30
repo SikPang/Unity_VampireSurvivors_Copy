@@ -8,7 +8,9 @@ public class CharacterData : ScriptableObject
         FlyingEye,
         Goblin,
         Skeleton,
-        Mushroom
+        Mushroom,
+        Knight,
+        Bandit
     }
 
     [SerializeField] CharacterType characterType;
@@ -35,5 +37,10 @@ public class CharacterData : ScriptableObject
     public int GetSpeed()
     {
         return speed;
+    }
+
+    public CharacterType GetCharacterType()
+    {
+        return characterType;   
     }
 }

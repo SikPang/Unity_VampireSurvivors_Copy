@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] WeaponData weaponData;
-    Player player;
     int level;
     int attackPower;
     float attackSpeed;
@@ -17,9 +16,8 @@ public abstract class Weapon : MonoBehaviour
 
     internal void Initialize()
     {
-        player = GetComponent<Player>();
         attackPower = weaponData.GetAttackPower();
-        attackSpeed = weaponData.GetAttackSpeed() * (GetPlayer().GetAttackSpeed() / 100f);
+        attackSpeed = weaponData.GetAttackSpeed() * Player.GetAttackSpeed() / 100f;
         level = 1;
     }
 
@@ -35,11 +33,6 @@ public abstract class Weapon : MonoBehaviour
     public WeaponData GetWeaponData()
     {
         return weaponData;
-    }
-
-    public Player GetPlayer()
-    {
-        return player;
     }
 
     public int GetAttackPower()
@@ -64,9 +57,19 @@ public abstract class Weapon : MonoBehaviour
 
     public void UpdateAttackSpeed()
     {
-        attackSpeed = weaponData.GetAttackSpeed() * (GetPlayer().GetAttackSpeed() / 100f);
+        attackSpeed = weaponData.GetAttackSpeed() * Player.GetAttackSpeed() / 100f;
     }
-    
+
+    public void AddToInventory()
+    {
+        Inventory.AddWeapon(this);
+    }
+
+    public void StartWeapon()
+    {
+        StartCoroutine(StartAttack());
+    }
+
 
     internal abstract IEnumerator StartAttack();
 }

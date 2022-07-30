@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Weapon\Axe.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Spawner\Weapon\MagicWandSpawner.cs" />
+    <Compile Include="Assets\Scripts\Weapon\WeaponAssets.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Changelog.txt" />

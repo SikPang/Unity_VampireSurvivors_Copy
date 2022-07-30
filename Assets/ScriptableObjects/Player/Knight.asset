@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65449227f41cf4f42b7b8c81fbac6c45, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 4
   healthPoint: 1000
   attackPower: 200
   defencePower: 0
   speed: 30
-  maxHealth: 1000
-  increaseAttack: 100
-  increaseDefence: 50
