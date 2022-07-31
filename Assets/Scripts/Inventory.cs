@@ -5,11 +5,11 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     static Inventory instance;
-    static Dictionary<WeaponData.WeaponType, Weapon> inventory;
+    static Dictionary<WeaponData.WeaponType, WeaponSpawner> inventory;
 
     void Awake()
     {
-        inventory = new Dictionary<WeaponData.WeaponType,Weapon>();
+        inventory = new Dictionary<WeaponData.WeaponType, WeaponSpawner>();
 
         GetFirstWeapon();
     }
@@ -32,12 +32,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public static Dictionary<WeaponData.WeaponType,Weapon> GetInventory()
+    public static Dictionary<WeaponData.WeaponType, WeaponSpawner> GetInventory()
     {
         return inventory;
     }
 
-    public static void AddWeapon(Weapon weapon)
+    public static void AddWeapon(WeaponSpawner weapon)
     {
         if (inventory.ContainsKey(weapon.GetWeaponType()))
         {

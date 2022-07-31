@@ -15,3 +15,4 @@ MonoBehaviour:
   weaponType: 2
   attackPower: 10
   attackSpeed: 2
+  inactiveDelay: 0.3

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhipSpawner : Weapon
+public class WhipSpawner : WeaponSpawner
 {
     internal override IEnumerator StartAttack()
     {

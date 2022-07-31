@@ -79,7 +79,7 @@
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\Scripts\Weapon\Spawner\LightningSpawner.cs" />
-    <Compile Include="Assets\Scripts\Weapon\Spawner\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Spawner\WeaponSpawner.cs" />
     <Compile Include="Assets\Scripts\Weapon\MagicWand.cs" />
     <Compile Include="Assets\Scripts\Weapon\Spawner\WeaponData.cs" />
     <Compile Include="Assets\Scripts\Weapon\Bible.cs" />
@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Weapon\Axe.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Weapon\Spawner\MagicWandSpawner.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Changelog.txt" />

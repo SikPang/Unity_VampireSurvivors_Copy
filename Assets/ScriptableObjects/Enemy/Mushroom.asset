@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   characterType: 3
-  healthPoint: 1000
+  healthPoint: 60
   attackPower: 100
   defencePower: 200
   speed: 10

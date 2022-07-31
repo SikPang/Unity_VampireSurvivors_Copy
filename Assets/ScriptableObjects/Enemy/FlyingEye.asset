@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FlyingEye
   m_EditorClassIdentifier: 
   characterType: 0
-  healthPoint: 400
+  healthPoint: 15
   attackPower: 40
   defencePower: 0
   speed: 20

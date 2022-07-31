@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BibleSpawner : Weapon
+public class BibleSpawner : WeaponSpawner
 {
     internal override IEnumerator StartAttack()
     {

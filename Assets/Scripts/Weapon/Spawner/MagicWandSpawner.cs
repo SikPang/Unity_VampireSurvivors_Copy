@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicWandSpawner : Weapon
+public class MagicWandSpawner : WeaponSpawner
 {
     internal override IEnumerator StartAttack()
     {
