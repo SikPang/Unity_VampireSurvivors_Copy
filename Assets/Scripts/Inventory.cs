@@ -6,25 +6,28 @@ public class Inventory : MonoBehaviour
 {
     static Inventory instance;
     static Dictionary<WeaponData.WeaponType, Weapon> inventory;
-    Player player;
 
     void Awake()
     {
         inventory = new Dictionary<WeaponData.WeaponType,Weapon>();
-        player = GetComponent<Player>();
 
         GetFirstWeapon();
     }
 
     void GetFirstWeapon()
     {
-        switch (player.GetCharacterType())
+        switch (GetComponentInParent<Player>().GetCharacterType())
         {
             case CharacterData.CharacterType.Knight:
-                AddWeapon(WeaponAssets.GetSpawner("Whip").GetComponent<Weapon>());
+                AddWeapon(GetComponent<WhipSpawner>());
+                AddWeapon(GetComponent<AxeSpawner>());
+                AddWeapon(GetComponent<LightningSpawner>());
+                AddWeapon(GetComponent<PigeonSpawner>());
+                AddWeapon(GetComponent<BibleSpawner>());
+                AddWeapon(GetComponent<MagicWandSpawner>());
                 break;
             case CharacterData.CharacterType.Bandit:
-                AddWeapon(WeaponAssets.GetSpawner("Axe").GetComponent<Weapon>());
+                AddWeapon(GetComponent<AxeSpawner>());
                 break;
         }
     }

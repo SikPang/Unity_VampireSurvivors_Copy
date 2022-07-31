@@ -39,6 +39,11 @@ public class Character : MonoBehaviour
         return speed;
     }
 
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+
     public void ReduceHealthPoint(int damage)
     {
         if(healthPoint <= damage)

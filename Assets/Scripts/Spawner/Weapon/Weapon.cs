@@ -27,6 +27,7 @@ public abstract class Weapon : MonoBehaviour
 
         weapon = ObjectPooling.GetObject(weaponData.GetWeaponType());
 
+        weapon.transform.position += GetComponentInParent<Player>().GetPosition();
         weapon.SetActive(true);
     }
 

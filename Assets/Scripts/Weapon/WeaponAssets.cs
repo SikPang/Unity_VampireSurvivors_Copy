@@ -27,13 +27,13 @@ public class WeaponAssets : MonoBehaviour
             spawnerDict.Add(weapon.GetWeaponData().GetWeaponType().ToString(), weapon);
     }
 
-    public static GameObject GetPrefab(string name)
+    public GameObject GetPrefab(string name)
     {
-        return instance.prefabDict[name];
+        return prefabDict[name];
     }
 
-    public static GameObject GetSpawner(string name)
+    public GameObject GetSpawner(string name)
     {
-        return instance.spawnerDict[name].gameObject;
+        return spawnerDict[name].gameObject;
     }
 }
