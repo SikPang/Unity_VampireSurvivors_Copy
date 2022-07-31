@@ -20,11 +20,11 @@ public class Inventory : MonoBehaviour
         {
             case CharacterData.CharacterType.Knight:
                 AddWeapon(GetComponent<WhipSpawner>());
-                AddWeapon(GetComponent<AxeSpawner>());
+/*                AddWeapon(GetComponent<AxeSpawner>());
                 AddWeapon(GetComponent<LightningSpawner>());
                 AddWeapon(GetComponent<PigeonSpawner>());
                 AddWeapon(GetComponent<BibleSpawner>());
-                AddWeapon(GetComponent<MagicWandSpawner>());
+                AddWeapon(GetComponent<MagicWandSpawner>());*/
                 break;
             case CharacterData.CharacterType.Bandit:
                 AddWeapon(GetComponent<AxeSpawner>());
@@ -39,8 +39,15 @@ public class Inventory : MonoBehaviour
 
     public static void AddWeapon(Weapon weapon)
     {
-        inventory.Add(weapon.GetWeaponData().GetWeaponType(), weapon);
-        weapon.StartWeapon();
+        if (inventory.ContainsKey(weapon.GetWeaponType()))
+        {
+            weapon.IncreaseLevel();
+        }
+        else
+        {
+            inventory.Add(weapon.GetWeaponType(), weapon);
+            weapon.StartWeapon();
+        }
     }
 
     public static void ShowInventory()
