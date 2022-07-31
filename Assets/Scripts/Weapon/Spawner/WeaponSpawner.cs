@@ -68,10 +68,10 @@ public abstract class WeaponSpawner : MonoBehaviour
         attackSpeed = weaponData.GetAttackSpeed() * Player.GetAttackSpeed() / 100f;
     }
 
-    public void AddToInventory()
+/*    public void AddToInventory()
     {
         Inventory.AddWeapon(this);
-    }
+    }*/
 
     public void StartWeapon()
     {

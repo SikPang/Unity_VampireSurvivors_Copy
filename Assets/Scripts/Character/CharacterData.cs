@@ -13,6 +13,8 @@ public class CharacterData : ScriptableObject
         Bandit
     }
 
+    [SerializeField] Sprite sprite;
+    [SerializeField] RuntimeAnimatorController controller;
     [SerializeField] CharacterType characterType;
     [SerializeField] int healthPoint;
     [SerializeField] int attackPower;
@@ -42,5 +44,15 @@ public class CharacterData : ScriptableObject
     public CharacterType GetCharacterType()
     {
         return characterType;   
+    }
+
+    public RuntimeAnimatorController GetController()
+    {
+        return controller;
+    }
+
+    public Sprite GetSprite()
+    {
+        return sprite;
     }
 }

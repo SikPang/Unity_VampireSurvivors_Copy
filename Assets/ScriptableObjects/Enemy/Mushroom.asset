@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65449227f41cf4f42b7b8c81fbac6c45, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
+  sprite: {fileID: 4723107735738678597, guid: f8b30c2afe165d645b54d500a9c30862, type: 3}
+  controller: {fileID: 9100000, guid: 739240ec3c850bd449c1aae3fd751554, type: 2}
   characterType: 3
   healthPoint: 60
   attackPower: 100

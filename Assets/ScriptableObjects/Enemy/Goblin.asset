@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65449227f41cf4f42b7b8c81fbac6c45, type: 3}
   m_Name: Goblin
   m_EditorClassIdentifier: 
+  sprite: {fileID: 4723107735738678597, guid: c1cdd26cc09ad224884556bc4d8296ae, type: 3}
+  controller: {fileID: 9100000, guid: 4f230fa6acf87ff4aa55a06a9691101d, type: 2}
   characterType: 1
   healthPoint: 30
   attackPower: 50

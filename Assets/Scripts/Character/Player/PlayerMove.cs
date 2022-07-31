@@ -6,6 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rigidBody;
     Player character;
+    float horizontal;
+    float vertical;
 
     void Awake()
     {
@@ -15,8 +17,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         if (Mathf.Abs(horizontal) >= 0.7f && Mathf.Abs(vertical) >= 0.7f)
         {

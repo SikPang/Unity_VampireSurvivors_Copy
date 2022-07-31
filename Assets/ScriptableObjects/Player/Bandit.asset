@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65449227f41cf4f42b7b8c81fbac6c45, type: 3}
   m_Name: Bandit
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: f2ed27d6c1c3ccc48959bcca269d88f0, type: 3}
+  controller: {fileID: 9100000, guid: b95265f99b6d90e438df1308a89c8bab, type: 2}
   characterType: 5
   healthPoint: 500
   attackPower: 300

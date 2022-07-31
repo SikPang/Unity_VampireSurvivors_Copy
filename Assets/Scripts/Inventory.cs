@@ -9,27 +9,8 @@ public class Inventory : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
         inventory = new Dictionary<WeaponData.WeaponType, WeaponSpawner>();
-
-        GetFirstWeapon();
-    }
-
-    void GetFirstWeapon()
-    {
-        switch (GetComponentInParent<Player>().GetCharacterType())
-        {
-            case CharacterData.CharacterType.Knight:
-                AddWeapon(GetComponent<WhipSpawner>());
-/*                AddWeapon(GetComponent<AxeSpawner>());
-                AddWeapon(GetComponent<LightningSpawner>());
-                AddWeapon(GetComponent<PigeonSpawner>());
-                AddWeapon(GetComponent<BibleSpawner>());
-                AddWeapon(GetComponent<MagicWandSpawner>());*/
-                break;
-            case CharacterData.CharacterType.Bandit:
-                AddWeapon(GetComponent<AxeSpawner>());
-                break;
-        }
     }
 
     public static Dictionary<WeaponData.WeaponType, WeaponSpawner> GetInventory()
@@ -37,16 +18,42 @@ public class Inventory : MonoBehaviour
         return inventory;
     }
 
-    public static void AddWeapon(WeaponSpawner weapon)
+    public static void AddWeapon(WeaponData.WeaponType weaponType)
     {
-        if (inventory.ContainsKey(weapon.GetWeaponType()))
+        WeaponSpawner spawner;
+
+        switch (weaponType)
         {
-            weapon.IncreaseLevel();
+            default:
+            case WeaponData.WeaponType.Axe:
+                spawner = instance.GetComponent<AxeSpawner>();
+                break;
+            case WeaponData.WeaponType.Bible:
+                spawner = instance.GetComponent<BibleSpawner>();
+                break;
+            case WeaponData.WeaponType.Lightning:
+                spawner = instance.GetComponent<LightningSpawner>();
+                break;
+            case WeaponData.WeaponType.MagicWand:
+                spawner = instance.GetComponent<MagicWandSpawner>();
+                break;
+            case WeaponData.WeaponType.Pigeon:
+                spawner = instance.GetComponent<PigeonSpawner>();
+                break;
+            case WeaponData.WeaponType.Whip:
+                spawner = instance.GetComponent<WhipSpawner>();
+                break;
+        }
+
+        if (inventory.ContainsKey(weaponType))
+        {
+            spawner.IncreaseLevel();
         }
         else
         {
-            inventory.Add(weapon.GetWeaponType(), weapon);
-            weapon.StartWeapon();
+
+            inventory.Add(spawner.GetWeaponType(), spawner);
+            spawner.StartWeapon();
         }
     }
 

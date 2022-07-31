@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65449227f41cf4f42b7b8c81fbac6c45, type: 3}
   m_Name: Skeleton
   m_EditorClassIdentifier: 
+  sprite: {fileID: 4723107735738678597, guid: 1018b0ba13578bf459bd254ae1a2be99, type: 3}
+  controller: {fileID: 9100000, guid: 7052c8b4bb06f644ea75e62b72afedbd, type: 2}
   characterType: 2
   healthPoint: 100
   attackPower: 75

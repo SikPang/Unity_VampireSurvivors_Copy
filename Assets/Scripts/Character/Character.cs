@@ -3,6 +3,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] CharacterData characterData;
+    Sprite sprite;
+    RuntimeAnimatorController controller;
     int healthPoint;
     int attackPower;
     int defencePower;
@@ -17,6 +19,10 @@ public class Character : MonoBehaviour
         defencePower = characterData.GetDefencePower();
         speed = characterData.GetSpeed();
         maxHealth = characterData.GetHealthPoint();
+        sprite = characterData.GetSprite();
+        controller = characterData.GetController();
+        GetComponent<SpriteRenderer>().sprite = GetSprite();
+        GetComponent<Animator>().runtimeAnimatorController = GetController();
     }
 
     public int GetHealthPoint()
@@ -37,6 +43,16 @@ public class Character : MonoBehaviour
     public int GetSpeed()
     {
         return speed;
+    }
+
+    public RuntimeAnimatorController GetController()
+    {
+        return controller;
+    }
+
+    public Sprite GetSprite()
+    {
+        return sprite;
     }
 
     public Vector3 GetPosition()
