@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    static Inventory instance;
+    private static Inventory instance;
     static Dictionary<WeaponData.WeaponType, WeaponSpawner> inventory;
 
     void Awake()
@@ -13,12 +13,19 @@ public class Inventory : MonoBehaviour
         inventory = new Dictionary<WeaponData.WeaponType, WeaponSpawner>();
     }
 
+    private Inventory() { }
+
+    public static Inventory GetInstance()
+    {
+        return instance;
+    }
+
     public static Dictionary<WeaponData.WeaponType, WeaponSpawner> GetInventory()
     {
         return inventory;
     }
 
-    public static void AddWeapon(WeaponData.WeaponType weaponType)
+    public void AddWeapon(WeaponData.WeaponType weaponType)
     {
         WeaponSpawner spawner;
 
@@ -26,22 +33,22 @@ public class Inventory : MonoBehaviour
         {
             default:
             case WeaponData.WeaponType.Axe:
-                spawner = instance.GetComponent<AxeSpawner>();
+                spawner = GetComponent<AxeSpawner>();
                 break;
             case WeaponData.WeaponType.Bible:
-                spawner = instance.GetComponent<BibleSpawner>();
+                spawner = GetComponent<BibleSpawner>();
                 break;
             case WeaponData.WeaponType.Lightning:
-                spawner = instance.GetComponent<LightningSpawner>();
+                spawner = GetComponent<LightningSpawner>();
                 break;
             case WeaponData.WeaponType.MagicWand:
-                spawner = instance.GetComponent<MagicWandSpawner>();
+                spawner = GetComponent<MagicWandSpawner>();
                 break;
             case WeaponData.WeaponType.Pigeon:
-                spawner = instance.GetComponent<PigeonSpawner>();
+                spawner = GetComponent<PigeonSpawner>();
                 break;
             case WeaponData.WeaponType.Whip:
-                spawner = instance.GetComponent<WhipSpawner>();
+                spawner = GetComponent<WhipSpawner>();
                 break;
         }
 
@@ -51,7 +58,6 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-
             inventory.Add(spawner.GetWeaponType(), spawner);
             spawner.StartWeapon();
         }

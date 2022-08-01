@@ -15,7 +15,7 @@ public class Player : Character
     {
         base.Initialize();
         attackSpeed = 100f;
-        //GetFirstWeapon(); //문제
+        GetFirstWeapon(); //문제
     }
 
     public static float GetAttackSpeed()
@@ -28,10 +28,10 @@ public class Player : Character
         switch (GetComponentInParent<Player>().GetCharacterType())
         {
             case CharacterData.CharacterType.Knight:
-                Inventory.AddWeapon(WeaponData.WeaponType.Whip);
+                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Whip);
                 break;
             case CharacterData.CharacterType.Bandit:
-                Inventory.AddWeapon(WeaponData.WeaponType.Axe);
+                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Axe);
                 break;
         }
     }
