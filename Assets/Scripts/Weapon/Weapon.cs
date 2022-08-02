@@ -11,19 +11,15 @@ public class Weapon : MonoBehaviour
 
     void Awake()
     {
-        attackPower = spawner.GetAttackPower();
+        // SetParameters로 대체
+        /*attackPower = spawner.GetAttackPower();
         level = spawner.GetLevel();
-        inactiveDelay = spawner.GetInactiveDelay();
+        inactiveDelay = spawner.GetInactiveDelay();*/
     }
 
     void Start()
     {
         StartCoroutine(StartDestroy());
-    }
-
-    private void Update()
-    {
-        Debug.Log(attackPower);
     }
 
     public void SetParameters(int attackPower, float inactiveDelay)
@@ -32,13 +28,10 @@ public class Weapon : MonoBehaviour
         this.inactiveDelay = inactiveDelay;
     }
 
-    // SetParameters 된 오브젝트랑 실제 Active 된 오브젝트가 서로 다름
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 6)
         {
-            Debug.Log(attackPower);
             collision.GetComponent<Enemy>().ReduceHealthPoint(RandomDamage(attackPower));
         }
     }

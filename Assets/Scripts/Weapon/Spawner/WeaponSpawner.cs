@@ -26,7 +26,7 @@ public abstract class WeaponSpawner : MonoBehaviour
     internal void Initialize()
     {
         attackPower = weaponData.GetAttackPower();
-        attackSpeed = weaponData.GetAttackSpeed() * Player.GetAttackSpeed() / 100f;
+        attackSpeed = weaponData.GetAttackSpeed();// * Player.GetAttackSpeed() / 100f;
         inactiveDelay = weaponData.GetInactiveDelay();
         level = 1;
         additionalScale = 100f;
@@ -115,26 +115,27 @@ public abstract class WeaponSpawner : MonoBehaviour
         attackPower += value;
     }
 
+    public void DecreaseAttackSpeed(float value)
+    {
+        attackSpeed -= attackSpeed * value / 100f;
+    }
+
     public void IncreaseLevel()
     {
         level++;
     }
 
-    public void UpdateAttackSpeed()
+    /*public void UpdateAttackSpeed()
     {
         attackSpeed = weaponData.GetAttackSpeed() * Player.GetAttackSpeed() / 100f;
-    }
-
-    /*    public void AddToInventory()
-        {
-            Inventory.AddWeapon(this);
-        }*/
+    }*/
 
     public void StartWeapon()
     {
         StartCoroutine(StartAttack());
     }
 
+    public abstract void LevelUp();
 
     internal abstract IEnumerator StartAttack();
 }

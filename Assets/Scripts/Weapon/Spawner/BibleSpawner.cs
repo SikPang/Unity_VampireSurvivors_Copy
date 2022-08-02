@@ -12,4 +12,18 @@ public class BibleSpawner : WeaponSpawner
             yield return new WaitForSeconds(GetAttackSpeed());
         }
     }
+
+    public override void LevelUp()
+    {
+        IncreaseLevel();
+
+        switch (GetLevel())
+        {
+            case 3:
+                IncreaseAttackPower(100);
+                IncreaseAdditionalScale(100f);
+                DecreaseAttackSpeed(100f);
+                break;
+        }
+    }
 }

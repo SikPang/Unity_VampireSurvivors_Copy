@@ -14,13 +14,28 @@ public class WhipSpawner : WeaponSpawner
             if (GetLevel() >= 2)
                 SpawnWeapon(Direction.Opposite);
 
-            if (GetLevel() >= 1)
-            {
-                IncreaseAttackPower(100);
-                IncreaseAdditionalScale(100f);
-            }
-
             yield return new WaitForSeconds(GetAttackSpeed());
+        }
+    }
+
+    public override void LevelUp()
+    {
+        IncreaseLevel();
+
+        Debug.Log("levelUp");
+
+        switch (GetLevel())
+        {
+            case 3:
+                IncreaseAttackPower(5);
+                break;
+            case 4:
+                IncreaseAttackPower(5);
+                IncreaseAdditionalScale(10f);
+                break;
+            case 5:
+                DecreaseAttackSpeed(10f);
+                break;
         }
     }
 }
