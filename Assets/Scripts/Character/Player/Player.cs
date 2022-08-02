@@ -15,7 +15,7 @@ public class Player : Character
     {
         base.Initialize();
         attackSpeed = 100f;
-        GetFirstWeapon(); //¹®Á¦
+        GetFirstWeapon();
     }
 
     public static float GetAttackSpeed()

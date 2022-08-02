@@ -8,7 +8,18 @@ public class WhipSpawner : WeaponSpawner
     {
         while (true)
         {
-            SpawnWeapon();
+            if(GetLevel() >= 1)
+                SpawnWeapon(Direction.Self);
+
+            if (GetLevel() >= 2)
+                SpawnWeapon(Direction.Opposite);
+
+            if (GetLevel() >= 1)
+            {
+                IncreaseAttackPower(100);
+                IncreaseAdditionalScale(100f);
+            }
+
             yield return new WaitForSeconds(GetAttackSpeed());
         }
     }

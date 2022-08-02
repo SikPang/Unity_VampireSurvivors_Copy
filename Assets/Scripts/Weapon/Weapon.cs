@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] internal WeaponSpawner spawner;
-    internal int attackPower;
+    public int attackPower;
     internal int level;
     internal float inactiveDelay;
 
@@ -21,10 +21,24 @@ public class Weapon : MonoBehaviour
         StartCoroutine(StartDestroy());
     }
 
+    private void Update()
+    {
+        Debug.Log(attackPower);
+    }
+
+    public void SetParameters(int attackPower, float inactiveDelay)
+    {
+        this.attackPower = attackPower;
+        this.inactiveDelay = inactiveDelay;
+    }
+
+    // SetParameters 된 오브젝트랑 실제 Active 된 오브젝트가 서로 다름
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 6)
         {
+            Debug.Log(attackPower);
             collision.GetComponent<Enemy>().ReduceHealthPoint(RandomDamage(attackPower));
         }
     }

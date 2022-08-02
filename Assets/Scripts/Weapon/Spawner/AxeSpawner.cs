@@ -8,7 +8,7 @@ public class AxeSpawner : WeaponSpawner
     {
         while (true)
         {
-            SpawnWeapon();
+            SpawnWeapon(Direction.Self);
             yield return new WaitForSeconds(GetAttackSpeed());
         }
     }

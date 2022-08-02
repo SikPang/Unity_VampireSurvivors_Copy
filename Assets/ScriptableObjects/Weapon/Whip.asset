@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 0
   attackPower: 10
-  attackSpeed: 1
-  inactiveDelay: 0.3
+  attackSpeed: 1.3
+  inactiveDelay: 0.2

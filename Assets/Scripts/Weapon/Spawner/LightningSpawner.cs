@@ -8,7 +8,7 @@ public class LightningSpawner : WeaponSpawner
     {
         while (true)
         {
-            SpawnWeapon();
+            SpawnWeapon(Direction.Self);
             yield return new WaitForSeconds(GetAttackSpeed());
         }
     }

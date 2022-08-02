@@ -15,7 +15,7 @@ public class WeaponData : ScriptableObject
 
     [SerializeField] WeaponType weaponType;
     [SerializeField] int attackPower;
-    [SerializeField] int attackSpeed;
+    [SerializeField] float attackSpeed;
     [SerializeField] float inactiveDelay;
 
     public WeaponType GetWeaponType()
@@ -28,7 +28,7 @@ public class WeaponData : ScriptableObject
         return attackPower;
     }
 
-    public int GetAttackSpeed()
+    public float GetAttackSpeed()
     {
         return attackSpeed;
     }

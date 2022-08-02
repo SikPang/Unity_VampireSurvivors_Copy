@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     Player character;
     float horizontal;
     float vertical;
+    bool lookingLeft;
 
     void Awake()
     {
@@ -17,6 +18,7 @@ public class PlayerMove : MonoBehaviour
         character = GetComponent<Player>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        lookingLeft = false;
     }
 
     void Update()
@@ -33,11 +35,17 @@ public class PlayerMove : MonoBehaviour
         if(horizontal != 0f || vertical != 0f)
         {
             animator.SetInteger("AnimState", 1);
-            if (horizontal > 0f)
-                spriteRenderer.flipX = false;
-            else if(horizontal < 0f)
-                spriteRenderer.flipX = true;
 
+            if (horizontal > 0f)
+            {
+                spriteRenderer.flipX = false;
+                lookingLeft = false;
+            }
+            else if (horizontal < 0f)
+            {
+                spriteRenderer.flipX = true;
+                lookingLeft = true;
+            }
         }
         else
         {
@@ -45,5 +53,10 @@ public class PlayerMove : MonoBehaviour
         }
 
         rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
+    }
+
+    public bool GetLookingLeft()
+    {
+        return lookingLeft;
     }
 }
