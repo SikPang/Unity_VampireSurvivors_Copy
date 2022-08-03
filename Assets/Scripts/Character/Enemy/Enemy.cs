@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+
     void Awake()
     {
         Initialize();
