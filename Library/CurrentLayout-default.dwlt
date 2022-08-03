@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 1
-  controlID: 14817
+  controlID: 89
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 14818
+  controlID: 90
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 14824
+  controlID: 18
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 14825
+  controlID: 19
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -425,9 +425,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2acffcffdecefcffaecefcff
-      m_LastClickedID: -209234
-      m_ExpandedIDs: 82b3fdff40fbffff084300001c430000
+      m_SelectedIDs: ae420000
+      m_LastClickedID: 17070
+      m_ExpandedIDs: 40fbffffa4420000f8420000fc4200002a43000038430000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -721,22 +721,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ScriptableObjects/Crystal
+    - Assets/Prefabs/Enemy
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/ScriptableObjects/Crystal
+  - Assets/Prefabs/Enemy
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Song\Unity Projects\Unity_VampireSurvival_Copy
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: e2480000
-    m_LastClickedID: 18658
-    m_ExpandedIDs: 000000009448000096480000984800009a4800009c4800009e480000a2480000a4480000a6480000a8480000c248000000ca9a3b
+    scrollPos: {x: 0, y: 42}
+    m_SelectedIDs: f0480000
+    m_LastClickedID: 18672
+    m_ExpandedIDs: 00000000c8480000ca480000cc480000ce480000d0480000d2480000d4480000d6480000d8480000da480000dc48000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -764,7 +764,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009448000096480000984800009a4800009c4800009e480000a2480000a4480000a6480000a8480000c248000000ca9a3b
+    m_ExpandedIDs: 00000000c8480000ca480000cc480000ce480000d0480000d2480000d4480000d6480000d8480000da480000dc480000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000784600008c4a0000e241000004420000544b0000e8c20500feeb050014ec050012eb050088eb0500ea570100fa4300005c520000a6500000b2070200a8f20100320302000cd801003ad901008ad90100e4d701003ed901009ed5010066dd0100d0b602006eaf290022641e00541a170010480600486a00009e6b00005a6b0000e2720000d474000026740000e8730000fc7300005e5110006c511000a25110004c5010008a51100012511000fc5010002a5a1000ec591000005a1000d85a1000e6581000eaa50400483b8400d45c01002a700300d8700300e66e030066430100e6650000487d0000327d00004a7d00001e4400001445000000450000104500009a17000000000000e64d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 165
   m_GlobalObjectId: 
   m_LockTracker:
     m_IsLocked: 0

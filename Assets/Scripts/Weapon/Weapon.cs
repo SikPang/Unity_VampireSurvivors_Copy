@@ -55,7 +55,6 @@ public class Weapon : MonoBehaviour
         int maxDamage = (int)(damage * 1.2f);
 
         damage = Random.Range(minDamage, maxDamage + 1);
-        Debug.Log(damage);
 
         return damage;
     }

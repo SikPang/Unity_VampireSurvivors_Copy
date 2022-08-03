@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    Rigidbody2D rigidBody;
+    //Rigidbody2D rigidBody;
     Animator animator;
     SpriteRenderer spriteRenderer;
     Player character;
@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
 
     void Awake()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        //rigidBody = GetComponent<Rigidbody2D>();
         character = GetComponent<Player>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -52,7 +52,10 @@ public class PlayerMove : MonoBehaviour
             animator.SetInteger("AnimState", 0);
         }
 
-        rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
+        // rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
+
+        transform.Translate(Vector2.right * horizontal * character.GetSpeed()/10f * Time.deltaTime);
+        transform.Translate(Vector2.up * vertical * character.GetSpeed()/10f * Time.deltaTime);
     }
 
     public bool GetLookingLeft()

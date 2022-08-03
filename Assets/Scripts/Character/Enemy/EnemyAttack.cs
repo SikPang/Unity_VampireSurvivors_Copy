@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            if (coroutine == null)
+            if (coroutine == null && gameObject.activeSelf)
             {
                 coroutine = StartCoroutine(Attack(collision.gameObject.GetComponent<Player>()));
             }
