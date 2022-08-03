@@ -60,7 +60,7 @@ public class Character : MonoBehaviour
         return transform.position;
     }
 
-    public void ReduceHealthPoint(int damage)
+    public virtual void ReduceHealthPoint(int damage)
     {
         if(healthPoint <= damage)
         {

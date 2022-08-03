@@ -17,6 +17,8 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] GameObject lightningPrefab;
     [SerializeField] GameObject magicWandPrefab;
 
+    [SerializeField] GameObject DamageText;
+
     static ObjectPooling instance;
     Dictionary<string, Queue<GameObject>> poolingDict = new Dictionary<string, Queue<GameObject>>();
     const int initialNumber = 200;
@@ -54,6 +56,15 @@ public class ObjectPooling : MonoBehaviour
 
             poolingDict.Add(weaponType.ToString(), newQue);
         }
+
+        Queue<GameObject> damageQue = new Queue<GameObject>();
+
+        for (int j = 0; j < initialNumber; j++)
+        {
+            damageQue.Enqueue(CreateObject("damage"));
+        }
+
+        poolingDict.Add("damage", damageQue);
     }
 
     static GameObject CreateObject<T>(T type)
@@ -94,9 +105,14 @@ public class ObjectPooling : MonoBehaviour
             case WeaponData.WeaponType.MagicWand:
                 newObject = Instantiate(instance.magicWandPrefab);
                 break;
+
+            case "damage":
+                newObject = Instantiate(instance.DamageText);
+                break;
         }
 
         newObject.transform.parent = instance.transform;
+
         newObject.SetActive(false);
 
         return newObject;

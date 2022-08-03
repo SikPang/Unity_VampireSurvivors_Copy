@@ -56,6 +56,4 @@ public class Player : Character
         if (collision.gameObject.layer == 6)
             GetComponent<SpriteRenderer>().color = Color.white;
     }
-
-    
 }
