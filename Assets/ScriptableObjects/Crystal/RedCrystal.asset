@@ -16,3 +16,4 @@ MonoBehaviour:
   controller: {fileID: 0}
   crystalType: 2
   expValue: 100
+  speed: 100

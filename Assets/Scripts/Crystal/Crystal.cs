@@ -1,12 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Crystal : MonoBehaviour
 {
     [SerializeField] CrystalData crystalData;
+    [SerializeField] PlayerMove player;
+    Rigidbody2D rigidbody;
+    Coroutine coroutine;
     Sprite sprite;
     int expValue;
+    bool isCollided;
 
     void Awake()
     {
@@ -18,6 +21,8 @@ public class Crystal : MonoBehaviour
         sprite = crystalData.GetSprite();
         expValue = crystalData.GetExpValue();
         GetComponent<SpriteRenderer>().sprite = GetSprite();
+        rigidbody = GetComponent<Rigidbody2D>();
+        isCollided = false;
     }
 
     public int GetExpValue()
@@ -30,12 +35,33 @@ public class Crystal : MonoBehaviour
         return sprite;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.layer == 3)
+        if (collider.gameObject.layer == 3)
         {
+            if (coroutine == null)
+                coroutine = StartCoroutine(GetCrystal());
 
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(3f, 0f), ForceMode2D.Force);
+            if (isCollided)
+                Destroy(gameObject);
+        }
+    }
+
+    IEnumerator GetCrystal()
+    {
+        rigidbody.AddForce(new Vector2(5f * player.GetHorizontal(), 5f * player.GetVertical()), ForceMode2D.Impulse);
+
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        isCollided=true;
+        int speed = 30;
+
+        while (true)
+        {
+            Vector2 direction = player.transform.position - transform.position;
+            rigidbody.MovePosition(rigidbody.position + direction.normalized * Time.deltaTime * speed++);
+
+            yield return null;
         }
     }
 }

@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetInteger("AnimState", 0);
         }
 
-        // rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
+        //rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
 
         transform.Translate(Vector2.right * horizontal * character.GetSpeed()/10f * Time.deltaTime);
         transform.Translate(Vector2.up * vertical * character.GetSpeed()/10f * Time.deltaTime);
@@ -61,5 +61,15 @@ public class PlayerMove : MonoBehaviour
     public bool GetLookingLeft()
     {
         return lookingLeft;
+    }
+
+    public float GetHorizontal()
+    {
+        return horizontal;
+    }
+
+    public float GetVertical()
+    {
+        return vertical;
     }
 }
