@@ -40,14 +40,18 @@ public class Crystal : MonoBehaviour
         if (collider.gameObject.layer == 3)
         {
             if (coroutine == null)
-                coroutine = StartCoroutine(GetCrystal());
+                coroutine = StartCoroutine(CrystalAnimation());
 
             if (isCollided)
-                Destroy(gameObject);
+            {
+                ObjectPooling.ReturnObject(gameObject, crystalData.GetCristalType());
+                gameObject.SetActive(false);
+                player.GetComponent<Player>().GetExp(expValue);
+            }
         }
     }
 
-    IEnumerator GetCrystal()
+    IEnumerator CrystalAnimation()
     {
         rigidbody.AddForce(new Vector2(5f * player.GetHorizontal(), 5f * player.GetVertical()), ForceMode2D.Impulse);
 

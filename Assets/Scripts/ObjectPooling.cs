@@ -17,6 +17,10 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] GameObject lightningPrefab;
     [SerializeField] GameObject magicWandPrefab;
 
+    [SerializeField] GameObject blueCrystalPrefab;
+    [SerializeField] GameObject greenCrystalPrefab;
+    [SerializeField] GameObject redCrystalPrefab;
+
     [SerializeField] GameObject DamageText;
 
     static ObjectPooling instance;
@@ -55,6 +59,18 @@ public class ObjectPooling : MonoBehaviour
             }
 
             poolingDict.Add(weaponType.ToString(), newQue);
+        }
+
+        foreach (CrystalData.CrystalType crystalType in Enum.GetValues(typeof(CrystalData.CrystalType)))
+        {
+            Queue<GameObject> newQue = new Queue<GameObject>();
+
+            for (int j = 0; j < initialNumber; j++)
+            {
+                newQue.Enqueue(CreateObject(crystalType));
+            }
+
+            poolingDict.Add(crystalType.ToString(), newQue);
         }
 
         Queue<GameObject> damageQue = new Queue<GameObject>();
@@ -104,6 +120,16 @@ public class ObjectPooling : MonoBehaviour
                 break;
             case WeaponData.WeaponType.MagicWand:
                 newObject = Instantiate(instance.magicWandPrefab);
+                break;
+
+            case CrystalData.CrystalType.blue:
+                newObject = Instantiate(instance.blueCrystalPrefab);
+                break;
+            case CrystalData.CrystalType.green:
+                newObject = Instantiate(instance.greenCrystalPrefab);
+                break;
+            case CrystalData.CrystalType.red:
+                newObject = Instantiate(instance.redCrystalPrefab);
                 break;
 
             case "damage":

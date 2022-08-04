@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    [SerializeField] CrystalData.CrystalType crystalType;
+
     void Awake()
     {
         Initialize();
@@ -28,5 +30,23 @@ public class Enemy : Character
         rectTransform.position = new Vector3(transform.position.x, transform.position.y + 0.5f ,rectTransform.position.z);
 
         damageText.SetActive(true);
+    }
+
+    public override void Die()
+    {
+        ObjectPooling.ReturnObject(gameObject, GetCharacterType());
+        gameObject.SetActive(false);
+
+        if (Random.Range(0, 10) > 5)
+            DropCrystral();
+    }
+
+    void DropCrystral()
+    {
+        GameObject crystal = ObjectPooling.GetObject(crystalType);
+
+        crystal.transform.position = transform.position;
+
+        crystal.SetActive(true);
     }
 }

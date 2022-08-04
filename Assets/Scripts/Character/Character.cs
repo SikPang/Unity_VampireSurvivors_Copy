@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
     [SerializeField] CharacterData characterData;
     Sprite sprite;
@@ -85,29 +85,10 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Die()
-    {
-        switch (GetCharacterType())
-        {
-            case CharacterData.CharacterType.Knight:
-            case CharacterData.CharacterType.Bandit:
-                Debug.Log("Died");
-                break;
-            default:
-                ObjectPooling.ReturnObject(gameObject, GetCharacterType());
-                gameObject.SetActive(false);
-                break;
-        }
-    }
-
     public CharacterData.CharacterType GetCharacterType()
     {
         return characterData.GetCharacterType();
     }
 
-    public void IncreaseStats()
-    {
-        //attackPower += increaseAttack;
-        //defencePower += increaseDefence;
-    }
+    public abstract void Die();
 }
