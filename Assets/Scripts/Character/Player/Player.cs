@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Player : Character
 {
     [SerializeField] Slider hpSlider;
-    [SerializeField] Slider expSlider;
-    [SerializeField] TextMeshProUGUI text;
     static float attackSpeed;
-    int maxExpValue;
-    int curExpValue;
-    int level;
 
     void Awake()
     {
         Initialize();
+
+        StartCoroutine(LevelUpTest());
     }
 
     void Update()
@@ -30,11 +26,6 @@ public class Player : Character
         attackSpeed = 100f;
         hpSlider.maxValue = GetHealthPoint();
         hpSlider.value = GetHealthPoint();
-        maxExpValue = 50;
-        curExpValue = 0;
-        level = 1;
-        expSlider.maxValue = maxExpValue;
-        expSlider.value = curExpValue;
         GetFirstWeapon();
     }
 
@@ -73,25 +64,10 @@ public class Player : Character
         Debug.Log("Died");
     }
 
-    public void GetExp(int value)
+    IEnumerator LevelUpTest()
     {
-        if (curExpValue + value >= maxExpValue)
-        {
-            curExpValue += value - maxExpValue;
-            LevelUp();
-        }
-        else
-            curExpValue += value;
+        yield return new WaitForSeconds(2f);
 
-        expSlider.value = curExpValue;
-    }
-
-    void LevelUp()
-    {
-        level++;
-        text.text = "LV " + level.ToString();
-
-        maxExpValue *= level;
-        expSlider.maxValue = maxExpValue;
+        GetComponent<Level>().GetExp(50);
     }
 }
