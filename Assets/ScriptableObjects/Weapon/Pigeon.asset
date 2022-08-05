@@ -16,3 +16,4 @@ MonoBehaviour:
   attackPower: 10
   attackSpeed: 2
   inactiveDelay: 0.3
+  weaponSprite: {fileID: 21300000, guid: 6b49f8f34080ad84aaf6f53795d90821, type: 3}

@@ -9,6 +9,7 @@ public abstract class WeaponSpawner : MonoBehaviour
     float attackSpeed;
     float inactiveDelay;
     float additionalScale;
+    Sprite weaponIcon;
 
     public enum Direction
     {
@@ -25,6 +26,7 @@ public abstract class WeaponSpawner : MonoBehaviour
 
     internal void Initialize()
     {
+        weaponIcon = weaponData.GetSprite();
         attackPower = weaponData.GetAttackPower();
         attackSpeed = weaponData.GetAttackSpeed();// * Player.GetAttackSpeed() / 100f;
         inactiveDelay = weaponData.GetInactiveDelay();
@@ -103,6 +105,11 @@ public abstract class WeaponSpawner : MonoBehaviour
     public float GetAdditionalScale()
     {
         return additionalScale;
+    }
+
+    public Sprite GetSprite()
+    {
+        return weaponIcon;
     }
 
     public void IncreaseAdditionalScale(float value)

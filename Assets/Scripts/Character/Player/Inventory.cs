@@ -5,12 +5,20 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private static Inventory instance;
-    static Dictionary<WeaponData.WeaponType, WeaponSpawner> inventory;
+    static Dictionary<WeaponData.WeaponType, WeaponSpawner> weaponInventory;
+    static Dictionary<AccessoryData.AccessoryType, Accessory> accesoInventory;
+
+    [SerializeField] Accessory crown;
+    [SerializeField] Accessory clover;
+    [SerializeField] Accessory armor;
+    [SerializeField] Accessory spinach;
+    [SerializeField] Accessory emptyTome;
+    [SerializeField] Accessory wings;
 
     void Awake()
     {
         instance = this;
-        inventory = new Dictionary<WeaponData.WeaponType, WeaponSpawner>();
+        weaponInventory = new Dictionary<WeaponData.WeaponType, WeaponSpawner>();
     }
 
     private Inventory() { }
@@ -22,7 +30,7 @@ public class Inventory : MonoBehaviour
 
     public static Dictionary<WeaponData.WeaponType, WeaponSpawner> GetInventory()
     {
-        return inventory;
+        return weaponInventory;
     }
 
     public void AddWeapon(WeaponData.WeaponType weaponType)
@@ -52,20 +60,58 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
-        if (inventory.ContainsKey(weaponType))
+        if (weaponInventory.ContainsKey(weaponType))
         {
             spawner.IncreaseLevel();
         }
         else
         {
-            inventory.Add(spawner.GetWeaponType(), spawner);
+            weaponInventory.Add(spawner.GetWeaponType(), spawner);
             spawner.StartWeapon();
+        }
+    }
+
+    public void AddAccessory(AccessoryData.AccessoryType accessoryType)
+    {
+        Accessory accessory;
+
+        switch (accessoryType)
+        {
+            default:
+            case AccessoryData.AccessoryType.Wings:
+                accessory = wings;
+                break;
+            case AccessoryData.AccessoryType.Armor:
+                accessory = armor;
+                break;
+            case AccessoryData.AccessoryType.Clover:
+                accessory = clover;
+                break;
+            case AccessoryData.AccessoryType.EmptyTome:
+                accessory = emptyTome;
+                break;
+            case AccessoryData.AccessoryType.Spinach:
+                accessory = spinach;
+                break;
+            case AccessoryData.AccessoryType.Crown:
+                accessory = crown;
+                break;
+        }
+
+        if (accesoInventory.ContainsKey(accessoryType))
+        {
+            accessory.IncreaseLevel();
+        }
+        else
+        {
+            accesoInventory.Add(accessory.GetAccessoryType(), accessory);
+            accessory.ApplyEffect();
         }
     }
 
     public static void ShowInventory()
     {
-        foreach(var weapon in inventory.Values)
+        foreach(var weapon in weaponInventory.Values)
         {
             
         }

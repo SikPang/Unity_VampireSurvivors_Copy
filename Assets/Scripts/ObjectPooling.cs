@@ -25,7 +25,11 @@ public class ObjectPooling : MonoBehaviour
 
     static ObjectPooling instance;
     Dictionary<string, Queue<GameObject>> poolingDict = new Dictionary<string, Queue<GameObject>>();
-    const int initialNumber = 200;
+
+    const int initNumEnemy = 500;
+    const int initNumWeapon = 100;
+    const int initNumCrystal = 500;
+    const int initNumDamage = 500;
 
     void Awake()
     {
@@ -41,7 +45,7 @@ public class ObjectPooling : MonoBehaviour
 
             Queue<GameObject> newQue = new Queue<GameObject>();
 
-            for (int j = 0; j < initialNumber; j++)
+            for (int j = 0; j < initNumEnemy; j++)
             {
                 newQue.Enqueue(CreateObject(characterType));
             }
@@ -53,7 +57,7 @@ public class ObjectPooling : MonoBehaviour
         {
             Queue<GameObject> newQue = new Queue<GameObject>();
 
-            for (int j = 0; j < initialNumber; j++)
+            for (int j = 0; j < initNumWeapon; j++)
             {
                 newQue.Enqueue(CreateObject(weaponType));
             }
@@ -65,7 +69,7 @@ public class ObjectPooling : MonoBehaviour
         {
             Queue<GameObject> newQue = new Queue<GameObject>();
 
-            for (int j = 0; j < initialNumber; j++)
+            for (int j = 0; j < initNumCrystal; j++)
             {
                 newQue.Enqueue(CreateObject(crystalType));
             }
@@ -75,7 +79,7 @@ public class ObjectPooling : MonoBehaviour
 
         Queue<GameObject> damageQue = new Queue<GameObject>();
 
-        for (int j = 0; j < initialNumber; j++)
+        for (int j = 0; j < initNumDamage; j++)
         {
             damageQue.Enqueue(CreateObject("damage"));
         }

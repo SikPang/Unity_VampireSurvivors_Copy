@@ -20,6 +20,15 @@ public class Level : MonoBehaviour
     static int level;
     static bool isLevelUpTime;
 
+    enum SelectChild
+    {
+        WeaponIcon,
+        NameText,
+        Description,
+        LevelText,
+        SelectArrows
+    }
+
     void Awake()
     {
         Initialize();
@@ -74,7 +83,7 @@ public class Level : MonoBehaviour
     IEnumerator GetNewItem()
     {
         Time.timeScale = 0f;
-        levelUpWindow.SetActive(true);
+        ShowSelectWindow();
 
         while (true)
         {
@@ -88,6 +97,17 @@ public class Level : MonoBehaviour
         isLevelUpTime = false;
         levelUpWindow.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    void ShowSelectWindow()
+    {
+        levelUpWindow.SetActive(true);
+
+        foreach (GameObject weapon in weaponSelect)
+        {
+            
+            //weapon.transform.GetChild((int)SelectChild.WeaponIcon)
+        }
     }
 
     IEnumerator LevelUpEffects()
