@@ -8,8 +8,13 @@ public class Level : MonoBehaviour
 {
     [SerializeField] Slider expSlider;
     [SerializeField] TextMeshProUGUI text;
+
     [SerializeField] Image levelUpBar;
     [SerializeField] ParticleSystem[] particles = new ParticleSystem[3];
+
+    [SerializeField] GameObject levelUpWindow;
+    [SerializeField] GameObject[] weaponSelect = new GameObject[4];
+
     int maxExpValue;
     int curExpValue;
     static int level;
@@ -69,21 +74,26 @@ public class Level : MonoBehaviour
     IEnumerator GetNewItem()
     {
         Time.timeScale = 0f;
+        levelUpWindow.SetActive(true);
 
         while (true)
         {
             if (Input.GetKeyDown(KeyCode.Space)) break;
 
+
+
             yield return null;
         }
 
         isLevelUpTime = false;
+        levelUpWindow.SetActive(false);
         Time.timeScale = 1f;
     }
 
     IEnumerator LevelUpEffects()
     {
         levelUpBar.gameObject.SetActive(true);
+        StartParticles();
 
         foreach (ParticleSystem particle in particles)
         {
@@ -98,22 +108,35 @@ public class Level : MonoBehaviour
             for (float i = 0f; i < 1f; i += 0.1f)
             {
                 levelUpBar.color = Color.Lerp(new Color(1f, 0f, 1f), new Color(0f, 1f, 1f), i);
-                yield return new WaitForSecondsRealtime(0.05f);
+                yield return new WaitForSecondsRealtime(0.01f);
             }
 
-            for (float i = 1f; i < 0f; i -= 0.1f)
+            for (float i = 0f; i < 1f; i += 0.1f)
             {
-                levelUpBar.color = Color.Lerp(new Color(1f, 0f, 1f), new Color(0f, 1f, 1f), i);
-                yield return new WaitForSecondsRealtime(0.05f);
+                levelUpBar.color = Color.Lerp(new Color(0f, 1f, 1f), new Color(1f, 0f, 1f), i);
+                yield return new WaitForSecondsRealtime(0.01f);
             }
         }
 
         levelUpBar.gameObject.SetActive(false);
+        StopParticles();
+    }
 
+    void StartParticles()
+    {
         foreach (ParticleSystem particle in particles)
         {
-            particle.gameObject.SetActive(false);
+            particle.gameObject.SetActive(true);
+            particle.Play();
+        }
+    }
+
+    void StopParticles()
+    {
+        foreach (ParticleSystem particle in particles)
+        {
             particle.Stop();
+            particle.gameObject.SetActive(false);
         }
     }
 }

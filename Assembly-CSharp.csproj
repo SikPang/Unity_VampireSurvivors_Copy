@@ -59,7 +59,7 @@
     <Compile Include="Assets\Assets\Bandits - Pixel Art\Demo\Bandit.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyMove.cs" />
-    <Compile Include="Assets\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\Inventory.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterData.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
     <Compile Include="Assets\Scripts\Weapon\PigeonSpawner.cs" />
@@ -79,6 +79,7 @@
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\Scripts\Weapon\LightningSpawner.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponSpawner.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\Level.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponData.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
@@ -86,7 +87,6 @@
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Weapon\MagicWandSpawner.cs" />
-    <Compile Include="Assets\Scripts\Character\Player\Level.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
