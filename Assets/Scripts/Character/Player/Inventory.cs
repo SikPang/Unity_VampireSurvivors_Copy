@@ -5,8 +5,8 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private static Inventory instance;
-    static Dictionary<WeaponData.WeaponType, WeaponSpawner> weaponInventory;
-    static Dictionary<AccessoryData.AccessoryType, Accessory> accesoInventory;
+    static Dictionary<WeaponData.WeaponType, int> weaponInventory;
+    static Dictionary<AccessoryData.AccessoryType, int> accesoInventory;
 
     [SerializeField] Accessory crown;
     [SerializeField] Accessory clover;
@@ -18,7 +18,8 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         instance = this;
-        weaponInventory = new Dictionary<WeaponData.WeaponType, WeaponSpawner>();
+        weaponInventory = new Dictionary<WeaponData.WeaponType, int>();
+        accesoInventory = new Dictionary<AccessoryData.AccessoryType, int>();
     }
 
     private Inventory() { }
@@ -28,9 +29,14 @@ public class Inventory : MonoBehaviour
         return instance;
     }
 
-    public static Dictionary<WeaponData.WeaponType, WeaponSpawner> GetInventory()
+    public static Dictionary<WeaponData.WeaponType, int> GetWeaponInventory()
     {
         return weaponInventory;
+    }
+
+    public static Dictionary<AccessoryData.AccessoryType, int> GetAccInventory()
+    {
+        return accesoInventory;
     }
 
     public void AddWeapon(WeaponData.WeaponType weaponType)
@@ -63,10 +69,12 @@ public class Inventory : MonoBehaviour
         if (weaponInventory.ContainsKey(weaponType))
         {
             spawner.IncreaseLevel();
+            weaponInventory.Remove(spawner.GetWeaponType());
+            weaponInventory.Add(spawner.GetWeaponType(), spawner.GetLevel());
         }
         else
         {
-            weaponInventory.Add(spawner.GetWeaponType(), spawner);
+            weaponInventory.Add(spawner.GetWeaponType(), 1);
             spawner.StartWeapon();
         }
     }
@@ -101,10 +109,12 @@ public class Inventory : MonoBehaviour
         if (accesoInventory.ContainsKey(accessoryType))
         {
             accessory.IncreaseLevel();
+            accesoInventory.Remove(accessory.GetAccessoryType());
+            accesoInventory.Add(accessory.GetAccessoryType(), accessory.GetLevel());
         }
         else
         {
-            accesoInventory.Add(accessory.GetAccessoryType(), accessory);
+            accesoInventory.Add(accessory.GetAccessoryType(), 1);
             accessory.ApplyEffect();
         }
     }

@@ -17,6 +17,7 @@ public class AccessoryData : ScriptableObject
 
     [SerializeField] AccessoryType accessoryType;
     [SerializeField] Sprite accessorySprite;
+    [SerializeField] string description;
 
     public AccessoryType GetAccessoryType()
     {
@@ -26,5 +27,10 @@ public class AccessoryData : ScriptableObject
     public Sprite GetSprite()
     {
         return accessorySprite;
+    }
+
+    public string GetDescription()
+    {
+        return description;
     }
 }

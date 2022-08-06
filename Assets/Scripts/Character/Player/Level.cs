@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -14,6 +14,11 @@ public class Level : MonoBehaviour
 
     [SerializeField] GameObject levelUpWindow;
     [SerializeField] GameObject[] weaponSelect = new GameObject[4];
+    [SerializeField] Image[] weaponIcon = new Image[4];
+    [SerializeField] TextMeshProUGUI[] nameText = new TextMeshProUGUI[4];
+    [SerializeField] TextMeshProUGUI[] description = new TextMeshProUGUI[4];
+    [SerializeField] TextMeshProUGUI[] levelText = new TextMeshProUGUI[4];
+    [SerializeField] GameObject[] selectArrow = new GameObject[4];
 
     int maxExpValue;
     int curExpValue;
@@ -103,11 +108,39 @@ public class Level : MonoBehaviour
     {
         levelUpWindow.SetActive(true);
 
-        foreach (GameObject weapon in weaponSelect)
+        for(int i=0; i<weaponSelect.Length; i++)
         {
-            
-            //weapon.transform.GetChild((int)SelectChild.WeaponIcon)
+            if (Random.Range(0, 10) < 4)
+            {
+                // ¹«±â
+                WeaponData.WeaponType weapon = GetRandomWeapon();
+
+                weaponIcon[i].sprite = ItemAssets.GetInstance().GetWeaponData(weapon).GetSprite();
+                nameText[i].text = weapon.ToString();
+                //description[i].text = 
+                int level;
+                //bool check = Inventory.GetAccInventory().TryGetValue(weapon, level);
+                //    levelText[i].text
+            }
+            else
+            {
+                // ¾Ç¼¼
+                AccessoryData.AccessoryType accessory = GetRandomAccessory();
+
+                weaponIcon[i].sprite = ItemAssets.GetInstance().GetAccessoryData(accessory).GetSprite();
+
+            }
         }
+    }
+
+    WeaponData.WeaponType GetRandomWeapon()
+    {
+        return (WeaponData.WeaponType)Random.Range(0, System.Enum.GetValues(typeof(WeaponData.WeaponType)).Length);
+    }
+
+    AccessoryData.AccessoryType GetRandomAccessory()
+    {
+        return (AccessoryData.AccessoryType)Random.Range(0, System.Enum.GetValues(typeof(AccessoryData.AccessoryType)).Length);
     }
 
     IEnumerator LevelUpEffects()
