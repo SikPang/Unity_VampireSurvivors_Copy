@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accessoryType: 1
   accessorySprite: {fileID: 21300000, guid: 630c4e1874e82aa4eb1e10b8977e7f0c, type: 3}
+  description: Reduces incoming damage by 10%

@@ -1,8 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Level : MonoBehaviour
 {
@@ -18,20 +18,17 @@ public class Level : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] nameText = new TextMeshProUGUI[4];
     [SerializeField] TextMeshProUGUI[] description = new TextMeshProUGUI[4];
     [SerializeField] TextMeshProUGUI[] levelText = new TextMeshProUGUI[4];
-    [SerializeField] GameObject[] selectArrow = new GameObject[4];
+    [SerializeField] Button[] button = new Button[4];
 
     int maxExpValue;
     int curExpValue;
     static int level;
     static bool isLevelUpTime;
 
-    enum SelectChild
+    enum type
     {
-        WeaponIcon,
-        NameText,
-        Description,
-        LevelText,
-        SelectArrows
+        Weapon,
+        Accessory
     }
 
     void Awake()
@@ -92,14 +89,10 @@ public class Level : MonoBehaviour
 
         while (true)
         {
-            if (Input.GetKeyDown(KeyCode.Space)) break;
-
-
+            if (!isLevelUpTime) break;
 
             yield return null;
         }
-
-        isLevelUpTime = false;
         levelUpWindow.SetActive(false);
         Time.timeScale = 1f;
     }
@@ -107,28 +100,62 @@ public class Level : MonoBehaviour
     void ShowSelectWindow()
     {
         levelUpWindow.SetActive(true);
+        List<string> checkDuplicate = new List<string>(3);
 
-        for(int i=0; i<weaponSelect.Length; i++)
+        for (int i = 0; i < weaponSelect.Length; i++)
         {
             if (Random.Range(0, 10) < 4)
             {
                 // ¹«±â
-                WeaponData.WeaponType weapon = GetRandomWeapon();
+                WeaponData.WeaponType weapon;
+
+                do weapon = GetRandomWeapon();
+                while (checkDuplicate.Contains(weapon.ToString()));
+                checkDuplicate.Add(weapon.ToString());
 
                 weaponIcon[i].sprite = ItemAssets.GetInstance().GetWeaponData(weapon).GetSprite();
                 nameText[i].text = weapon.ToString();
-                //description[i].text = 
                 int level;
-                //bool check = Inventory.GetAccInventory().TryGetValue(weapon, level);
-                //    levelText[i].text
+                if (Inventory.GetWeaponInventory().TryGetValue(weapon, out level))
+                {
+                    description[i].text = ItemAssets.GetInstance().GetWeaponData(weapon).GetDescription();
+                    levelText[i].text = "LV " + (level + 1).ToString();
+                }
+                else
+                {
+                    description[i].text = ItemAssets.GetInstance().GetWeaponData(weapon).GetDescription();
+                    levelText[i].text = "New !";
+                }
+
+                button[i].onClick.RemoveAllListeners();
+                button[i].onClick.AddListener(delegate { 
+                    Inventory.GetInstance().AddWeapon(weapon); 
+                    isLevelUpTime = false; 
+                });
             }
             else
             {
                 // ¾Ç¼¼
-                AccessoryData.AccessoryType accessory = GetRandomAccessory();
+                AccessoryData.AccessoryType accessory;
+                
+                do accessory = GetRandomAccessory();
+                while(checkDuplicate.Contains(accessory.ToString()));
+                checkDuplicate.Add(accessory.ToString());
 
                 weaponIcon[i].sprite = ItemAssets.GetInstance().GetAccessoryData(accessory).GetSprite();
+                nameText[i].text = accessory.ToString();
+                description[i].text = ItemAssets.GetInstance().GetAccessoryData(accessory).GetDescription();
+                int level;
+                if (Inventory.GetAccInventory().TryGetValue(accessory, out level))
+                    levelText[i].text = "LV " + (level+1).ToString();
+                else
+                    levelText[i].text = "New !";
 
+                button[i].onClick.RemoveAllListeners();
+                button[i].onClick.AddListener(delegate { 
+                    Inventory.GetInstance().AddAccessory(accessory); 
+                    isLevelUpTime = false; 
+                });
             }
         }
     }
@@ -141,6 +168,16 @@ public class Level : MonoBehaviour
     AccessoryData.AccessoryType GetRandomAccessory()
     {
         return (AccessoryData.AccessoryType)Random.Range(0, System.Enum.GetValues(typeof(AccessoryData.AccessoryType)).Length);
+    }
+
+    public void AddWeapon(WeaponData.WeaponType weapon)
+    {
+        Inventory.GetInstance().AddWeapon(weapon);
+    }
+
+    public void AddA(WeaponData.WeaponType weapon)
+    {
+        Inventory.GetInstance().AddWeapon(weapon);
     }
 
     IEnumerator LevelUpEffects()

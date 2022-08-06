@@ -20,6 +20,11 @@ public class ItemAssets : MonoBehaviour
 
     static ItemAssets instance;
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     public static ItemAssets GetInstance()
     {
         return instance;

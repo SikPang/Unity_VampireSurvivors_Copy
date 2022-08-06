@@ -17,3 +17,4 @@ MonoBehaviour:
   attackSpeed: 1
   inactiveDelay: 0.3
   weaponSprite: {fileID: 21300000, guid: 69e29003cde6e7340a6fb22a30653937, type: 3}
+  description: Fires at the nearest enemy

@@ -18,6 +18,7 @@ public class WeaponData : ScriptableObject
     [SerializeField] float attackSpeed;
     [SerializeField] float inactiveDelay;
     [SerializeField] Sprite weaponSprite;
+    [SerializeField] string description;
 
     public WeaponType GetWeaponType()
     {
@@ -42,5 +43,10 @@ public class WeaponData : ScriptableObject
     public Sprite GetSprite()
     {
         return weaponSprite;
+    }
+
+    public string GetDescription()
+    {
+        return description;
     }
 }

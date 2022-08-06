@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -15,6 +16,10 @@ public class Inventory : MonoBehaviour
     [SerializeField] Accessory emptyTome;
     [SerializeField] Accessory wings;
 
+    StringBuilder sb = new StringBuilder();
+
+    private Inventory() { }
+
     void Awake()
     {
         instance = this;
@@ -22,7 +27,19 @@ public class Inventory : MonoBehaviour
         accesoInventory = new Dictionary<AccessoryData.AccessoryType, int>();
     }
 
-    private Inventory() { }
+    private void Update()
+    {
+        /*sb.Clear();
+        foreach(WeaponData.WeaponType type in weaponInventory.Keys)
+        {
+            sb.Append(type.ToString() + " " + weaponInventory[type] + ", ");
+        }
+        foreach (AccessoryData.AccessoryType type in accesoInventory.Keys)
+        {
+            sb.Append(type.ToString() + " " + accesoInventory[type] + ", ");
+        }
+        Debug.Log(sb.ToString());*/
+    }
 
     public static Inventory GetInstance()
     {

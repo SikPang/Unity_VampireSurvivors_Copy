@@ -66,8 +66,11 @@ public class Player : Character
 
     IEnumerator LevelUpTest()
     {
-        yield return new WaitForSeconds(2f);
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
 
-        GetComponent<Level>().GetExp(50);
+            GetComponent<Level>().GetExp(50);
+        }
     }
 }

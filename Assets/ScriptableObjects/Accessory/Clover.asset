@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accessoryType: 4
   accessorySprite: {fileID: 21300000, guid: c40fe81f68580e1428c9bbbb9f59da81, type: 3}
+  description: Character gets 10% luckier

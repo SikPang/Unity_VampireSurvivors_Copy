@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accessoryType: 0
   accessorySprite: {fileID: 21300000, guid: cd1b3a03734a85346b40ee2c8ff6f21f, type: 3}
+  description: Raises inflicted damage by 10%

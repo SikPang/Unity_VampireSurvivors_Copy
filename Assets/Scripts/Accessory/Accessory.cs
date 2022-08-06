@@ -36,6 +36,7 @@ public class Accessory : MonoBehaviour
     public void IncreaseLevel()
     {
         level++;
+        ApplyEffect();
     }
 
     public void ApplyEffect()

@@ -17,3 +17,4 @@ MonoBehaviour:
   attackSpeed: 2
   inactiveDelay: 0.3
   weaponSprite: {fileID: 21300000, guid: 58539a903c109854387b2bc6b7e40a0e, type: 3}
+  description: Orbits around the character
