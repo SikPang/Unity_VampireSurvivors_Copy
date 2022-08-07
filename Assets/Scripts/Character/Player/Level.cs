@@ -66,6 +66,8 @@ public class Level : MonoBehaviour
         else
             curExpValue += value;
 
+        //Debug.Log(value);
+
         expSlider.value = curExpValue;
     }
 
@@ -79,6 +81,7 @@ public class Level : MonoBehaviour
         text.text = "LV " + level.ToString();
 
         maxExpValue *= level;
+        // maxExpValue = 50 * level;
         expSlider.maxValue = maxExpValue;
     }
 
@@ -158,6 +161,11 @@ public class Level : MonoBehaviour
                 });
             }
         }
+
+        if(Random.Range(0,100) < Player.GetInstance().GetLuck())
+            weaponSelect[3].SetActive(true);
+        else
+            weaponSelect[3].SetActive(false);
     }
 
     WeaponData.WeaponType GetRandomWeapon()

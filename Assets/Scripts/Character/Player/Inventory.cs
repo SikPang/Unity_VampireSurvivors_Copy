@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -15,8 +14,6 @@ public class Inventory : MonoBehaviour
     [SerializeField] Accessory spinach;
     [SerializeField] Accessory emptyTome;
     [SerializeField] Accessory wings;
-
-    StringBuilder sb = new StringBuilder();
 
     private Inventory() { }
 
@@ -128,6 +125,7 @@ public class Inventory : MonoBehaviour
             accessory.IncreaseLevel();
             accesoInventory.Remove(accessory.GetAccessoryType());
             accesoInventory.Add(accessory.GetAccessoryType(), accessory.GetLevel());
+            accessory.ApplyEffect();
         }
         else
         {

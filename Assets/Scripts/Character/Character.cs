@@ -85,6 +85,21 @@ public abstract class Character : MonoBehaviour
         }
     }
 
+    public void IncreaseAttackPower(int value)
+    {
+        attackPower += value;
+    }
+
+    public void IncreaseDefencePower(int value)
+    {
+        defencePower += value;
+    }
+
+    public void IncreaseSpeed(int value)
+    {
+        speed = speed + speed * value / 100;
+    }
+
     public CharacterData.CharacterType GetCharacterType()
     {
         return characterData.GetCharacterType();

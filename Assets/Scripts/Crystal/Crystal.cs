@@ -46,7 +46,7 @@ public class Crystal : MonoBehaviour
             {
                 ObjectPooling.ReturnObject(gameObject, crystalData.GetCristalType());
                 gameObject.SetActive(false);
-                player.GetComponent<Level>().GetExp(expValue);
+                player.GetComponent<Level>().GetExp((int)(expValue * Player.GetInstance().GetExpAdditional()/100f));
             }
         }
     }

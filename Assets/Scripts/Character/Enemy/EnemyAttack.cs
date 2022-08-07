@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] LayerMask playerLayer;
     Enemy character;
     Coroutine coroutine;
 
@@ -18,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
         {
             if (coroutine == null && gameObject.activeSelf)
             {
-                coroutine = StartCoroutine(Attack(collision.gameObject.GetComponent<Player>()));
+                coroutine = StartCoroutine(Attack());
             }
         }
     }
@@ -35,19 +34,20 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    IEnumerator Attack(Player player)
+    IEnumerator Attack()
     {
         while (true)
         {
-            GiveDamage(player);
+            GiveDamage();
             yield return new WaitForSeconds(0.2f);
         }
     }
 
-    void GiveDamage(Player player)
+    void GiveDamage()
     {
-        int damage = character.GetAttackPower() - player.GetDefencePower();
+        int damage = character.GetAttackPower() -
+            (int)(character.GetAttackPower() * Player.GetInstance().GetDefencePower()/100f);
 
-        player.ReduceHealthPoint(damage);
+        Player.GetInstance().ReduceHealthPoint(damage);
     }
 }

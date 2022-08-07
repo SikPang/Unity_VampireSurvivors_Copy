@@ -6,7 +6,13 @@ using UnityEngine.UI;
 public class Player : Character
 {
     [SerializeField] Slider hpSlider;
-    static float attackSpeed;
+    static Player instance;
+    float attackSpeed;
+    float expAdditional;
+    int luck;
+    bool check = false;
+
+    private Player() {}
 
     void Awake()
     {
@@ -18,20 +24,56 @@ public class Player : Character
     void Update()
     {
         hpSlider.value = GetHealthPoint();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            check = true;
     }
 
     internal override void Initialize()
     {
         base.Initialize();
+        instance = this;
         attackSpeed = 100f;
+        expAdditional = 100f;
+        luck = 0;
         hpSlider.maxValue = GetHealthPoint();
         hpSlider.value = GetHealthPoint();
         GetFirstWeapon();
     }
 
-    public static float GetAttackSpeed()
+    public static Player GetInstance()
+    {
+        return instance;
+    }
+
+    public float GetAttackSpeed()
     {
         return attackSpeed;
+    }
+
+    public float GetExpAdditional()
+    {
+        return expAdditional;
+    }
+
+    public int GetLuck()
+    {
+        return luck;
+    }
+
+    public void DecreaseAttackSpeed(float value)
+    {
+        attackSpeed -= value;
+    }
+
+    public void IncreaseExpAdditional(float value)
+    {
+        expAdditional += value;
+    }
+
+    public void IncreaseLuck(int value)
+    {
+        luck += value;
     }
 
     void GetFirstWeapon()
@@ -68,7 +110,9 @@ public class Player : Character
     {
         while (true)
         {
-            yield return new WaitForSeconds(2f);
+            if (check) break;
+
+            yield return new WaitForSeconds(0.5f);
 
             GetComponent<Level>().GetExp(50);
         }

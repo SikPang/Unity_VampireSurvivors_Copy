@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WhipSpawner : WeaponSpawner
@@ -8,7 +7,12 @@ public class WhipSpawner : WeaponSpawner
     {
         while (true)
         {
-            if(GetLevel() >= 1)
+            //Debug.Log(GetAttackPower());
+
+            UpdateAttackPower();
+            UpdateAttackSpeed();
+
+            if (GetLevel() >= 1)
                 SpawnWeapon(Direction.Self);
 
             if (GetLevel() >= 2)

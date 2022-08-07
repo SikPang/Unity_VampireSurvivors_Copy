@@ -132,10 +132,15 @@ public abstract class WeaponSpawner : MonoBehaviour
         level++;
     }
 
-    /*public void UpdateAttackSpeed()
+    public void UpdateAttackSpeed()
     {
-        attackSpeed = weaponData.GetAttackSpeed() * Player.GetAttackSpeed() / 100f;
-    }*/
+        attackSpeed = weaponData.GetAttackSpeed() * Player.GetInstance().GetAttackSpeed() / 100f;
+    }
+
+    public void UpdateAttackPower()
+    {
+        attackPower = weaponData.GetAttackPower() * Player.GetInstance().GetAttackPower() / 100;
+    }
 
     public void StartWeapon()
     {
