@@ -10,6 +10,7 @@ public class Crystal : MonoBehaviour
     Sprite sprite;
     int expValue;
     bool isCollided;
+    int speed;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class Crystal : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = GetSprite();
         rigidbody = GetComponent<Rigidbody2D>();
         isCollided = false;
+        speed = 7;
     }
 
     public int GetExpValue()
@@ -53,12 +55,11 @@ public class Crystal : MonoBehaviour
 
     IEnumerator CrystalAnimation()
     {
-        rigidbody.AddForce(new Vector2(5f * player.GetHorizontal(), 5f * player.GetVertical()), ForceMode2D.Impulse);
+        rigidbody.AddForce(new Vector2(player.GetHorizontal(), player.GetVertical()) * speed, ForceMode2D.Impulse);
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.4f);
 
         isCollided=true;
-        int speed = 30;
 
         while (true)
         {

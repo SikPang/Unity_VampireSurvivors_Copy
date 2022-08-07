@@ -81,10 +81,10 @@ public class Player : Character
         switch (GetComponentInParent<Player>().GetCharacterType())
         {
             case CharacterData.CharacterType.Knight:
-                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Whip);
+                //Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Whip);
+                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Axe);
                 break;
             case CharacterData.CharacterType.Bandit:
-                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Axe);
                 break;
         }
     }
@@ -114,7 +114,7 @@ public class Player : Character
 
             yield return new WaitForSeconds(0.5f);
 
-            GetComponent<Level>().GetExp(50);
+            GetComponent<Level>().GetExp(50*Level.GetPlayerLevel());
         }
     }
 }

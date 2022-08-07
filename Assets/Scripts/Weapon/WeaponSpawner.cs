@@ -43,7 +43,7 @@ public abstract class WeaponSpawner : MonoBehaviour
         switch (direction)
         {
             case Direction.Self:
-                if (GetComponentInParent<PlayerMove>().GetLookingLeft())
+                if (PlayerMove.GetInstance().GetLookingLeft())
                 {
                     weapon.transform.position = new Vector3(-weapon.transform.position.x, weapon.transform.position.y, 0f);
                     weapon.GetComponent<SpriteRenderer>().flipX = true;
@@ -51,7 +51,7 @@ public abstract class WeaponSpawner : MonoBehaviour
                 break;
 
             case Direction.Opposite:
-                if (!GetComponentInParent<PlayerMove>().GetLookingLeft())
+                if (!PlayerMove.GetInstance().GetLookingLeft())
                 {
                     weapon.transform.position = new Vector3(-weapon.transform.position.x, weapon.transform.position.y -1f, 0f);
                     weapon.GetComponent<SpriteRenderer>().flipX = true;
@@ -72,7 +72,7 @@ public abstract class WeaponSpawner : MonoBehaviour
 
         weapon.transform.position += GetComponentInParent<Player>().GetPosition();
         weapon.transform.localScale = new Vector3(weapon.transform.localScale.x * (additionalScale / 100f), weapon.transform.localScale.y * (additionalScale / 100f), weapon.transform.localScale.z);
-        weapon.GetComponent<Weapon>().SetParameters(attackPower,inactiveDelay);
+        weapon.GetComponent<Weapon>().SetParameters(attackPower,inactiveDelay, direction);
 
         weapon.SetActive(true);
     }

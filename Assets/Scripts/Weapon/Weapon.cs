@@ -5,27 +5,26 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] internal WeaponSpawner spawner;
+    WeaponSpawner.Direction direction;
     public int attackPower;
     internal int level;
     internal float inactiveDelay;
-
-    void Awake()
-    {
-        // SetParameters∑Œ ¥Î√º
-        /*attackPower = spawner.GetAttackPower();
-        level = spawner.GetLevel();
-        inactiveDelay = spawner.GetInactiveDelay();*/
-    }
 
     void Start()
     {
         StartCoroutine(StartDestroy());
     }
 
-    public void SetParameters(int attackPower, float inactiveDelay)
+    public void SetParameters(int attackPower, float inactiveDelay, WeaponSpawner.Direction direction)
     {
         this.attackPower = attackPower;
         this.inactiveDelay = inactiveDelay;
+        this.direction = direction;
+    }
+
+    internal WeaponSpawner.Direction GetDirection()
+    {
+        return direction;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -38,7 +37,7 @@ public class Weapon : MonoBehaviour
 
     internal virtual IEnumerator StartDestroy()
     {
-        yield return new WaitForSecondsRealtime(inactiveDelay);
+        yield return new WaitForSeconds(inactiveDelay);
 
         InactiveWeapon();
     }
@@ -49,7 +48,7 @@ public class Weapon : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    int RandomDamage(int damage)
+    internal int RandomDamage(int damage)
     {
         int minDamage = (int)(damage * 0.8f);
         int maxDamage = (int)(damage * 1.2f);

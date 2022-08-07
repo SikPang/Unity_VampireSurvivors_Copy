@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     float horizontal;
     float vertical;
     bool lookingLeft;
+    static PlayerMove instance;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class PlayerMove : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         lookingLeft = false;
+        instance = this;
     }
 
     void Update()
@@ -59,6 +61,11 @@ public class PlayerMove : MonoBehaviour
 
         transform.Translate(Vector2.right * horizontal * character.GetSpeed()/10f * Time.deltaTime);
         transform.Translate(Vector2.up * vertical * character.GetSpeed()/10f * Time.deltaTime);
+    }
+
+    public static PlayerMove GetInstance()
+    {
+        return instance;
     }
 
     public bool GetLookingLeft()

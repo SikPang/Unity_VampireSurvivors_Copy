@@ -15,6 +15,8 @@ public class WhipSpawner : WeaponSpawner
             if (GetLevel() >= 1)
                 SpawnWeapon(Direction.Self);
 
+            yield return new WaitForSeconds(0.1f);
+
             if (GetLevel() >= 2)
                 SpawnWeapon(Direction.Opposite);
 

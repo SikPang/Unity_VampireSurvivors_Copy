@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Weapon\BibleSpawner.cs" />
     <Compile Include="Assets\Scripts\ItemAssets.cs" />
+    <Compile Include="Assets\Scripts\UI\SelectWeapon.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\ObjectPooling.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemySpawner.cs" />
@@ -90,7 +91,12 @@
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Weapon\MagicWandSpawner.cs" />
-    <Compile Include="Assets\Scripts\UI\SelectWeapon.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Whip.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Axe.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Bible.cs" />
+    <Compile Include="Assets\Scripts\Weapon\MagicWand.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Lightning.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Pigeon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
