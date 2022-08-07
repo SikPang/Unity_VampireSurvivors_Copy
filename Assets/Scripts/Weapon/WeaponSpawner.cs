@@ -28,7 +28,7 @@ public abstract class WeaponSpawner : MonoBehaviour
     {
         weaponIcon = weaponData.GetSprite();
         attackPower = weaponData.GetAttackPower();
-        attackSpeed = weaponData.GetAttackSpeed();// * Player.GetAttackSpeed() / 100f;
+        attackSpeed = weaponData.GetAttackSpeed();
         inactiveDelay = weaponData.GetInactiveDelay();
         level = 1;
         additionalScale = 100f;
@@ -38,14 +38,14 @@ public abstract class WeaponSpawner : MonoBehaviour
     {
         GameObject weapon;
 
-        weapon = ObjectPooling.GetObject(GetWeaponType());
+        weapon = ObjectPooling.GetObject(weaponData.GetWeaponType());
 
         switch (direction)
         {
             case Direction.Self:
                 if (PlayerMove.GetInstance().GetLookingLeft())
                 {
-                    weapon.transform.position = new Vector3(-weapon.transform.position.x, weapon.transform.position.y, 0f);
+                    weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y, 0f);
                     weapon.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 break;
@@ -53,16 +53,16 @@ public abstract class WeaponSpawner : MonoBehaviour
             case Direction.Opposite:
                 if (!PlayerMove.GetInstance().GetLookingLeft())
                 {
-                    weapon.transform.position = new Vector3(-weapon.transform.position.x, weapon.transform.position.y -1f, 0f);
+                    weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y -1f, 0f);
                     weapon.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 else
-                    weapon.transform.position = new Vector3(weapon.transform.position.x, weapon.transform.position.y -1f, 0f);
+                    weapon.transform.localPosition = new Vector3(weapon.transform.localPosition.x, weapon.transform.localPosition.y -1f, 0f);
                 weapon.GetComponent<SpriteRenderer>().flipY = true;
                 break;
 
             case Direction.Left:
-                weapon.transform.position = new Vector3(-weapon.transform.position.x, weapon.transform.position.y, 0f);
+                weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y, 0f);
                 weapon.GetComponent<SpriteRenderer>().flipX = true;
                 break;
 
@@ -70,7 +70,9 @@ public abstract class WeaponSpawner : MonoBehaviour
                 break;
         }
 
-        weapon.transform.position += GetComponentInParent<Player>().GetPosition();
+        if (weaponData.GetParent().Equals(WeaponData.Parent.Self))
+            weapon.transform.position += Player.GetInstance().GetPosition();
+
         weapon.transform.localScale = new Vector3(weapon.transform.localScale.x * (additionalScale / 100f), weapon.transform.localScale.y * (additionalScale / 100f), weapon.transform.localScale.z);
         weapon.GetComponent<Weapon>().SetParameters(attackPower,inactiveDelay, direction);
 

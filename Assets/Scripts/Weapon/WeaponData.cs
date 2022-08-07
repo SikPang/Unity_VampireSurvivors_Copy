@@ -13,12 +13,24 @@ public class WeaponData : ScriptableObject
         Pigeon
     }
 
+    public enum Parent
+    {
+        Self,
+        Player
+    }
+
+    [SerializeField] Parent parent;
     [SerializeField] WeaponType weaponType;
     [SerializeField] int attackPower;
     [SerializeField] float attackSpeed;
     [SerializeField] float inactiveDelay;
     [SerializeField] Sprite weaponSprite;
     [SerializeField] string description;
+
+    public Parent GetParent()
+    {
+        return parent;
+    }
 
     public WeaponType GetWeaponType()
     {

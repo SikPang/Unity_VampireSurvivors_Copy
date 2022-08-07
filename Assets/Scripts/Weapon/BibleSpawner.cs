@@ -8,7 +8,17 @@ public class BibleSpawner : WeaponSpawner
     {
         while (true)
         {
-            SpawnWeapon(Direction.Self);
+            //Debug.Log(GetAttackPower());
+
+            UpdateAttackPower();
+            UpdateAttackSpeed();
+
+            if (GetLevel() >= 1)
+                SpawnWeapon(Direction.Left);
+
+            if (GetLevel() >= 2)
+                SpawnWeapon(Direction.Right);
+
             yield return new WaitForSeconds(GetAttackSpeed());
         }
     }
@@ -17,12 +27,19 @@ public class BibleSpawner : WeaponSpawner
     {
         IncreaseLevel();
 
+        Debug.Log("levelUp");
+
         switch (GetLevel())
         {
             case 3:
-                IncreaseAttackPower(100);
-                IncreaseAdditionalScale(100f);
-                DecreaseAttackSpeed(100f);
+                IncreaseAttackPower(5);
+                break;
+            case 4:
+                IncreaseAttackPower(5);
+                IncreaseAdditionalScale(10f);
+                break;
+            case 5:
+                DecreaseAttackSpeed(10f);
                 break;
         }
     }

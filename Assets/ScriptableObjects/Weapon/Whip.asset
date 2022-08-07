@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9d79758fb0a1b4da376d454c953115, type: 3}
   m_Name: Whip
   m_EditorClassIdentifier: 
+  parent: 0
   weaponType: 0
   attackPower: 10
   attackSpeed: 1.3

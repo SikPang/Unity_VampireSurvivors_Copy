@@ -90,6 +90,7 @@ public class ObjectPooling : MonoBehaviour
     static GameObject CreateObject<T>(T type)
     {
         GameObject newObject;
+        bool isParentPlayer = false;
 
         switch (type)
         {
@@ -109,21 +110,33 @@ public class ObjectPooling : MonoBehaviour
 
             case WeaponData.WeaponType.Whip:
                 newObject = Instantiate(instance.whipPrefab);
+                if(ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.Whip).GetParent().Equals(WeaponData.Parent.Player))
+                    isParentPlayer = true;
                 break;
             case WeaponData.WeaponType.Bible:
                 newObject = Instantiate(instance.biblePrefab);
+                if (ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.Bible).GetParent().Equals(WeaponData.Parent.Player))
+                    isParentPlayer = true;
                 break;
             case WeaponData.WeaponType.Axe:
                 newObject = Instantiate(instance.axePrefab);
+                if (ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.Axe).GetParent().Equals(WeaponData.Parent.Player))
+                    isParentPlayer = true;
                 break;
             case WeaponData.WeaponType.Pigeon:
                 newObject = Instantiate(instance.pigeonPrefab);
+                if (ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.Pigeon).GetParent().Equals(WeaponData.Parent.Player))
+                    isParentPlayer = true;
                 break;
             case WeaponData.WeaponType.Lightning:
                 newObject = Instantiate(instance.lightningPrefab);
+                if (ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.Lightning).GetParent().Equals(WeaponData.Parent.Player))
+                    isParentPlayer = true;
                 break;
             case WeaponData.WeaponType.MagicWand:
                 newObject = Instantiate(instance.magicWandPrefab);
+                if (ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.MagicWand).GetParent().Equals(WeaponData.Parent.Player))
+                    isParentPlayer = true;
                 break;
 
             case CrystalData.CrystalType.blue:
@@ -141,7 +154,10 @@ public class ObjectPooling : MonoBehaviour
                 break;
         }
 
-        newObject.transform.parent = instance.transform;
+        if (isParentPlayer)
+            newObject.transform.parent = GameObject.FindWithTag("Weapon").transform;
+        else
+            newObject.transform.parent = instance.transform;
 
         newObject.SetActive(false);
 
