@@ -72,8 +72,8 @@ public class Inventory : MonoBehaviour
             case WeaponData.WeaponType.MagicWand:
                 spawner = GetComponent<MagicWandSpawner>();
                 break;
-            case WeaponData.WeaponType.Pigeon:
-                spawner = GetComponent<PigeonSpawner>();
+            case WeaponData.WeaponType.FireWand:
+                spawner = GetComponent<FireWandSpawner>();
                 break;
             case WeaponData.WeaponType.Whip:
                 spawner = GetComponent<WhipSpawner>();

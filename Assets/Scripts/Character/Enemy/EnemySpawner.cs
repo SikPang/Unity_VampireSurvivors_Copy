@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     List<GameObject> enemyList = new List<GameObject>(500);
     const float maxX = 10;
     const float maxY = 16;
-    float spawnDelay = 1f;
+    float spawnDelay = 0.5f;
     int stage = 1;
 
     private EnemySpawner() { }

@@ -63,7 +63,7 @@
     <Compile Include="Assets\Scripts\Character\CharacterData.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
     <Compile Include="Assets\Scripts\Weapon\Whip.cs" />
-    <Compile Include="Assets\Scripts\Weapon\PigeonSpawner.cs" />
+    <Compile Include="Assets\Scripts\Weapon\FireWandSpawner.cs" />
     <Compile Include="Assets\Scripts\Crystal\Crystal.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
     <Compile Include="Assets\Scripts\Accessory\AccessoryData.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\Scripts\Weapon\LightningSpawner.cs" />
-    <Compile Include="Assets\Scripts\Weapon\Pigeon.cs" />
+    <Compile Include="Assets\Scripts\Weapon\fireWand.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponSpawner.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Level.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponData.cs" />

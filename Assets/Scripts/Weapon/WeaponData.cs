@@ -10,7 +10,7 @@ public class WeaponData : ScriptableObject
         Bible,
         Lightning,
         MagicWand,
-        Pigeon
+        FireWand
     }
 
     public enum Parent

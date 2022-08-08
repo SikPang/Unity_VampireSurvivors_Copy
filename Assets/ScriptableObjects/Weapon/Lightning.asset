@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: 0
   weaponType: 3
-  attackPower: 10
+  attackPower: 15
   attackSpeed: 3.5
   inactiveDelay: 0.3
   weaponSprite: {fileID: 21300000, guid: 53442ad7539123846b7c20883b9257f7, type: 3}

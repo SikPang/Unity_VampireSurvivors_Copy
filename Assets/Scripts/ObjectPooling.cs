@@ -123,9 +123,9 @@ public class ObjectPooling : MonoBehaviour
                 if (ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.Axe).GetParent().Equals(WeaponData.Parent.Player))
                     isParentPlayer = true;
                 break;
-            case WeaponData.WeaponType.Pigeon:
+            case WeaponData.WeaponType.FireWand:
                 newObject = Instantiate(instance.pigeonPrefab);
-                if (ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.Pigeon).GetParent().Equals(WeaponData.Parent.Player))
+                if (ItemAssets.GetInstance().GetWeaponData(WeaponData.WeaponType.FireWand).GetParent().Equals(WeaponData.Parent.Player))
                     isParentPlayer = true;
                 break;
             case WeaponData.WeaponType.Lightning:

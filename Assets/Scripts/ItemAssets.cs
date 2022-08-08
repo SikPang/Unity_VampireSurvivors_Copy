@@ -9,7 +9,7 @@ public class ItemAssets : MonoBehaviour
     [SerializeField] WeaponData bible;
     [SerializeField] WeaponData magicWand;
     [SerializeField] WeaponData lightning;
-    [SerializeField] WeaponData pigeon;
+    [SerializeField] WeaponData fireWand;
 
     [SerializeField] AccessoryData armor;
     [SerializeField] AccessoryData clover;
@@ -43,8 +43,8 @@ public class ItemAssets : MonoBehaviour
                 return lightning;
             case WeaponData.WeaponType.MagicWand:
                 return magicWand;
-            case WeaponData.WeaponType.Pigeon:
-                return pigeon;
+            case WeaponData.WeaponType.FireWand:
+                return fireWand;
             case WeaponData.WeaponType.Whip:
                 return whip;
         }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9d79758fb0a1b4da376d454c953115, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
+  parent: 0
   weaponType: 1
-  attackPower: 10
+  attackPower: 15
   attackSpeed: 3
   inactiveDelay: 0.3
   weaponSprite: {fileID: 21300000, guid: 62ba0b67fc9c59f45bd1039ed468b705, type: 3}

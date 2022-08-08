@@ -38,7 +38,7 @@ public abstract class WeaponSpawner : MonoBehaviour
     {
         GameObject weapon;
 
-        weapon = ObjectPooling.GetObject(weaponData.GetWeaponType());
+        weapon = ObjectPooling.GetObject(GetWeaponType());
 
         switch (direction)
         {
@@ -82,6 +82,11 @@ public abstract class WeaponSpawner : MonoBehaviour
     public WeaponData.WeaponType GetWeaponType()
     {
         return weaponData.GetWeaponType();
+    }
+
+    public WeaponData GetWeaponData()
+    {
+        return weaponData;
     }
 
     public int GetAttackPower()
