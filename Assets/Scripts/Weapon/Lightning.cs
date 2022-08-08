@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class Lightning : Weapon
 {
-
+    void Awake()
+    {
+        Vector2 destination = EnemySpawner.GetInstance().GetRandomEnemyPosition();
+        Vector2 yAxisAdd = new Vector2(0f, 9f);
+        transform.position = destination + yAxisAdd;
+    }
 }

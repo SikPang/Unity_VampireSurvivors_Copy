@@ -6,6 +6,8 @@ public class MagicWandSpawner : WeaponSpawner
 {
     internal override IEnumerator StartAttack()
     {
+        EnemySpawner enemySpawner = EnemySpawner.GetInstance();
+
         while (true)
         {
             //Debug.Log(GetAttackPower());
@@ -13,17 +15,17 @@ public class MagicWandSpawner : WeaponSpawner
             UpdateAttackPower();
             UpdateAttackSpeed();
 
-            if (GetLevel() >= 1)
+            if(enemySpawner.GetListCount() > 0)
                 SpawnWeapon(Direction.Right);
 
             yield return new WaitForSeconds(0.1f);
 
-            if (GetLevel() >= 2)
+            if (GetLevel() >= 2 && enemySpawner.GetListCount() > 0)
                 SpawnWeapon(Direction.Right);
 
             yield return new WaitForSeconds(0.1f);
 
-            if (GetLevel() >= 3)
+            if (GetLevel() >= 3 && enemySpawner.GetListCount() > 0)
                 SpawnWeapon(Direction.Right);
 
             yield return new WaitForSeconds(GetAttackSpeed());

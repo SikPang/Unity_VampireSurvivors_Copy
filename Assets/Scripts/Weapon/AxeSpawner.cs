@@ -13,8 +13,7 @@ public class AxeSpawner : WeaponSpawner
             UpdateAttackPower();
             UpdateAttackSpeed();
 
-            if (GetLevel() >= 1)
-                SpawnWeapon(Direction.Left);
+            SpawnWeapon(Direction.Left);
 
             yield return new WaitForSeconds(0.1f);
 

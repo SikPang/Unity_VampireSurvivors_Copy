@@ -138,4 +138,9 @@ public class EnemySpawner : MonoBehaviour
     {
         return instance;
     }
+
+    public int GetListCount()
+    {
+        return enemyList.Count;
+    }
 }

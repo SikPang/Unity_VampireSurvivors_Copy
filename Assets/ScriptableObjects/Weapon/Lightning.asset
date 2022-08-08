@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9d79758fb0a1b4da376d454c953115, type: 3}
   m_Name: Lightning
   m_EditorClassIdentifier: 
-  parent: 1
+  parent: 0
   weaponType: 3
   attackPower: 10
-  attackSpeed: 4
+  attackSpeed: 3.5
   inactiveDelay: 0.3
   weaponSprite: {fileID: 21300000, guid: 53442ad7539123846b7c20883b9257f7, type: 3}
   description: Strikes at random enemies

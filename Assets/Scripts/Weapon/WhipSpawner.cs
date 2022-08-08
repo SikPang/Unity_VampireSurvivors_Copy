@@ -12,8 +12,7 @@ public class WhipSpawner : WeaponSpawner
             UpdateAttackPower();
             UpdateAttackSpeed();
 
-            if (GetLevel() >= 1)
-                SpawnWeapon(Direction.Self);
+            SpawnWeapon(Direction.Self);
 
             yield return new WaitForSeconds(0.1f);
 

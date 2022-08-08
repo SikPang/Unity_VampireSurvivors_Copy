@@ -13,8 +13,7 @@ public class BibleSpawner : WeaponSpawner
             UpdateAttackPower();
             UpdateAttackSpeed();
 
-            if (GetLevel() >= 1)
-                SpawnWeapon(Direction.Left);
+            SpawnWeapon(Direction.Left);
 
             if (GetLevel() >= 2)
                 SpawnWeapon(Direction.Right);
