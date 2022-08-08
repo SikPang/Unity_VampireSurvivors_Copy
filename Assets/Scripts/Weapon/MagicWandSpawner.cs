@@ -14,12 +14,17 @@ public class MagicWandSpawner : WeaponSpawner
             UpdateAttackSpeed();
 
             if (GetLevel() >= 1)
-                SpawnWeapon(Direction.Self);
+                SpawnWeapon(Direction.Right);
 
             yield return new WaitForSeconds(0.1f);
 
             if (GetLevel() >= 2)
-                SpawnWeapon(Direction.Opposite);
+                SpawnWeapon(Direction.Right);
+
+            yield return new WaitForSeconds(0.1f);
+
+            if (GetLevel() >= 3)
+                SpawnWeapon(Direction.Right);
 
             yield return new WaitForSeconds(GetAttackSpeed());
         }

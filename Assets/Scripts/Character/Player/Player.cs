@@ -82,7 +82,7 @@ public class Player : Character
         {
             case CharacterData.CharacterType.Knight:
                 //Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Whip);
-                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Bible);
+                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.MagicWand);
                 break;
             case CharacterData.CharacterType.Bandit:
                 Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Axe);

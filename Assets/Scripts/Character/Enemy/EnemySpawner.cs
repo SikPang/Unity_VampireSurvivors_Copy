@@ -1,14 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Transform player;
+    static EnemySpawner instance;
+    List<GameObject> enemyList = new List<GameObject>(500);
     const float maxX = 10;
     const float maxY = 16;
     float spawnDelay = 1f;
     int stage = 1;
 
+    private EnemySpawner() { }
+    
     enum Direction
     {
         North,
@@ -17,9 +22,15 @@ public class EnemySpawner : MonoBehaviour
         East
     }
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         StartCoroutine(SpawnEnemy());
+        StartCoroutine(listChecker());
     }
 
     IEnumerator SpawnEnemy()
@@ -47,6 +58,7 @@ public class EnemySpawner : MonoBehaviour
 
             newEnemy.transform.position = RandomPosition();
             newEnemy.SetActive(true);
+            enemyList.Add(newEnemy);
 
             yield return new WaitForSeconds(spawnDelay);
         }
@@ -79,5 +91,51 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return pos;
+    }
+
+    public Vector2 GetNearestEnemyPosition()
+    {
+        float[] min = {0, int.MaxValue};
+
+        for(int i = 0; i < enemyList.Count; i++) { 
+            if(min[1] > (enemyList[i].transform.position - Player.GetInstance().GetPosition()).sqrMagnitude)
+            {
+                min[0] = i;
+                min[1] = (enemyList[i].transform.position - Player.GetInstance().GetPosition()).sqrMagnitude;
+            }
+        }
+
+        return enemyList[(int)min[0]].transform.position;
+    }
+
+    public Vector2 GetRandomEnemyPosition()
+    {
+        int random = Random.Range(0, enemyList.Count);
+
+        return enemyList[random].transform.position;
+    }
+
+    IEnumerator listChecker()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            for(int i=0; i<enemyList.Count; i++)
+            {
+                if(!enemyList[i].activeSelf)
+                    enemyList.RemoveAt(i);
+            }
+        }
+    }
+
+    public void IncreaseStage()
+    {
+        stage++;
+    }
+
+    public static EnemySpawner GetInstance()
+    {
+        return instance;
     }
 }

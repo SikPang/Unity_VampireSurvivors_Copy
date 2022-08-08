@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9d79758fb0a1b4da376d454c953115, type: 3}
   m_Name: MagicWand
   m_EditorClassIdentifier: 
+  parent: 0
   weaponType: 4
   attackPower: 10
-  attackSpeed: 1
-  inactiveDelay: 0.3
+  attackSpeed: 2
+  inactiveDelay: 5
   weaponSprite: {fileID: 21300000, guid: 69e29003cde6e7340a6fb22a30653937, type: 3}
   description: Fires at the nearest enemy
