@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Weapon\MagicWandSpawner.cs" />
+    <Compile Include="Assets\Scripts\UI\Timer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

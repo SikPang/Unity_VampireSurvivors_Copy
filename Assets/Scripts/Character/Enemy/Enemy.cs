@@ -36,6 +36,7 @@ public class Enemy : Character
     {
         ObjectPooling.ReturnObject(gameObject, GetCharacterType());
         gameObject.SetActive(false);
+        EnemySpawner.GetInstance().IncreaseKillCount();
 
         if (Random.Range(0, 10) > 5)
             DropCrystral();

@@ -112,7 +112,7 @@ public class Player : Character
         {
             if (check) break;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds((float)Level.GetPlayerLevel());
 
             GetComponent<Level>().GetExp(50*Level.GetPlayerLevel());
         }

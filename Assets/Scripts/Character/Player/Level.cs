@@ -80,8 +80,7 @@ public class Level : MonoBehaviour
         level++;
         text.text = "LV " + level.ToString();
 
-        maxExpValue *= level;
-        // maxExpValue = 50 * level;
+        maxExpValue = 50 * level;
         expSlider.maxValue = maxExpValue;
     }
 

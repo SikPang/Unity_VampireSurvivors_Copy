@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Transform player;
+    [SerializeField] TextMeshProUGUI killCountText;
     static EnemySpawner instance;
     List<GameObject> enemyList = new List<GameObject>(500);
     const float maxX = 10;
     const float maxY = 16;
-    float spawnDelay = 0.5f;
-    int stage = 1;
+    float spawnDelay;
+    int stage;
+    int killCount;
 
     private EnemySpawner() { }
     
@@ -24,13 +27,21 @@ public class EnemySpawner : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        Initialize();
     }
 
     void Start()
     {
         StartCoroutine(SpawnEnemy());
         StartCoroutine(listChecker());
+    }
+
+    void Initialize()
+    {
+        instance = this;
+        spawnDelay = 0.5f;
+        stage = 1;
+        killCount = 0;
     }
 
     IEnumerator SpawnEnemy()
@@ -49,10 +60,10 @@ public class EnemySpawner : MonoBehaviour
                     newEnemy = ObjectPooling.GetObject(CharacterData.CharacterType.Goblin);
                     break;
                 case 3:
-                    newEnemy = ObjectPooling.GetObject(CharacterData.CharacterType.Skeleton);
+                    newEnemy = ObjectPooling.GetObject(CharacterData.CharacterType.Mushroom);
                     break;
                 case 4:
-                    newEnemy = ObjectPooling.GetObject(CharacterData.CharacterType.Mushroom);
+                    newEnemy = ObjectPooling.GetObject(CharacterData.CharacterType.Skeleton);
                     break;
             }
 
@@ -131,7 +142,14 @@ public class EnemySpawner : MonoBehaviour
 
     public void IncreaseStage()
     {
-        stage++;
+        ++stage;
+    }
+    
+    public void IncreaseKillCount()
+    {
+        ++killCount;
+
+        killCountText.text = killCount.ToString();
     }
 
     public static EnemySpawner GetInstance()
