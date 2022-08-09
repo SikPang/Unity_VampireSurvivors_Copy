@@ -85,7 +85,7 @@
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\Scripts\Weapon\LightningSpawner.cs" />
-    <Compile Include="Assets\Scripts\Weapon\fireWand.cs" />
+    <Compile Include="Assets\Scripts\Weapon\FireWand.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponSpawner.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Level.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponData.cs" />

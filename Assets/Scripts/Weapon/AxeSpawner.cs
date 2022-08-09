@@ -8,8 +8,6 @@ public class AxeSpawner : WeaponSpawner
     {
         while (true)
         {
-            //Debug.Log(GetAttackPower());
-
             UpdateAttackPower();
             UpdateAttackSpeed();
 

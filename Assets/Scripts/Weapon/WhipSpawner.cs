@@ -7,8 +7,6 @@ public class WhipSpawner : WeaponSpawner
     {
         while (true)
         {
-            //Debug.Log(GetAttackPower());
-
             UpdateAttackPower();
             UpdateAttackSpeed();
 

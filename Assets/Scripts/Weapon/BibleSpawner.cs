@@ -8,8 +8,6 @@ public class BibleSpawner : WeaponSpawner
     {
         while (true)
         {
-            //Debug.Log(GetAttackPower());
-
             UpdateAttackPower();
             UpdateAttackSpeed();
 

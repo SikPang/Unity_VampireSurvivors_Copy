@@ -13,20 +13,55 @@ public class FireWandSpawner : WeaponSpawner
 
         while (true)
         {
-            //Debug.Log(GetAttackPower());
-
             UpdateAttackPower();
             UpdateAttackSpeed();
 
             if (enemySpawner.GetListCount() > 0)
             {
-                destination = enemySpawner.GetNearestEnemyPosition() * 3f;
+                destination = enemySpawner.GetRandomEnemyPosition();
                 for (int i = 0; i < num; ++i)
-                    SpawnWeapon(i, destination);
+                    SpawnWeapon(i);
             }
 
             yield return new WaitForSeconds(GetAttackSpeed());
         }
+    }
+
+    void SpawnWeapon(int i)
+    {
+        GameObject weapon = ObjectPooling.GetObject(GetWeaponType());
+        float destLength = (destination - (Vector2)transform.position).magnitude;
+        Vector2 destVector;
+        float angle;
+
+        if (GetWeaponData().GetParent().Equals(WeaponData.Parent.Self))
+            weapon.transform.position += Player.GetInstance().GetPosition();
+
+        weapon.transform.localScale = new Vector3(weapon.transform.localScale.x * (GetAdditionalScale() / 100f), weapon.transform.localScale.y * (GetAdditionalScale() / 100f), weapon.transform.localScale.z);
+        weapon.GetComponent<Weapon>().SetParameters(GetAttackPower(), GetInactiveDelay(), Direction.Self);
+
+        // 여러 갈래로 발사하기 위해 벡터 조절
+        if (i == 0 || i % 2 == 0)
+            destination.x += i * destLength * 0.25f;
+        else
+            destination.x -= i * destLength * 0.25f;
+
+        // 목표로의 단위벡터
+        destVector = (destination - (Vector2)transform.position).normalized;
+
+        // 이펙트 회전 각 설정
+        if (destVector.y < 0)
+            angle = -Vector2.Angle(destVector, new Vector2(1, 0));
+        else
+            angle = Vector2.Angle(destVector, new Vector2(1, 0));
+
+        // 이펙트 회전
+        weapon.transform.rotation = Quaternion.Euler(0f, 0f, angle - 8.5f);
+
+        weapon.SetActive(true);
+
+        // 발사
+        weapon.GetComponent<Rigidbody2D>().AddForce(destVector * speed, ForceMode2D.Force);
     }
 
     public override void LevelUp()
@@ -52,27 +87,5 @@ public class FireWandSpawner : WeaponSpawner
                 DecreaseAttackSpeed(10f);
                 break;
         }
-    }
-
-    void SpawnWeapon(int i, Vector2 destination)
-    {
-        GameObject weapon;
-
-        weapon = ObjectPooling.GetObject(GetWeaponType());
-
-        if (GetWeaponData().GetParent().Equals(WeaponData.Parent.Self))
-            weapon.transform.position += Player.GetInstance().GetPosition();
-
-        weapon.transform.localScale = new Vector3(weapon.transform.localScale.x * (GetAdditionalScale() / 100f), weapon.transform.localScale.y * (GetAdditionalScale() / 100f), weapon.transform.localScale.z);
-        weapon.GetComponent<Weapon>().SetParameters(GetAttackPower(), GetInactiveDelay(), Direction.Self);
-
-        weapon.SetActive(true);
-
-        if (i == 0 || i % 2 == 0)
-            destination.x += i;
-        else
-            destination.x -= i;
-
-        weapon.GetComponent<Rigidbody2D>().AddForce((destination - (Vector2)transform.position*3f).normalized * speed, ForceMode2D.Force);
     }
 }

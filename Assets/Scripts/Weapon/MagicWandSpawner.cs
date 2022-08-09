@@ -10,8 +10,6 @@ public class MagicWandSpawner : WeaponSpawner
 
         while (true)
         {
-            //Debug.Log(GetAttackPower());
-
             UpdateAttackPower();
             UpdateAttackSpeed();
 

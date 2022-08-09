@@ -10,8 +10,6 @@ public class LightningSpawner : WeaponSpawner
 
         while (true)
         {
-            //Debug.Log(GetAttackPower());
-
             UpdateAttackPower();
             UpdateAttackSpeed();
 
