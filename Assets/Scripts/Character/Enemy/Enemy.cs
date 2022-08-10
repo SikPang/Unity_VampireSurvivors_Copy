@@ -12,6 +12,12 @@ public class Enemy : Character
         Initialize();
     }
 
+    void OnEnable()
+    {
+        InitHealthPoint();
+        GetComponent<CapsuleCollider2D>().enabled = true;
+    }
+
     public override void ReduceHealthPoint(int damage)
     {
         base.ReduceHealthPoint(damage);
@@ -34,12 +40,12 @@ public class Enemy : Character
 
     public override void Die()
     {
-        ObjectPooling.ReturnObject(gameObject, GetCharacterType());
-        gameObject.SetActive(false);
         EnemySpawner.GetInstance().IncreaseKillCount();
 
         if (Random.Range(0, 10) > 5)
             DropCrystral();
+
+        StartCoroutine(DieAnimation());
     }
 
     void DropCrystral()
@@ -49,5 +55,18 @@ public class Enemy : Character
         crystal.transform.position = transform.position;
 
         crystal.SetActive(true);
+    }
+
+    IEnumerator DieAnimation()
+    {
+        GetAnimator().SetBool("die", true);
+        GetComponent<EnemyMove>().isDead = true;
+        GetComponent<CapsuleCollider2D>().enabled = false;
+
+        yield return new WaitForSeconds(0.2f);
+
+        ObjectPooling.ReturnObject(gameObject, GetCharacterType());
+        GetAnimator().SetBool("die", false);
+        gameObject.SetActive(false);
     }
 }

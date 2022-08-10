@@ -5,11 +5,11 @@ public abstract class Character : MonoBehaviour
     [SerializeField] CharacterData characterData;
     Sprite sprite;
     RuntimeAnimatorController controller;
+    Animator animator;
     int healthPoint;
     int attackPower;
     int defencePower;
     int speed;
-
     int maxHealth;
 
     internal virtual void Initialize()
@@ -22,7 +22,13 @@ public abstract class Character : MonoBehaviour
         sprite = characterData.GetSprite();
         controller = characterData.GetController();
         GetComponent<SpriteRenderer>().sprite = GetSprite();
-        GetComponent<Animator>().runtimeAnimatorController = GetController();
+        animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController = GetController();
+    }
+
+    internal void InitHealthPoint()
+    {
+        healthPoint = characterData.GetHealthPoint();
     }
 
     public int GetHealthPoint()
@@ -58,6 +64,11 @@ public abstract class Character : MonoBehaviour
     public Vector3 GetPosition()
     {
         return transform.position;
+    }
+
+    internal Animator GetAnimator()
+    {
+        return animator;
     }
 
     public virtual void ReduceHealthPoint(int damage)
@@ -97,7 +108,7 @@ public abstract class Character : MonoBehaviour
 
     public void IncreaseSpeed(int value)
     {
-        speed = speed + speed * value / 100;
+        speed += speed * value / 100;
     }
 
     public CharacterData.CharacterType GetCharacterType()

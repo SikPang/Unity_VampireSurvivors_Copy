@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponType: 5
   attackPower: 15
   attackSpeed: 4
-  inactiveDelay: 3
+  inactiveDelay: 4
   weaponSprite: {fileID: 21300000, guid: 845e9df29ac6bfe47b3e2925c1804fe9, type: 3}
   description: Fires at a random enemy, deals heavy damage
   basePosition: {x: 0, y: 0.5}

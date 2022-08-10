@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FlyingEye
   m_EditorClassIdentifier: 
   sprite: {fileID: -4795363162621231457, guid: 6d7cd4f7505dc674c891ca8946cfd98b, type: 3}
-  controller: {fileID: 9100000, guid: 17416659cc086114ba98756fe74c76f2, type: 2}
+  controller: {fileID: 9100000, guid: 4c3364b0ef8a1d341be103651ade604b, type: 2}
   characterType: 0
   healthPoint: 7
   attackPower: 40

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skeleton
   m_EditorClassIdentifier: 
   sprite: {fileID: 4723107735738678597, guid: 1018b0ba13578bf459bd254ae1a2be99, type: 3}
-  controller: {fileID: 9100000, guid: 7052c8b4bb06f644ea75e62b72afedbd, type: 2}
+  controller: {fileID: 9100000, guid: 4329a5e02f2633b468a594fbf2427563, type: 2}
   characterType: 2
   healthPoint: 50
   attackPower: 75

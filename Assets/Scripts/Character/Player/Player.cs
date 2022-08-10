@@ -18,7 +18,7 @@ public class Player : Character
     {
         Initialize();
 
-        StartCoroutine(LevelUpTest());
+        //StartCoroutine(LevelUpTest());
     }
 
     void Update()
@@ -81,7 +81,7 @@ public class Player : Character
         switch (GetComponentInParent<Player>().GetCharacterType())
         {
             case CharacterData.CharacterType.Knight:
-                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.MagicWand);
+                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.FireWand);
                 break;
             case CharacterData.CharacterType.Bandit:
                 Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Axe);
