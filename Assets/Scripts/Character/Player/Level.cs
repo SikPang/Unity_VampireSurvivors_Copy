@@ -13,12 +13,18 @@ public class Level : MonoBehaviour
     [SerializeField] ParticleSystem[] particles = new ParticleSystem[3];
 
     [SerializeField] GameObject levelUpWindow;
-    [SerializeField] GameObject[] weaponSelect = new GameObject[4];
-    [SerializeField] Image[] weaponIcon = new Image[4];
-    [SerializeField] TextMeshProUGUI[] nameText = new TextMeshProUGUI[4];
-    [SerializeField] TextMeshProUGUI[] description = new TextMeshProUGUI[4];
-    [SerializeField] TextMeshProUGUI[] levelText = new TextMeshProUGUI[4];
-    [SerializeField] Button[] button = new Button[4];
+    [SerializeField] Transform weaponSelectTemplate;
+
+    RectTransform[] weaponSelect = new RectTransform[slotNum];
+    Image[] weaponIcon = new Image[slotNum];
+    TextMeshProUGUI[] nameText = new TextMeshProUGUI[slotNum];
+    TextMeshProUGUI[] description = new TextMeshProUGUI[slotNum];
+    TextMeshProUGUI[] levelText = new TextMeshProUGUI[slotNum];
+    Button[] button = new Button[slotNum];
+    GameObject[] selectArrow = new GameObject[slotNum];
+
+    const int slotNum = 4;
+    const float slotSize = 130f;
 
     int maxExpValue;
     int curExpValue;
@@ -44,6 +50,26 @@ public class Level : MonoBehaviour
         isLevelUpTime = false;
         expSlider.maxValue = maxExpValue;
         expSlider.value = curExpValue;
+
+        SlotInitial();
+    }
+
+    void SlotInitial()
+    {
+        for (int i = 0; i < slotNum; i++) {
+            weaponSelect[i] = Instantiate(weaponSelectTemplate, levelUpWindow.transform).GetComponent<RectTransform>();
+            weaponSelect[i].anchoredPosition = new Vector2(0f, -i* slotSize + 150f);
+
+            weaponIcon[i] = weaponSelect[i].Find("WeaponIcon").GetComponent<Image>();
+            nameText[i] = weaponSelect[i].Find("NameText").GetComponent<TextMeshProUGUI>();
+            description[i] = weaponSelect[i].Find("Description").GetComponent<TextMeshProUGUI>();
+            levelText[i] = weaponSelect[i].Find("LevelText").GetComponent<TextMeshProUGUI>();
+            button[i] = weaponSelect[i].Find("Button").GetComponent<Button>();
+            selectArrow[i] = weaponSelect[i].Find("SelectArrow").gameObject;
+
+            weaponSelect[i].gameObject.SetActive(true);
+            selectArrow[i].gameObject.SetActive(false);
+        }
     }
 
     public static bool GetIsLevelUpTime()
@@ -65,8 +91,6 @@ public class Level : MonoBehaviour
         }
         else
             curExpValue += value;
-
-        //Debug.Log(value);
 
         expSlider.value = curExpValue;
     }
@@ -96,6 +120,9 @@ public class Level : MonoBehaviour
             yield return null;
         }
 
+        foreach(GameObject arrow in selectArrow)
+            arrow.SetActive(false);
+
         levelUpWindow.SetActive(false);
         Time.timeScale = 1f;
     }
@@ -105,11 +132,10 @@ public class Level : MonoBehaviour
         levelUpWindow.SetActive(true);
         List<string> checkDuplicate = new List<string>(3);
 
-        for (int i = 0; i < weaponSelect.Length; i++)
+        for (int i = 0; i < slotNum; i++)
         {
-            if (Random.Range(0, 10) < 4)
+            if (Random.Range(0, 10) < 4)    // 公扁
             {
-                // 公扁
                 WeaponData.WeaponType weapon;
 
                 do weapon = GetRandomWeapon();
@@ -118,6 +144,7 @@ public class Level : MonoBehaviour
 
                 weaponIcon[i].sprite = ItemAssets.GetInstance().GetWeaponData(weapon).GetSprite();
                 nameText[i].text = weapon.ToString();
+
                 int level;
                 if (Inventory.GetWeaponInventory().TryGetValue(weapon, out level))
                 {
@@ -136,9 +163,8 @@ public class Level : MonoBehaviour
                     isLevelUpTime = false; 
                 });
             }
-            else
+            else  // 厩技
             {
-                // 厩技
                 AccessoryData.AccessoryType accessory;
                 
                 do accessory = GetRandomAccessory();
@@ -148,6 +174,7 @@ public class Level : MonoBehaviour
                 weaponIcon[i].sprite = ItemAssets.GetInstance().GetAccessoryData(accessory).GetSprite();
                 nameText[i].text = accessory.ToString();
                 description[i].text = ItemAssets.GetInstance().GetAccessoryData(accessory).GetDescription();
+
                 int level;
                 if (Inventory.GetAccInventory().TryGetValue(accessory, out level))
                     levelText[i].text = "LV " + (level+1).ToString();
@@ -163,9 +190,9 @@ public class Level : MonoBehaviour
         }
 
         if(Random.Range(0,100) < Player.GetInstance().GetLuck())
-            weaponSelect[3].SetActive(true);
+            weaponSelect[3].gameObject.SetActive(true);
         else
-            weaponSelect[3].SetActive(false);
+            weaponSelect[3].gameObject.SetActive(false);
     }
 
     WeaponData.WeaponType GetRandomWeapon()

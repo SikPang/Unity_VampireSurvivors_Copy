@@ -50,9 +50,11 @@ public class Inventory : MonoBehaviour
         {
             weaponSlots[i] = Instantiate(weaponSlotTemplate, weaponSlotParent).GetComponent<RectTransform>();
             weaponSlots[i].anchoredPosition = new Vector2(i * slotSize, 0f);
+            weaponSlots[i].gameObject.SetActive(true);
 
             accessorySlots[i] = Instantiate(accessorySlotTemplate, accessorySlotParent).GetComponent<RectTransform>();
             accessorySlots[i].anchoredPosition = new Vector2(i * slotSize, 0f);
+            accessorySlots[i].gameObject.SetActive(true);
         }
     }
 
