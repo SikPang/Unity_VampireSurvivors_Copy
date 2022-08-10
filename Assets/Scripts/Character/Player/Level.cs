@@ -95,6 +95,7 @@ public class Level : MonoBehaviour
 
             yield return null;
         }
+
         levelUpWindow.SetActive(false);
         Time.timeScale = 1f;
     }

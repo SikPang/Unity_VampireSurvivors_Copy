@@ -1,12 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
     private static Inventory instance;
     static Dictionary<WeaponData.WeaponType, int> weaponInventory;
     static Dictionary<AccessoryData.AccessoryType, int> accesoInventory;
+
+    [SerializeField] Transform weaponSlotTemplate;
+    [SerializeField] Transform weaponSlotParent;
+    [SerializeField] Transform accessorySlotTemplate;
+    [SerializeField] Transform accessorySlotParent;
+
+    RectTransform[] weaponSlots = new RectTransform[slotNum];
+    RectTransform[] accessorySlots = new RectTransform[slotNum];
 
     [SerializeField] Accessory crown;
     [SerializeField] Accessory clover;
@@ -15,13 +25,35 @@ public class Inventory : MonoBehaviour
     [SerializeField] Accessory emptyTome;
     [SerializeField] Accessory wings;
 
+    const int slotNum = 6;
+    const float slotSize = 30f;
+
     private Inventory() { }
 
     void Awake()
     {
+        Initialize();
+    }
+
+    void Initialize()
+    {
         instance = this;
         weaponInventory = new Dictionary<WeaponData.WeaponType, int>();
         accesoInventory = new Dictionary<AccessoryData.AccessoryType, int>();
+
+        SlotInitial();
+    }
+
+    void SlotInitial()
+    {
+        for (int i = 0; i < slotNum; i++)
+        {
+            weaponSlots[i] = Instantiate(weaponSlotTemplate, weaponSlotParent).GetComponent<RectTransform>();
+            weaponSlots[i].anchoredPosition = new Vector2(i * slotSize, 0f);
+
+            accessorySlots[i] = Instantiate(accessorySlotTemplate, accessorySlotParent).GetComponent<RectTransform>();
+            accessorySlots[i].anchoredPosition = new Vector2(i * slotSize, 0f);
+        }
     }
 
     public static Inventory GetInstance()
@@ -77,6 +109,8 @@ public class Inventory : MonoBehaviour
             weaponInventory.Add(spawner.GetWeaponType(), 1);
             spawner.StartWeapon();
         }
+
+        ShowInventory();
     }
 
     public void AddAccessory(AccessoryData.AccessoryType accessoryType)
@@ -118,13 +152,26 @@ public class Inventory : MonoBehaviour
             accesoInventory.Add(accessory.GetAccessoryType(), 1);
             accessory.ApplyEffect();
         }
+
+        ShowInventory();
     }
 
-    public static void ShowInventory()
+    public void ShowInventory()
     {
-        foreach(var weapon in weaponInventory.Values)
+        int count = 0;
+        foreach(WeaponData.WeaponType weapon in weaponInventory.Keys)
         {
-            
+            weaponSlots[count].Find("Icon").GetComponent<Image>().sprite = ItemAssets.GetInstance().GetWeaponData(weapon).GetSprite();
+            weaponSlots[count].Find("Level").GetComponent<TextMeshProUGUI>().text = weaponInventory[weapon].ToString();
+            ++count;
+        }
+
+        count = 0;
+        foreach (AccessoryData.AccessoryType accessory in accesoInventory.Keys)
+        {
+            accessorySlots[count].Find("Icon").GetComponent<Image>().sprite = ItemAssets.GetInstance().GetAccessoryData(accessory).GetSprite();
+            accessorySlots[count].Find("Level").GetComponent<TextMeshProUGUI>().text = accesoInventory[accessory].ToString();
+            ++count;
         }
     }
 }
