@@ -234,12 +234,14 @@ public class Level : MonoBehaviour
             {
                 levelUpBar.color = Color.Lerp(new Color(1f, 0f, 1f), new Color(0f, 1f, 1f), i);
                 yield return new WaitForSecondsRealtime(0.01f);
+                if (!isLevelUpTime) break;
             }
 
             for (float i = 0f; i < 1f; i += 0.1f)
             {
                 levelUpBar.color = Color.Lerp(new Color(0f, 1f, 1f), new Color(1f, 0f, 1f), i);
                 yield return new WaitForSecondsRealtime(0.01f);
+                if (!isLevelUpTime) break;
             }
         }
 

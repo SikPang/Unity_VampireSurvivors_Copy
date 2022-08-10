@@ -6,8 +6,9 @@ public class Axe : Weapon
     const float speed = 10f;
     int hitCount;
 
-    void Start()
+    void OnEnable()
     {
+        StartCoroutine(StartDestroy());
         hitCount = 0;
         Throw();
     }

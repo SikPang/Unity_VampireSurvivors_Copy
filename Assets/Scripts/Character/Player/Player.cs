@@ -81,7 +81,7 @@ public class Player : Character
         switch (GetComponentInParent<Player>().GetCharacterType())
         {
             case CharacterData.CharacterType.Knight:
-                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Bible);
+                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Whip);
                 break;
             case CharacterData.CharacterType.Bandit:
                 Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Axe);

@@ -19,3 +19,5 @@ MonoBehaviour:
   inactiveDelay: 0.2
   weaponSprite: {fileID: 21300000, guid: d2b3ef36966bd70488e264f6f30c8951, type: 3}
   description: Attacks horizontally, passes through enemies
+  basePosition: {x: 2.3, y: 0.78}
+  baseScale: {x: 2.8, y: 1.7}

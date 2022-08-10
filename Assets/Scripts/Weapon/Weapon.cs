@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    //[SerializeField] internal WeaponSpawner spawner;
+    WeaponData weaponData;
     WeaponSpawner.Direction direction;
-    WeaponData.WeaponType weaponType;
     public int attackPower;
     internal int level;
     internal float inactiveDelay;
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(StartDestroy());
     }
 
-    public void SetParameters(WeaponData.WeaponType weaponType , int attackPower, float inactiveDelay, WeaponSpawner.Direction direction)
+    public void SetParameters(WeaponData weaponData , int attackPower, float inactiveDelay, WeaponSpawner.Direction direction)
     {
-        this.weaponType = weaponType;
+        this.weaponData = weaponData;
         this.attackPower = attackPower;
         this.inactiveDelay = inactiveDelay;
         this.direction = direction;
@@ -46,7 +45,7 @@ public class Weapon : MonoBehaviour
 
     internal void InactiveWeapon()
     {
-        ObjectPooling.ReturnObject(gameObject, weaponType);
+        ObjectPooling.ReturnObject(gameObject, weaponData.GetWeaponType());
         this.gameObject.SetActive(false);
     }
 

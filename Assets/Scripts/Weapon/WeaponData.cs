@@ -26,6 +26,8 @@ public class WeaponData : ScriptableObject
     [SerializeField] float inactiveDelay;
     [SerializeField] Sprite weaponSprite;
     [SerializeField] string description;
+    [SerializeField] Vector2 basePosition;
+    [SerializeField] Vector2 baseScale;
 
     public Parent GetParent()
     {
@@ -60,5 +62,15 @@ public class WeaponData : ScriptableObject
     public string GetDescription()
     {
         return description;
+    }
+
+    public Vector2 GetBasePosition()
+    {
+        return basePosition;
+    }
+
+    public Vector2 GetBaseScale()
+    {
+        return baseScale;
     }
 }

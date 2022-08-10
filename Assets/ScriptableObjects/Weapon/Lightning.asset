@@ -19,3 +19,5 @@ MonoBehaviour:
   inactiveDelay: 0.3
   weaponSprite: {fileID: 21300000, guid: 53442ad7539123846b7c20883b9257f7, type: 3}
   description: Strikes at random enemies
+  basePosition: {x: 0, y: 9}
+  baseScale: {x: 1.7, y: 1.7}

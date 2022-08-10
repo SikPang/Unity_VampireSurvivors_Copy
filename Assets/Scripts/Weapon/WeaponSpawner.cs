@@ -7,6 +7,8 @@ public abstract class WeaponSpawner : MonoBehaviour
     int level;
     int attackPower;
     float attackSpeed;
+    int finalAttackPower;
+    float finalAttackSpeed;
     float inactiveDelay;
     float additionalScale;
     Sprite weaponIcon;
@@ -38,53 +40,68 @@ public abstract class WeaponSpawner : MonoBehaviour
 
     public virtual void SpawnWeapon(Direction direction)
     {
-        GameObject weapon;
+        GameObject weapon= ObjectPooling.GetObject(GetWeaponType());
 
-        weapon = ObjectPooling.GetObject(GetWeaponType());
+        weapon.transform.position = weaponData.GetBasePosition();
+        weapon.transform.localScale = weaponData.GetBaseScale();
 
         switch (direction)
         {
             case Direction.Self:
                 if (PlayerMove.GetInstance().GetLookingLeft())
                 {
-                    weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, 0f, 0f);
+                    weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y, 0f);
                     weapon.GetComponent<SpriteRenderer>().flipX = true;
                 }
+                else
+                    weapon.GetComponent<SpriteRenderer>().flipX = false;
+                weapon.GetComponent<SpriteRenderer>().flipY = false;
                 break;
 
             case Direction.Opposite:
                 if (!PlayerMove.GetInstance().GetLookingLeft())
                 {
-                    weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y -1f, 0f);
+                    weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y - 1f, 0f);
                     weapon.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 else
-                    weapon.transform.localPosition = new Vector3(weapon.transform.localPosition.x, weapon.transform.localPosition.y -1f, 0f);
+                {
+                    weapon.transform.localPosition = new Vector3(weapon.transform.localPosition.x, weapon.transform.localPosition.y - 1f, 0f);
+                    weapon.GetComponent<SpriteRenderer>().flipX = false;
+                }
                 weapon.GetComponent<SpriteRenderer>().flipY = true;
                 break;
 
             case Direction.Left:
-                weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, 0f, 0f);
+                weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y, 0f);
                 weapon.GetComponent<SpriteRenderer>().flipX = true;
+                weapon.GetComponent<SpriteRenderer>().flipY = false;
                 break;
 
             case Direction.Right:
+                weapon.GetComponent<SpriteRenderer>().flipX = false;
+                weapon.GetComponent<SpriteRenderer>().flipY = false;
                 break;
 
             case Direction.Up:
-                weapon.transform.localPosition = new Vector3(0f, weapon.transform.localPosition.y + 2.4f, 0f);
+                weapon.transform.localPosition = new Vector3(weapon.transform.localPosition.x, weapon.transform.localPosition.y + 2.4f, 0f);
+                weapon.GetComponent<SpriteRenderer>().flipX = false;
+                weapon.GetComponent<SpriteRenderer>().flipY = false;
                 break;
 
             case Direction.Down:
-                weapon.transform.localPosition = new Vector3(0f, weapon.transform.localPosition.y - 2.4f, 0f);
+                weapon.transform.localPosition = new Vector3(weapon.transform.localPosition.x, weapon.transform.localPosition.y - 2.4f, 0f);
+                weapon.GetComponent<SpriteRenderer>().flipX = false;
+                weapon.GetComponent<SpriteRenderer>().flipY = false;
                 break;
         }
 
         if (weaponData.GetParent().Equals(WeaponData.Parent.Self))
             weapon.transform.position += Player.GetInstance().GetPosition();
 
-        weapon.transform.localScale = new Vector3(weapon.transform.localScale.x * (additionalScale / 100f), weapon.transform.localScale.y * (additionalScale / 100f), weapon.transform.localScale.z);
-        weapon.GetComponent<Weapon>().SetParameters(GetWeaponType(), attackPower,inactiveDelay, direction);
+        // 수정 할 것
+        weapon.transform.localScale = new Vector2(weapon.transform.localScale.x * (additionalScale / 100f), weapon.transform.localScale.y * (additionalScale / 100f));
+        weapon.GetComponent<Weapon>().SetParameters(weaponData, finalAttackPower,inactiveDelay, direction);
 
         weapon.SetActive(true);
     }
@@ -101,12 +118,12 @@ public abstract class WeaponSpawner : MonoBehaviour
 
     public int GetAttackPower()
     {
-        return attackPower;
+        return finalAttackPower;
     }
 
     public float GetAttackSpeed()
     {
-        return attackSpeed;
+        return finalAttackSpeed;
     }
 
     public int GetLevel()
@@ -152,12 +169,12 @@ public abstract class WeaponSpawner : MonoBehaviour
 
     public void UpdateAttackSpeed()
     {
-        attackSpeed = attackSpeed * Player.GetInstance().GetAttackSpeed() / 100f;
+        finalAttackSpeed = attackSpeed * Player.GetInstance().GetAttackSpeed() / 100f;
     }
 
     public void UpdateAttackPower()
     {
-        attackPower = attackPower * Player.GetInstance().GetAttackPower() / 100;
+        finalAttackPower = attackPower * Player.GetInstance().GetAttackPower() / 100;
     }
 
     public void StartWeapon()

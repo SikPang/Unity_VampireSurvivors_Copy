@@ -19,3 +19,5 @@ MonoBehaviour:
   inactiveDelay: 5
   weaponSprite: {fileID: 21300000, guid: 845e9df29ac6bfe47b3e2925c1804fe9, type: 3}
   description: Fires at a random enemy, deals heavy damage
+  basePosition: {x: 0, y: 0.5}
+  baseScale: {x: 1.5, y: 1.5}

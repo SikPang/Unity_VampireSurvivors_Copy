@@ -52,8 +52,8 @@ public class Accessory : MonoBehaviour
                 Player.GetInstance().IncreaseExpAdditional(10);
                 break;
             case AccessoryData.AccessoryType.Clover:
-                // 클로버 = 행운 10%
-                Player.GetInstance().IncreaseLuck(10);
+                // 클로버 = 행운 20%
+                Player.GetInstance().IncreaseLuck(20);
                 break;
             case AccessoryData.AccessoryType.Wings:
                 // 날개 = 이동속도 10%

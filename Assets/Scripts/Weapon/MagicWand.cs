@@ -8,8 +8,9 @@ public class MagicWand : Weapon
     [SerializeField]Rigidbody2D rigidbody;
     float speed = 300;
 
-    void Awake()
+    void OnEnable()
     {
+        StartCoroutine(StartDestroy());
         destination = EnemySpawner.GetInstance().GetNearestEnemyPosition();
         rigidbody.AddForce((destination - (Vector2)transform.position).normalized * speed, ForceMode2D.Force);
     }
