@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] internal WeaponSpawner spawner;
+    //[SerializeField] internal WeaponSpawner spawner;
     WeaponSpawner.Direction direction;
+    WeaponData.WeaponType weaponType;
     public int attackPower;
     internal int level;
     internal float inactiveDelay;
@@ -15,8 +16,9 @@ public class Weapon : MonoBehaviour
         StartCoroutine(StartDestroy());
     }
 
-    public void SetParameters(int attackPower, float inactiveDelay, WeaponSpawner.Direction direction)
+    public void SetParameters(WeaponData.WeaponType weaponType , int attackPower, float inactiveDelay, WeaponSpawner.Direction direction)
     {
+        this.weaponType = weaponType;
         this.attackPower = attackPower;
         this.inactiveDelay = inactiveDelay;
         this.direction = direction;
@@ -44,7 +46,7 @@ public class Weapon : MonoBehaviour
 
     internal void InactiveWeapon()
     {
-        ObjectPooling.ReturnObject(gameObject, spawner.GetWeaponType());
+        ObjectPooling.ReturnObject(gameObject, weaponType);
         this.gameObject.SetActive(false);
     }
 

@@ -11,33 +11,18 @@ public class BibleSpawner : WeaponSpawner
             UpdateAttackPower();
             UpdateAttackSpeed();
 
-            SpawnWeapon(Direction.Left);
+            SpawnWeapon(Direction.Right);
 
             if (GetLevel() >= 2)
-                SpawnWeapon(Direction.Right);
+                SpawnWeapon(Direction.Left);
+
+            if (GetLevel() >= 5)
+                SpawnWeapon(Direction.Up);
+
+            if (GetLevel() >= 7)
+                SpawnWeapon(Direction.Down);
 
             yield return new WaitForSeconds(GetAttackSpeed());
-        }
-    }
-
-    public override void LevelUp()
-    {
-        IncreaseLevel();
-
-        Debug.Log("levelUp");
-
-        switch (GetLevel())
-        {
-            case 3:
-                IncreaseAttackPower(5);
-                break;
-            case 4:
-                IncreaseAttackPower(5);
-                IncreaseAdditionalScale(10f);
-                break;
-            case 5:
-                DecreaseAttackSpeed(10f);
-                break;
         }
     }
 }

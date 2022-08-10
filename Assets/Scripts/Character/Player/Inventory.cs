@@ -25,6 +25,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] Accessory emptyTome;
     [SerializeField] Accessory wings;
 
+    WeaponSpawner bible;
+
     const int slotNum = 6;
     const float slotSize = 30f;
 
@@ -40,6 +42,8 @@ public class Inventory : MonoBehaviour
         instance = this;
         weaponInventory = new Dictionary<WeaponData.WeaponType, int>();
         accesoInventory = new Dictionary<AccessoryData.AccessoryType, int>();
+
+        bible = GetComponent<BibleSpawner>();
 
         SlotInitial();
     }
@@ -84,7 +88,7 @@ public class Inventory : MonoBehaviour
                 spawner = GetComponent<AxeSpawner>();
                 break;
             case WeaponData.WeaponType.Bible:
-                spawner = GetComponent<BibleSpawner>();
+                spawner = bible;
                 break;
             case WeaponData.WeaponType.Lightning:
                 spawner = GetComponent<LightningSpawner>();

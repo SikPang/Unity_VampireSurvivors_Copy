@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FireWandSpawner : WeaponSpawner
 {
-    int num = 3;
+    int effectNum = 3;
     float speed = 200f;
     Vector2 destination;
 
@@ -19,8 +19,11 @@ public class FireWandSpawner : WeaponSpawner
             if (enemySpawner.GetListCount() > 0)
             {
                 destination = enemySpawner.GetRandomEnemyPosition();
-                for (int i = 0; i < num; ++i)
+                for (int i = 0; i < effectNum; ++i)
+                {
                     SpawnWeapon(i);
+                    yield return new WaitForSeconds(0.1f);
+                }
             }
 
             yield return new WaitForSeconds(GetAttackSpeed());
@@ -38,7 +41,7 @@ public class FireWandSpawner : WeaponSpawner
             weapon.transform.position += Player.GetInstance().GetPosition();
 
         weapon.transform.localScale = new Vector3(weapon.transform.localScale.x * (GetAdditionalScale() / 100f), weapon.transform.localScale.y * (GetAdditionalScale() / 100f), weapon.transform.localScale.z);
-        weapon.GetComponent<Weapon>().SetParameters(GetAttackPower(), GetInactiveDelay(), Direction.Self);
+        weapon.GetComponent<Weapon>().SetParameters(GetWeaponType(), GetAttackPower(), GetInactiveDelay(), Direction.Self);
 
         // 여러 갈래로 발사하기 위해 벡터 조절
         if (i == 0 || i % 2 == 0)
@@ -66,25 +69,23 @@ public class FireWandSpawner : WeaponSpawner
 
     public override void LevelUp()
     {
-        IncreaseLevel();
-
-        Debug.Log("levelUp");
-
         switch (GetLevel())
         {
-            case 2:
-                num++;
-                break;
             case 3:
-                IncreaseAttackPower(5);
+                IncreaseAttackPower(10);
                 break;
             case 4:
-                num++;
-                IncreaseAttackPower(5);
+                effectNum++;
                 IncreaseAdditionalScale(10f);
                 break;
             case 5:
                 DecreaseAttackSpeed(10f);
+                break;
+            case 6:
+                IncreaseAttackPower(10);
+                break;
+            case 7:
+                effectNum++;
                 break;
         }
     }

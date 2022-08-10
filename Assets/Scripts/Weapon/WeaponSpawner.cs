@@ -16,7 +16,9 @@ public abstract class WeaponSpawner : MonoBehaviour
         Self,
         Opposite,
         Left,
-        Right
+        Right,
+        Up,
+        Down
     }
 
     void Awake()
@@ -45,7 +47,7 @@ public abstract class WeaponSpawner : MonoBehaviour
             case Direction.Self:
                 if (PlayerMove.GetInstance().GetLookingLeft())
                 {
-                    weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y, 0f);
+                    weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, 0f, 0f);
                     weapon.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 break;
@@ -62,11 +64,19 @@ public abstract class WeaponSpawner : MonoBehaviour
                 break;
 
             case Direction.Left:
-                weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, weapon.transform.localPosition.y, 0f);
+                weapon.transform.localPosition = new Vector3(-weapon.transform.localPosition.x, 0f, 0f);
                 weapon.GetComponent<SpriteRenderer>().flipX = true;
                 break;
 
             case Direction.Right:
+                break;
+
+            case Direction.Up:
+                weapon.transform.localPosition = new Vector3(0f, weapon.transform.localPosition.y + 2.4f, 0f);
+                break;
+
+            case Direction.Down:
+                weapon.transform.localPosition = new Vector3(0f, weapon.transform.localPosition.y - 2.4f, 0f);
                 break;
         }
 
@@ -74,7 +84,7 @@ public abstract class WeaponSpawner : MonoBehaviour
             weapon.transform.position += Player.GetInstance().GetPosition();
 
         weapon.transform.localScale = new Vector3(weapon.transform.localScale.x * (additionalScale / 100f), weapon.transform.localScale.y * (additionalScale / 100f), weapon.transform.localScale.z);
-        weapon.GetComponent<Weapon>().SetParameters(attackPower,inactiveDelay, direction);
+        weapon.GetComponent<Weapon>().SetParameters(GetWeaponType(), attackPower,inactiveDelay, direction);
 
         weapon.SetActive(true);
     }
@@ -137,16 +147,17 @@ public abstract class WeaponSpawner : MonoBehaviour
     public void IncreaseLevel()
     {
         level++;
+        LevelUp();
     }
 
     public void UpdateAttackSpeed()
     {
-        attackSpeed = weaponData.GetAttackSpeed() * Player.GetInstance().GetAttackSpeed() / 100f;
+        attackSpeed = attackSpeed * Player.GetInstance().GetAttackSpeed() / 100f;
     }
 
     public void UpdateAttackPower()
     {
-        attackPower = weaponData.GetAttackPower() * Player.GetInstance().GetAttackPower() / 100;
+        attackPower = attackPower * Player.GetInstance().GetAttackPower() / 100;
     }
 
     public void StartWeapon()
@@ -154,7 +165,25 @@ public abstract class WeaponSpawner : MonoBehaviour
         StartCoroutine(StartAttack());
     }
 
-    public abstract void LevelUp();
+    public virtual void LevelUp()
+    {
+        switch (GetLevel())
+        {
+            case 3:
+                IncreaseAttackPower(5);
+                break;
+            case 4:
+                IncreaseAttackPower(5);
+                IncreaseAdditionalScale(10f);
+                break;
+            case 5:
+                DecreaseAttackSpeed(10f);
+                break;
+            case 6:
+                IncreaseAttackPower(10);
+                break;
+        }
+    }
 
     internal abstract IEnumerator StartAttack();
 }

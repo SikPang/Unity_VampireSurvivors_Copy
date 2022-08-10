@@ -23,10 +23,6 @@ public class WhipSpawner : WeaponSpawner
 
     public override void LevelUp()
     {
-        IncreaseLevel();
-
-        Debug.Log("levelUp");
-
         switch (GetLevel())
         {
             case 3:
@@ -37,7 +33,17 @@ public class WhipSpawner : WeaponSpawner
                 IncreaseAdditionalScale(10f);
                 break;
             case 5:
+                IncreaseAttackPower(5);
                 DecreaseAttackSpeed(10f);
+                break;
+            case 6:
+                IncreaseAttackPower(5);
+                IncreaseAdditionalScale(10f);
+                break;
+            case 7:
+                IncreaseAttackPower(10);
+                DecreaseAttackSpeed(10f);
+                IncreaseAdditionalScale(10f);
                 break;
         }
     }
