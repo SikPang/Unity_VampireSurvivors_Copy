@@ -26,10 +26,10 @@ public class ObjectPooling : MonoBehaviour
     static ObjectPooling instance;
     Dictionary<string, Queue<GameObject>> poolingDict = new Dictionary<string, Queue<GameObject>>();
 
-    const int initNumEnemy = 500;
+    const int initNumEnemy = 200;
     const int initNumWeapon = 50;
     const int initNumCrystal = 500;
-    const int initNumDamage = 3;
+    const int initNumDamage = 500;
 
     void Awake()
     {

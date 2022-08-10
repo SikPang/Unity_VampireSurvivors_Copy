@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatingDamage : MonoBehaviour
 {
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(InactiveText());
     }

@@ -42,7 +42,7 @@ public abstract class WeaponSpawner : MonoBehaviour
     {
         GameObject weapon= ObjectPooling.GetObject(GetWeaponType());
 
-        weapon.transform.position = weaponData.GetBasePosition();
+        weapon.transform.localPosition = weaponData.GetBasePosition();
         weapon.transform.localScale = weaponData.GetBaseScale();
 
         switch (direction)
