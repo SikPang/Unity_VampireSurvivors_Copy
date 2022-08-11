@@ -57,7 +57,7 @@ public class Enemy : Character
         crystal.SetActive(true);
     }
 
-    IEnumerator DieAnimation()
+    internal override IEnumerator DieAnimation()
     {
         GetAnimator().SetBool("die", true);
         GetComponent<EnemyMove>().isDead = true;

@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     //Rigidbody2D rigidBody;
+    static PlayerMove instance;
     Animator animator;
     SpriteRenderer spriteRenderer;
     Player character;
     float horizontal;
     float vertical;
     bool lookingLeft;
-    static PlayerMove instance;
+    public bool isDead;
 
     void Awake()
     {
@@ -21,6 +22,7 @@ public class PlayerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         lookingLeft = false;
         instance = this;
+        isDead = false;
     }
 
     void Update()
@@ -59,8 +61,11 @@ public class PlayerMove : MonoBehaviour
 
         //rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
 
-        transform.Translate(Vector2.right * horizontal * character.GetSpeed()/10f * Time.deltaTime);
-        transform.Translate(Vector2.up * vertical * character.GetSpeed()/10f * Time.deltaTime);
+        if (!isDead)
+        {
+            transform.Translate(Vector2.right * horizontal * character.GetSpeed() / 10f * Time.deltaTime);
+            transform.Translate(Vector2.up * vertical * character.GetSpeed() / 10f * Time.deltaTime);
+        }
     }
 
     public static PlayerMove GetInstance()

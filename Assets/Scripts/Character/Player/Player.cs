@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class Player : Character
 {
     [SerializeField] Slider hpSlider;
+    [SerializeField] ParticleSystem bleeding;
     static Player instance;
     float attackSpeed;
     float expAdditional;
     int luck;
-    bool check = false;
+    bool check = false;     // 테스트용
 
     private Player() {}
 
@@ -21,11 +22,9 @@ public class Player : Character
         //StartCoroutine(LevelUpTest());
     }
 
-    void Update()
+    void Update()   
     {
-        hpSlider.value = GetHealthPoint();
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))    // 테스트용
             check = true;
     }
 
@@ -76,6 +75,32 @@ public class Player : Character
         luck += value;
     }
 
+    public override void ReduceHealthPoint(int damage)
+    {
+        if (!PlayerMove.GetInstance().isDead)
+        {
+            base.ReduceHealthPoint(damage);
+
+            hpSlider.value = GetHealthPoint();
+            bleeding.Play();
+        }
+    }
+
+    public override void Die()
+    {
+        PlayerMove.GetInstance().isDead = true;
+        StartCoroutine(DieAnimation());
+    }
+
+    internal override IEnumerator DieAnimation()
+    {
+        GetAnimator().SetBool("Death", true);
+
+        yield return new WaitForSeconds(1f);
+
+        // 게임 오버 창
+    }
+
     void GetFirstWeapon()
     {
         switch (GetComponentInParent<Player>().GetCharacterType())
@@ -101,12 +126,7 @@ public class Player : Character
             GetComponent<SpriteRenderer>().color = Color.white;
     }
 
-    public override void Die()
-    {
-        Debug.Log("Died");
-    }
-
-    IEnumerator LevelUpTest()
+    IEnumerator LevelUpTest()   // 테스트용
     {
         while (true)
         {
