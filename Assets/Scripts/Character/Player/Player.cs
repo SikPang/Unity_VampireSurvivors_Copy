@@ -7,6 +7,7 @@ public class Player : Character
 {
     [SerializeField] Slider hpSlider;
     [SerializeField] ParticleSystem bleeding;
+    [SerializeField] GameObject GameOverWindow;
     static Player instance;
     float attackSpeed;
     float expAdditional;
@@ -28,8 +29,9 @@ public class Player : Character
             check = true;
     }
 
-    internal override void Initialize()
+    protected override void Initialize()
     {
+        GameOverWindow.SetActive(false);
         base.Initialize();
         instance = this;
         attackSpeed = 100f;
@@ -92,12 +94,14 @@ public class Player : Character
         StartCoroutine(DieAnimation());
     }
 
-    internal override IEnumerator DieAnimation()
+    protected override IEnumerator DieAnimation()
     {
         GetAnimator().SetBool("Death", true);
 
         yield return new WaitForSeconds(1f);
 
+        GameOverWindow.SetActive(true);
+        Time.timeScale = 0f;
         // 게임 오버 창
     }
 

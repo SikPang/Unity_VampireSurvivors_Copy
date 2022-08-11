@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
 {
     Timer instance;
     TextMeshProUGUI timeText;
+    [SerializeField] GameObject GameOverWindow;
     int minute;
     int second;
 
@@ -41,10 +42,7 @@ public class Timer : MonoBehaviour
                 ++minute;
                 second = 0;
 
-                //if(minute >= 10)
-                // ¿£µù
-
-                if (minute != 0 && minute % 2 == 0)
+                if (minute != 0 && minute != 10 && minute % 2 == 0)
                     EnemySpawner.GetInstance().IncreaseStage();
             }
 
@@ -52,6 +50,12 @@ public class Timer : MonoBehaviour
                 timeText.text = minute.ToString() + " : 0" + second.ToString();
             else
                 timeText.text = minute.ToString() + " : " + second.ToString();
+
+            if (minute >= 10)
+            {
+                GameOverWindow.SetActive(true);
+                Time.timeScale = 0f;
+            }
         }
     }
 

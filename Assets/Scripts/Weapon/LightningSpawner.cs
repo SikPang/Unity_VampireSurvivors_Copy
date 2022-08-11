@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightningSpawner : WeaponSpawner
 {
-    internal override IEnumerator StartAttack()
+    protected override IEnumerator StartAttack()
     {
         EnemySpawner enemySpawner = EnemySpawner.GetInstance();
 

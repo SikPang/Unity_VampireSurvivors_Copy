@@ -63,6 +63,7 @@ public class EnemySpawner : MonoBehaviour
                     newEnemy = ObjectPooling.GetObject(CharacterData.CharacterType.Mushroom);
                     break;
                 case 4:
+                case 5:
                     newEnemy = ObjectPooling.GetObject(CharacterData.CharacterType.Skeleton);
                     break;
             }

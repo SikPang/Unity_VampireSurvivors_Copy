@@ -28,7 +28,7 @@ public abstract class WeaponSpawner : MonoBehaviour
         Initialize();
     }
 
-    internal void Initialize()
+    protected void Initialize()
     {
         weaponIcon = weaponData.GetSprite();
         attackPower = weaponData.GetAttackPower();
@@ -202,5 +202,5 @@ public abstract class WeaponSpawner : MonoBehaviour
         }
     }
 
-    internal abstract IEnumerator StartAttack();
+    protected abstract IEnumerator StartAttack();
 }

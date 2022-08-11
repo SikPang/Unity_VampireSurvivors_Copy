@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WhipSpawner : WeaponSpawner
 {
-    internal override IEnumerator StartAttack()
+    protected override IEnumerator StartAttack()
     {
         while (true)
         {

@@ -13,7 +13,7 @@ public abstract class Character : MonoBehaviour
     int speed;
     int maxHealth;
 
-    internal virtual void Initialize()
+    protected virtual void Initialize()
     {
         healthPoint = characterData.GetHealthPoint();
         attackPower = characterData.GetAttackPower();
@@ -27,7 +27,7 @@ public abstract class Character : MonoBehaviour
         animator.runtimeAnimatorController = GetController();
     }
 
-    internal void InitHealthPoint()
+    protected void InitHealthPoint()
     {
         healthPoint = characterData.GetHealthPoint();
     }
@@ -67,7 +67,7 @@ public abstract class Character : MonoBehaviour
         return transform.position;
     }
 
-    internal Animator GetAnimator()
+    protected Animator GetAnimator()
     {
         return animator;
     }
@@ -119,5 +119,5 @@ public abstract class Character : MonoBehaviour
 
     public abstract void Die();
 
-    internal abstract IEnumerator DieAnimation();
+    protected abstract IEnumerator DieAnimation();
 }

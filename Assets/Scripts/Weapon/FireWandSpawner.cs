@@ -7,7 +7,7 @@ public class FireWandSpawner : WeaponSpawner
     float speed = 200f;
     Vector2 destination;
 
-    internal override IEnumerator StartAttack()
+    protected override IEnumerator StartAttack()
     {
         EnemySpawner enemySpawner = EnemySpawner.GetInstance();
 

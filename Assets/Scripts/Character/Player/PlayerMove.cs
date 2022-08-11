@@ -27,44 +27,47 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (!Level.GetIsLevelUpTime())
+        if (!PauseMenu.isPaused)
         {
-            horizontal = Input.GetAxisRaw("Horizontal");
-            vertical = Input.GetAxisRaw("Vertical");
-        }
-
-        if (Mathf.Abs(horizontal) >= 0.7f && Mathf.Abs(vertical) >= 0.7f)
-        {
-            horizontal = Mathf.Clamp(horizontal, -0.7f, 0.7f);
-            vertical = Mathf.Clamp(vertical, -0.7f, 0.7f);
-        }
-
-        if(horizontal != 0f || vertical != 0f)
-        {
-            animator.SetInteger("AnimState", 1);
-
-            if (horizontal > 0f)
+            if (!Level.GetIsLevelUpTime())
             {
-                spriteRenderer.flipX = false;
-                lookingLeft = false;
+                horizontal = Input.GetAxisRaw("Horizontal");
+                vertical = Input.GetAxisRaw("Vertical");
             }
-            else if (horizontal < 0f)
+
+            if (Mathf.Abs(horizontal) >= 0.7f && Mathf.Abs(vertical) >= 0.7f)
             {
-                spriteRenderer.flipX = true;
-                lookingLeft = true;
+                horizontal = Mathf.Clamp(horizontal, -0.7f, 0.7f);
+                vertical = Mathf.Clamp(vertical, -0.7f, 0.7f);
             }
-        }
-        else
-        {
-            animator.SetInteger("AnimState", 0);
-        }
 
-        //rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
+            if (horizontal != 0f || vertical != 0f)
+            {
+                animator.SetInteger("AnimState", 1);
 
-        if (!isDead)
-        {
-            transform.Translate(Vector2.right * horizontal * character.GetSpeed() / 10f * Time.deltaTime);
-            transform.Translate(Vector2.up * vertical * character.GetSpeed() / 10f * Time.deltaTime);
+                if (horizontal > 0f)
+                {
+                    spriteRenderer.flipX = false;
+                    lookingLeft = false;
+                }
+                else if (horizontal < 0f)
+                {
+                    spriteRenderer.flipX = true;
+                    lookingLeft = true;
+                }
+            }
+            else
+            {
+                animator.SetInteger("AnimState", 0);
+            }
+
+            //rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
+
+            if (!isDead)
+            {
+                transform.Translate(Vector2.right * horizontal * character.GetSpeed() / 10f * Time.deltaTime);
+                transform.Translate(Vector2.up * vertical * character.GetSpeed() / 10f * Time.deltaTime);
+            }
         }
     }
 

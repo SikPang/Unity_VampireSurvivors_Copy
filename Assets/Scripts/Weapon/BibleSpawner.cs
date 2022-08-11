@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BibleSpawner : WeaponSpawner
 {
-    internal override IEnumerator StartAttack()
+    protected override IEnumerator StartAttack()
     {
         while (true)
         {

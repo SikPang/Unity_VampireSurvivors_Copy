@@ -7,8 +7,8 @@ public class Weapon : MonoBehaviour
     WeaponData weaponData;
     WeaponSpawner.Direction direction;
     public int attackPower;
-    internal int level;
-    internal float inactiveDelay;
+    protected int level;
+    protected float inactiveDelay;
 
     void OnEnable()
     {
@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
         this.direction = direction;
     }
 
-    internal WeaponSpawner.Direction GetDirection()
+    protected WeaponSpawner.Direction GetDirection()
     {
         return direction;
     }
@@ -36,20 +36,20 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    internal virtual IEnumerator StartDestroy()
+    protected virtual IEnumerator StartDestroy()
     {
         yield return new WaitForSeconds(inactiveDelay);
 
         InactiveWeapon();
     }
 
-    internal void InactiveWeapon()
+    protected void InactiveWeapon()
     {
         ObjectPooling.ReturnObject(gameObject, weaponData.GetWeaponType());
         this.gameObject.SetActive(false);
     }
 
-    internal int RandomDamage(int damage)
+    protected int RandomDamage(int damage)
     {
         int minDamage = (int)(damage * 0.8f);
         int maxDamage = (int)(damage * 1.2f);
