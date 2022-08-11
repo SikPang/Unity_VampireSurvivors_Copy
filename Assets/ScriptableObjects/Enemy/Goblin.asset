@@ -18,4 +18,4 @@ MonoBehaviour:
   healthPoint: 15
   attackPower: 50
   defencePower: 50
-  speed: 10
+  speed: 20

@@ -45,11 +45,7 @@ public class Crystal : MonoBehaviour
                 coroutine = StartCoroutine(CrystalAnimation());
 
             if (isCollided)
-            {
-                ObjectPooling.ReturnObject(gameObject, crystalData.GetCristalType());
-                gameObject.SetActive(false);
-                player.GetComponent<Level>().GetExp((int)(expValue * Player.GetInstance().GetExpAdditional()/100f));
-            }
+                GetCrystal();
         }
     }
 
@@ -61,6 +57,8 @@ public class Crystal : MonoBehaviour
 
         isCollided=true;
 
+        StartCoroutine(Disable());
+
         while (true)
         {
             Vector2 direction = player.transform.position - transform.position;
@@ -68,5 +66,19 @@ public class Crystal : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    void GetCrystal()
+    {
+        ObjectPooling.ReturnObject(gameObject, crystalData.GetCristalType());
+        gameObject.SetActive(false);
+        player.GetComponent<Level>().GetExp((int)(expValue * Player.GetInstance().GetExpAdditional() / 100f));
+    }
+
+    IEnumerator Disable()
+    {
+        yield return new WaitForSeconds(1f);
+
+        GetCrystal();
     }
 }

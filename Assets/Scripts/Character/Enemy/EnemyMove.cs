@@ -25,15 +25,16 @@ public class EnemyMove : MonoBehaviour
     {
         Vector2 direction = (player.position - transform.position).normalized;
         
-        if(!isDead)
-            rigidBody.MovePosition(rigidBody.position + direction * character.GetSpeed() * Time.deltaTime);
+        //if(!isDead)
+        //    rigidBody.MovePosition(rigidBody.position + direction * character.GetSpeed() * Time.deltaTime);
 
         if (direction.x >= 0)
             spriteRenderer.flipX = false;
         else
             spriteRenderer.flipX = true;
 
-        //transform.Translate((Vector2)direction.normalized * character.GetSpeed()/10f * Time.deltaTime);
+        if (!isDead)
+            transform.Translate((Vector2)direction.normalized * character.GetSpeed()/15f * Time.deltaTime);
     }
 
     void Initialize()
