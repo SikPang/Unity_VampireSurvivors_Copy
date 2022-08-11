@@ -102,7 +102,6 @@ public class Player : Character
 
         GameOverWindow.SetActive(true);
         Time.timeScale = 0f;
-        // 게임 오버 창
     }
 
     void GetFirstWeapon()
@@ -110,7 +109,7 @@ public class Player : Character
         switch (GetComponentInParent<Player>().GetCharacterType())
         {
             case CharacterData.CharacterType.Knight:
-                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.FireWand);
+                Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Whip);
                 break;
             case CharacterData.CharacterType.Bandit:
                 Inventory.GetInstance().AddWeapon(WeaponData.WeaponType.Axe);
