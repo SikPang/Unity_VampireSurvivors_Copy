@@ -77,7 +77,7 @@ public class Crystal : MonoBehaviour
 
     IEnumerator Disable()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         GetCrystal();
     }

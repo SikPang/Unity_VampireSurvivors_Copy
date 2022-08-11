@@ -38,6 +38,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -119,89 +120,89 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 1600}
+      Script: {instanceID: 1598}
     - Class: 114
-      Script: {instanceID: 1736}
+      Script: {instanceID: 1734}
     - Class: 114
-      Script: {instanceID: 1848}
+      Script: {instanceID: 1846}
     - Class: 114
-      Script: {instanceID: 1906}
+      Script: {instanceID: 1904}
     - Class: 114
-      Script: {instanceID: 1962}
+      Script: {instanceID: 1958}
     - Class: 114
-      Script: {instanceID: 2084}
+      Script: {instanceID: 2080}
     - Class: 114
-      Script: {instanceID: 2322}
+      Script: {instanceID: 2318}
     - Class: 114
-      Script: {instanceID: 2424}
+      Script: {instanceID: 2420}
     - Class: 114
-      Script: {instanceID: 2450}
+      Script: {instanceID: 2446}
     - Class: 114
-      Script: {instanceID: 2602}
+      Script: {instanceID: 2596}
     - Class: 114
-      Script: {instanceID: 2670}
+      Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2724}
+      Script: {instanceID: 2718}
     - Class: 114
-      Script: {instanceID: 2834}
+      Script: {instanceID: 2828}
     - Class: 114
-      Script: {instanceID: 2836}
+      Script: {instanceID: 2830}
     - Class: 114
-      Script: {instanceID: 2884}
+      Script: {instanceID: 2878}
     - Class: 114
-      Script: {instanceID: 2912}
+      Script: {instanceID: 2904}
     - Class: 114
-      Script: {instanceID: 2938}
+      Script: {instanceID: 2930}
     - Class: 114
-      Script: {instanceID: 3064}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3236}
+      Script: {instanceID: 3226}
     - Class: 114
-      Script: {instanceID: 3264}
+      Script: {instanceID: 3254}
     - Class: 114
-      Script: {instanceID: 3312}
+      Script: {instanceID: 3302}
     - Class: 114
-      Script: {instanceID: 3426}
+      Script: {instanceID: 3414}
     - Class: 114
-      Script: {instanceID: 3650}
+      Script: {instanceID: 3638}
     - Class: 114
-      Script: {instanceID: 3660}
+      Script: {instanceID: 3648}
     - Class: 114
-      Script: {instanceID: 3692}
+      Script: {instanceID: 3680}
     - Class: 114
-      Script: {instanceID: 3752}
+      Script: {instanceID: 3740}
     - Class: 114
-      Script: {instanceID: 3946}
+      Script: {instanceID: 3934}
     - Class: 114
-      Script: {instanceID: 3992}
+      Script: {instanceID: 3980}
     - Class: 114
-      Script: {instanceID: 4172}
+      Script: {instanceID: 4160}
     - Class: 114
-      Script: {instanceID: 4232}
+      Script: {instanceID: 4220}
     - Class: 114
-      Script: {instanceID: 4264}
+      Script: {instanceID: 4252}
     - Class: 114
-      Script: {instanceID: 4288}
+      Script: {instanceID: 4276}
     - Class: 114
-      Script: {instanceID: 4306}
+      Script: {instanceID: 4294}
     - Class: 114
-      Script: {instanceID: 4502}
+      Script: {instanceID: 4488}
     - Class: 114
-      Script: {instanceID: 4552}
+      Script: {instanceID: 4538}
     - Class: 114
-      Script: {instanceID: 4600}
+      Script: {instanceID: 4586}
     - Class: 114
-      Script: {instanceID: 4912}
+      Script: {instanceID: 4898}
     - Class: 114
-      Script: {instanceID: 5168}
+      Script: {instanceID: 5154}
     - Class: 114
-      Script: {instanceID: 5278}
+      Script: {instanceID: 5262}
     - Class: 114
-      Script: {instanceID: 5316}
+      Script: {instanceID: 5300}
     - Class: 114
-      Script: {instanceID: 5486}
+      Script: {instanceID: 5466}
     - Class: 114
-      Script: {instanceID: 5674}
+      Script: {instanceID: 5652}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -254,31 +255,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 1848}
+      Script: {instanceID: 1846}
     - Class: 114
-      Script: {instanceID: 2238}
+      Script: {instanceID: 2234}
     - Class: 114
-      Script: {instanceID: 2670}
+      Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2834}
+      Script: {instanceID: 2828}
     - Class: 114
-      Script: {instanceID: 2884}
+      Script: {instanceID: 2878}
     - Class: 114
-      Script: {instanceID: 3064}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3312}
+      Script: {instanceID: 3302}
     - Class: 114
-      Script: {instanceID: 3426}
+      Script: {instanceID: 3414}
     - Class: 114
-      Script: {instanceID: 3746}
+      Script: {instanceID: 3734}
     - Class: 114
-      Script: {instanceID: 4172}
+      Script: {instanceID: 4160}
     - Class: 114
-      Script: {instanceID: 4552}
+      Script: {instanceID: 4538}
     - Class: 114
-      Script: {instanceID: 4790}
+      Script: {instanceID: 4776}
     - Class: 114
-      Script: {instanceID: 5170}
+      Script: {instanceID: 5156}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -308,12 +309,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
-  - hash:
-      serializedVersion: 2
-      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Cainos.PixelArtTopDown_Basic
-    className: TopDownCharacterController
   - hash:
       serializedVersion: 2
       Hash: 77aaaaa51f7a8d8ff333a879741e47d2
@@ -400,12 +395,6 @@ ScriptsOnlyBuild:
     className: AxeSpawner
   - hash:
       serializedVersion: 2
-      Hash: e41a547b14d42eeba4854fb180617c13
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Bandit
-  - hash:
-      serializedVersion: 2
       Hash: 5c2419f01c9fafe0f07c775f3286a929
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -478,12 +467,6 @@ ScriptsOnlyBuild:
     className: IKManager2D
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Sensor_HeroKnight
-  - hash:
-      serializedVersion: 2
       Hash: a357256ef48fdc323718a29f7ab7d837
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -544,12 +527,6 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 4811501554c1bec6ae7daf21dc3fe0b0
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Cainos.PixelArtTopDown_Basic
-    className: PropsAltar
-  - hash:
-      serializedVersion: 2
       Hash: a49ddbb68c88a7107406bb76cb551707
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -560,12 +537,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MagicWand
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Sensor_Bandit
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -638,12 +609,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMesh
-  - hash:
-      serializedVersion: 2
-      Hash: 3faa100fa1501fc18c3d7bbd33374379
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Cainos.PixelArtTopDown_Basic
-    className: SpriteColorAnimation
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -868,12 +833,6 @@ ScriptsOnlyBuild:
     className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
-      Hash: 92be63aa6f75ced36ff26d92772a2746
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HeroKnight
-  - hash:
-      serializedVersion: 2
       Hash: e2e73014f419cd85a2a675a80e97dc3b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -994,12 +953,6 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: f521aa63d9ffd972f8971012483a12ff
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Cainos.PixelArtTopDown_Basic
-    className: LayerTrigger
-  - hash:
-      serializedVersion: 2
       Hash: ba3484e6bbd5d4fb91609ac73d6b446f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1010,18 +963,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Lightning
-  - hash:
-      serializedVersion: 2
-      Hash: af58bd7ab084af703bc5acef7bc629a3
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ColorSwap_HeroKnight
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DestroyEvent_HeroKnight
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1054,12 +995,6 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 5fc6554497fb03f1b68aede7699939dc
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Cainos.PixelArtTopDown_Basic
-    className: CameraFollow
-  - hash:
-      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1086,4 +1021,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Start.unity
   - Assets/Scenes/InGame.unity
-  playerPath: C:/Users/Song/Desktop/Build/Unity_VampireSurvival_Copy.exe
+  playerPath: C:/Users/Song/Desktop/Build/VampireSurvivors_Copy.exe
