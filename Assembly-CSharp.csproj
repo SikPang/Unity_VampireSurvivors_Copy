@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Character\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\Scripts\Weapon\LightningSpawner.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons.cs" />
     <Compile Include="Assets\Scripts\Weapon\FireWand.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponSpawner.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Level.cs" />
@@ -94,11 +95,11 @@
     <Compile Include="Assets\Scripts\Weapon\Lightning.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
     <Compile Include="Assets\Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Weapon\MagicWandSpawner.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons.cs" />
-    <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\GameSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
