@@ -5,7 +5,7 @@
  
 <img src="https://user-images.githubusercontent.com/87380790/184260073-ec6a5674-392d-4175-acc6-c79661d91c49.png" width="80%">
 
-[> View All Source Code <](https://github.com/SikPang/Unity_VampireSurvivors_Copy/tree/main/Assets/Scripts)  <br/><br/>
+[> View All Source Codes <](https://github.com/SikPang/Unity_VampireSurvivors_Copy/tree/main/Assets/Scripts)  <br/><br/>
 [> Download Game <](https://drive.google.com/file/d/1tGWBtdpHSdv7wRL8RQ1wvmi3kwXcsKaI/view) <br/>
 
 <br/>
