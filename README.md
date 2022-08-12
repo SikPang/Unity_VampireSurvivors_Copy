@@ -51,13 +51,12 @@
 <br/>
   
 ## 2. 공격, 무기
-> 새 게임, 불러오기, 옵션, 크레딧 지원
+> 총 6가지의 무기에 따라 다른 공격
 
 
 <img src="https://user-images.githubusercontent.com/87380790/184267824-bcb9e7c2-a101-4cdd-b9b7-3e42b00fbfde.gif" width="49%">  <img src="https://user-images.githubusercontent.com/87380790/184267853-cd707f08-cb9e-405d-a937-358f13e2d9be.gif" width="49%">
 
 
-- 총 6가지의 무기에 따라 다른 공격 <br/><br/>
 - 컴포넌트 패턴에서 아이디어를 얻어 미리 모든 생성기 스크립트를 오브젝트에 넣어두고 획득한 무기만 GetComponent 하여 StartCoroutine <br/><br/>
 - Scriptable Objects로 각각의 무기 정보 불러오기<br/><br/>
 - 상속으로 각각의 무기 생성기 설계, 생성기의 Coroutine에서 주기마다 무기 이펙트를 ObjectPooling에서 가져와 생성 <br/><br/>
@@ -71,13 +70,13 @@
 <br/>
   
 ## 3. 크리스탈
-> 새 게임, 불러오기, 옵션, 크레딧 지원
+> 적 처치 시 일정 확률로 드랍되는 레벨 업 크리스탈
 
 
 <img src="https://user-images.githubusercontent.com/87380790/184267990-bdba7778-e24a-4185-b046-cd723a1908da.gif" width="80%">
 
 
-- Scriptable Objects로 각각의 크리스탈 정보 불러오고, 적 처치 시 일정 확률로 ObjectPooling에서 가져와 드랍 <br/><br/>
+- Scriptable Objects로 각각의 크리스탈 정보 불러오고, ObjectPooling에서 가져와 드랍 <br/><br/>
 - 플레이어가 바라보는 방향으로 AddForce 이후 코루틴을 이용해서 0.2초 뒤 플레이어에게 이동 <br/>
 
 
@@ -86,14 +85,14 @@
 <br/>
   
 ## 4. 레벨 업
-> 새 게임, 불러오기, 옵션, 크레딧 지원
+>  레벨업 할 때마다 랜덤하게 뽑힌 3가지의 아이템 중 선택하여 획득 가능
 
 
 <img src="https://user-images.githubusercontent.com/87380790/184268000-1ddc3864-5b8e-4ee4-9904-876384860a2e.gif" width="80%">
 
 
 - 정해진 슬롯 개수를 동적 생성 후 각각의 정보 오브젝트(아이콘,설명 등)를 배열에 담아둠 <br/><br/>
-- 레벨업 할 때마다 아이템 선택 창 표시, 랜덤 아이템을 Scriptable Objects의 관리 클래스에서 정보를 가져와 표기 <br/><br/>
+- 랜덤 아이템을 Scriptable Objects의 관리 클래스에서 정보를 가져와 표기 <br/><br/>
 - 아이템을 고를 때마다 Inventory의 Dictionary에 추가 후 효과 적용 (ContainsKey로 이미 있는지 확인 후 획득 or 레벨업) <br/><br/>
 - ParticleSystem과 Color.Lerp를 이용한 이펙트 <br/><br/>
 - 악세사리는 무기와 다르게 효과만 반복 적용 <br/>
@@ -104,13 +103,13 @@
 <br/>
   
 ## 5. 인벤토리
-> 새 게임, 불러오기, 옵션, 크레딧 지원
+> 현재까지 획득한 아이템 리스트
 
 
 <img src="https://user-images.githubusercontent.com/87380790/184268158-a06f4cc2-4540-4a17-be1f-1079d7d042c0.png" width="50%">
 
  
-- Dictionary에 획득한 무기와 악세사리 추가 value 값으로 레벨을 가짐 <br/><br/>
+- Dictionary를 사용하여 획득한 무기와 악세사리 추가 value 값으로 레벨을 가짐 <br/><br/>
 - 정해진 슬롯 개수를 동적 생성 후 Dictionary를 순회하며 해당 아이템의 정보를 표기 <br/>
 
 
@@ -119,13 +118,11 @@
 <br/>
   
 ## 6. 피격, 사망
-> 새 게임, 불러오기, 옵션, 크레딧 지원
+> OnCollisionEnter로 빨갛게 색 변경, 체력이 깎일 시 출혈 파티클 재생
 
 
 <img src="https://user-images.githubusercontent.com/87380790/184268025-637a2edd-7702-4d9f-9a4e-32e48478cc60.gif" width="80%">
 
-
--  OnTriggerEvent로 빨갛게 색 변경, 출혈 파티클 <br/>
 
 
 
