@@ -13,7 +13,7 @@
 <br/>
   
 ## 1. Object Pooling
-> Instantiate와 Destory의 가비지 컬렉팅으로 인한 프레임 드랍 방지 <br/>
+> Destory의 가비지 컬렉팅과 Instantiate으로 인한 프레임 드랍 방지 <br/>
 
 - Dictionary<string, Queue>를 활용하여 시작 시 Instantiate하여 Queue에 담아두고, 필요할 때 Queue에서 하나씩 가져오기 <br/><br/>
 - 적, 무기 이펙트, 플로팅 데미지 텍스트, 크리스탈 오브젝트 생성을 담당하고 각각의 고유 key값으로 접근 <br/> <br/>
