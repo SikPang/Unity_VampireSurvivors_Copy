@@ -118,7 +118,7 @@
 <br/>
   
 ## 6. 피격, 사망
-> OnCollisionEnter로 빨갛게 색 변경, 체력이 깎일 시 출혈 파티클 재생
+> OnCollisionEnter로 빨갛게 색 변경, 체력이 깎일 시 출혈 ParticleSystem 재생
 
 
 <img src="https://user-images.githubusercontent.com/87380790/184268025-637a2edd-7702-4d9f-9a4e-32e48478cc60.gif" width="80%">
