@@ -12,21 +12,12 @@ public class Player : Character
     float attackSpeed;
     float expAdditional;
     int luck;
-    bool check = false;     // 테스트용
 
     private Player() {}
 
     void Awake()
     {
         Initialize();
-
-        //StartCoroutine(LevelUpTest());
-    }
-
-    void Update()   
-    {
-        if (Input.GetKeyDown(KeyCode.Space))    // 테스트용
-            check = true;
     }
 
     protected override void Initialize()
@@ -127,17 +118,5 @@ public class Player : Character
     {
         if (collision.gameObject.layer == 6)
             GetComponent<SpriteRenderer>().color = Color.white;
-    }
-
-    IEnumerator LevelUpTest()   // 테스트용
-    {
-        while (true)
-        {
-            if (check) break;
-
-            yield return new WaitForSeconds((float)Level.GetPlayerLevel());
-
-            GetComponent<Level>().GetExp(50*Level.GetPlayerLevel());
-        }
     }
 }

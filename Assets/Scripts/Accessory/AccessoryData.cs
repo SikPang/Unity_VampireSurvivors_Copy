@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Accessory Data", menuName = "Scriptable Object/Accessory Data", order = int.MaxValue)]
 public class AccessoryData : ScriptableObject
 {
+    [SerializeField] AccessoryType accessoryType;
+    [SerializeField] Sprite accessorySprite;
+    [SerializeField] string description;
+
     public enum AccessoryType
     {
         Spinach,
@@ -14,10 +18,6 @@ public class AccessoryData : ScriptableObject
         Clover,
         Crown
     }
-
-    [SerializeField] AccessoryType accessoryType;
-    [SerializeField] Sprite accessorySprite;
-    [SerializeField] string description;
 
     public AccessoryType GetAccessoryType()
     {

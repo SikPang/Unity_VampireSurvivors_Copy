@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    //Rigidbody2D rigidBody;
     static PlayerMove instance;
     Animator animator;
     SpriteRenderer spriteRenderer;
@@ -16,7 +15,6 @@ public class PlayerMove : MonoBehaviour
 
     void Awake()
     {
-        //rigidBody = GetComponent<Rigidbody2D>();
         character = GetComponent<Player>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -60,8 +58,6 @@ public class PlayerMove : MonoBehaviour
             {
                 animator.SetInteger("AnimState", 0);
             }
-
-            //rigidBody.MovePosition(rigidBody.position + new Vector2(horizontal, vertical) * character.GetSpeed() * Time.deltaTime);
 
             if (!isDead)
             {

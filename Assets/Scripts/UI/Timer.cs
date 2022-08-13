@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    Timer instance;
     TextMeshProUGUI timeText;
     [SerializeField] GameObject GameOverWindow;
     int minute;
@@ -24,7 +23,6 @@ public class Timer : MonoBehaviour
 
     void Initialize()
     {
-        instance = this;
         timeText = GetComponent<TextMeshProUGUI>();
         minute = 0;
         second = 0;

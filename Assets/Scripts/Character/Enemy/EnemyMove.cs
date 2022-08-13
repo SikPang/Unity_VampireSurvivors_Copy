@@ -7,7 +7,6 @@ public class EnemyMove : MonoBehaviour
 {
     [SerializeField] Transform player;
     Enemy character;
-    Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
     public bool isDead;
 
@@ -24,9 +23,6 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         Vector2 direction = (player.position - transform.position).normalized;
-        
-        //if(!isDead)
-        //    rigidBody.MovePosition(rigidBody.position + direction * character.GetSpeed() * Time.deltaTime);
 
         if (direction.x >= 0)
             spriteRenderer.flipX = false;
@@ -39,7 +35,6 @@ public class EnemyMove : MonoBehaviour
 
     void Initialize()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
         character = GetComponent<Enemy>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

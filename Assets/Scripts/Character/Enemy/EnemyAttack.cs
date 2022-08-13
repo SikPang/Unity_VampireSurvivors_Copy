@@ -45,8 +45,7 @@ public class EnemyAttack : MonoBehaviour
 
     void GiveDamage()
     {
-        int damage = character.GetAttackPower() -
-            (int)(character.GetAttackPower() * Player.GetInstance().GetDefencePower()/100f);
+        int damage = character.GetAttackPower() - (int)(character.GetAttackPower() * Player.GetInstance().GetDefencePower()/100f);
 
         Player.GetInstance().ReduceHealthPoint(damage);
     }

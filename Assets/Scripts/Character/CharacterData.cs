@@ -3,6 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character Data", menuName = "Scriptable Object/Character Data", order = int.MaxValue )]
 public class CharacterData : ScriptableObject
 {
+    [SerializeField] Sprite sprite;
+    [SerializeField] RuntimeAnimatorController controller;
+    [SerializeField] CharacterType characterType;
+    [SerializeField] int healthPoint;
+    [SerializeField] int attackPower;
+    [SerializeField] int defencePower;
+    [SerializeField] int speed;
+
     public enum CharacterType
     {
         FlyingEye,
@@ -13,14 +21,6 @@ public class CharacterData : ScriptableObject
         Bandit
     }
 
-    [SerializeField] Sprite sprite;
-    [SerializeField] RuntimeAnimatorController controller;
-    [SerializeField] CharacterType characterType;
-    [SerializeField] int healthPoint;
-    [SerializeField] int attackPower;
-    [SerializeField] int defencePower;
-    [SerializeField] int speed;
-    
     public int GetHealthPoint()
     {
         return healthPoint;
