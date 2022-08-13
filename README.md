@@ -51,7 +51,7 @@
 <br/>
   
 ## 2. 공격, 무기
-> 총 6가지의 무기에 따라 다른 공격
+> 총 6가지의 무기에 따라 각 다른 자동 공격
 
 
 <img src="https://user-images.githubusercontent.com/87380790/184267824-bcb9e7c2-a101-4cdd-b9b7-3e42b00fbfde.gif" width="49%">  <img src="https://user-images.githubusercontent.com/87380790/184267853-cd707f08-cb9e-405d-a937-358f13e2d9be.gif" width="49%">
