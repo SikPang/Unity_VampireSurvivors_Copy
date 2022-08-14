@@ -1,6 +1,6 @@
 # Unity_VampireSurvivors_Copy
 > 뱀파이어 서바이벌 모작 (2022. 07. 25 ~ 2022. 08. 11) <br/>
-> Unity C# <br/>
+> Unity2D C# <br/>
  
  
 <img src="https://user-images.githubusercontent.com/87380790/184260073-ec6a5674-392d-4175-acc6-c79661d91c49.png" width="80%">
