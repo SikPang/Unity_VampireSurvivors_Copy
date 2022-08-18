@@ -1,13 +1,14 @@
 # Unity_VampireSurvivors_Copy
-> 뱀파이어 서바이벌 모작 (2022. 07. 25 ~ 2022. 08. 11) <br/>
+> 뱀파이어 서바이벌 모작 (2022. 07 ~ 2022. 08) <br/>
 > Unity2D C# <br/>
  
  
 <img src="https://user-images.githubusercontent.com/87380790/184260073-ec6a5674-392d-4175-acc6-c79661d91c49.png" width="80%">
 
 ### [>> View All Source Codes <<](https://github.com/SikPang/Unity_VampireSurvivors_Copy/tree/main/Assets/Scripts)  <br/>
-### [>> Download Game <<](https://drive.google.com/file/d/1tGWBtdpHSdv7wRL8RQ1wvmi3kwXcsKaI/view) <br/>
+### [>> Download Game <<](https://drive.google.com/file/d/1tGWBtdpHSdv7wRL8RQ1wvmi3kwXcsKaI/view) <br/> <br/>
 
+v1.1 타격감 개선 (넉백 및 적 색깔 변경) <br/>
 <br/>
 <br/>
 <br/>
@@ -40,7 +41,7 @@
 > 사방에서 0.5초마다 적 생성 
 
 
-<img src="https://user-images.githubusercontent.com/87380790/184267717-b6768be3-3d13-42f9-a16b-2f79fd5ac5a2.gif" width="49%">  <img src="https://user-images.githubusercontent.com/87380790/184267731-8ff9c827-278d-41e7-80ec-ae8c340b0033.gif" width="49%">
+<img src="https://user-images.githubusercontent.com/87380790/185332137-f5f9a01d-e783-468e-8713-99cd46f2b39e.gif" width="49%">  <img src="https://user-images.githubusercontent.com/87380790/185332205-c4da0f07-0728-4e7f-baa8-9ed49554321e.gif" width="49%">
 
 
 - Scriptable Objects로 4종류 적의 정보 불러와 stage마다 다르게 Key값으로 사용 <br/> <br/>
@@ -50,12 +51,23 @@
 <br/>
 <br/>
   
-## 2. 공격, 무기
+## 4. 공격
+> 획득한 무기에 따라 공격
+
+<img src="https://user-images.githubusercontent.com/87380790/185332662-cf8900a2-e0d8-47f4-b8d3-dc8d8b6bec34.gif" width="80%">
+
+- 공격 받은 적은 Coroutine으로 0.1초간 하얗게 색 변경 (SpriteRenderer의 Shader를 Text Shader로 일시적으로 변경하여 구현) <br/><br/>
+- 공격 받은 적은 AddForce로 적의 이동 방향의 반대 방향으로 넉백 <br/><br/>
+- 기본 데미지의 +-20%의 랜덤 데미지를 입힘, 해당 데미지 텍스트를 Object Pooling에서 가져와 플로팅<br/>
+
+<br/>
+<br/>
+<br/>
+  
+## 5. 무기
 > 총 6가지의 무기에 따라 각 다른 자동 공격
 
-
-<img src="https://user-images.githubusercontent.com/87380790/184267824-bcb9e7c2-a101-4cdd-b9b7-3e42b00fbfde.gif" width="49%">  <img src="https://user-images.githubusercontent.com/87380790/184267853-cd707f08-cb9e-405d-a937-358f13e2d9be.gif" width="49%">
-
+<img src="https://user-images.githubusercontent.com/87380790/185332844-6a26ed01-cf3a-4741-91e9-9163c06061ea.gif" width="80%">
 
 - 컴포넌트 패턴에서 아이디어를 얻어 미리 모든 생성기 스크립트를 오브젝트에 넣어두고 획득한 무기만 GetComponent 하여 StartCoroutine <br/><br/>
 - Scriptable Objects로 각각의 무기 정보 불러오기<br/><br/>
@@ -69,7 +81,7 @@
 <br/>
 <br/>
   
-## 3. 크리스탈
+## 6. 크리스탈
 > 적 처치 시 일정 확률로 드랍되는 레벨 업 크리스탈
 
 
@@ -84,7 +96,7 @@
 <br/>
 <br/>
   
-## 4. 레벨 업
+## 7. 레벨 업
 >  레벨업 할 때마다 랜덤하게 뽑힌 3가지의 아이템 중 선택하여 획득 가능
 
 
@@ -102,7 +114,7 @@
 <br/>
 <br/>
   
-## 5. 인벤토리
+## 8. 인벤토리
 > 현재까지 획득한 아이템 리스트
 
 
@@ -117,11 +129,11 @@
 <br/>
 <br/>
   
-## 6. 피격, 사망
-> OnCollisionEnter로 빨갛게 색 변경, 체력이 깎일 시 출혈 ParticleSystem 재생
+## 9. 피격, 사망
+> 체력이 깎일 시, Coroutine으로 0.2초간 빨갛게 색 변경, 출혈 ParticleSystem 재생
 
 
-<img src="https://user-images.githubusercontent.com/87380790/184268025-637a2edd-7702-4d9f-9a4e-32e48478cc60.gif" width="80%">
+<img src="https://user-images.githubusercontent.com/87380790/185333082-d4cbb604-a4fa-4837-93fa-13207d2c8678.gif" width="80%">
 
 
 
@@ -132,5 +144,5 @@
 
  ## Screen Shots
  
-<img src="https://user-images.githubusercontent.com/87380790/184273251-eace4ae5-0d05-4b38-86b6-72c23bd97f3e.gif" width="80%">
+<img src="https://user-images.githubusercontent.com/87380790/185333253-0ffdd915-c5a2-496c-90ef-467e2fcc9815.gif" width="80%">
 <img src="https://user-images.githubusercontent.com/87380790/184268592-8edbb618-4eab-4e08-b52c-cece56e9f15d.png" width="80%">
