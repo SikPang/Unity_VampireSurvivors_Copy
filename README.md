@@ -8,7 +8,7 @@
 ### [>> View All Source Codes <<](https://github.com/SikPang/Unity_VampireSurvivors_Copy/tree/main/Assets/Scripts)  <br/>
 ### [>> Download Game <<](https://drive.google.com/file/d/1tGWBtdpHSdv7wRL8RQ1wvmi3kwXcsKaI/view) <br/> <br/>
 
-v1.1 타격감 개선 (넉백 및 적 색깔 변경) <br/>
+22/08/18 v1.1 타격감 개선 (넉백 및 적 색깔 변경) <br/>
 <br/>
 <br/>
 <br/>
