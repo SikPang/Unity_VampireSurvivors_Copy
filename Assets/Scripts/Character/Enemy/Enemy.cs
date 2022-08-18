@@ -20,6 +20,7 @@ public class Enemy : Character
     {
         InitHealthPoint();
         GetComponent<CapsuleCollider2D>().enabled = true;
+        spriteRenderer.material.shader = shaderSpritesDefault;
     }
 
     protected override void Initialize()

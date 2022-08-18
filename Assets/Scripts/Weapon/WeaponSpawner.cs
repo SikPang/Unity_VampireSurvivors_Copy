@@ -99,8 +99,7 @@ public abstract class WeaponSpawner : MonoBehaviour
         if (weaponData.GetParent().Equals(WeaponData.Parent.Self))
             weapon.transform.position += Player.GetInstance().GetPosition();
 
-        // 수정 할 것
-        weapon.transform.localScale = new Vector2(weapon.transform.localScale.x * (additionalScale / 100f), weapon.transform.localScale.y * (additionalScale / 100f));
+        weapon.transform.localScale = new Vector2(weaponData.GetBaseScale().x * (additionalScale / 100f), weaponData.GetBaseScale().y * (additionalScale / 100f));
         weapon.GetComponent<Weapon>().SetParameters(weaponData, finalAttackPower,inactiveDelay, direction);
 
         weapon.SetActive(true);

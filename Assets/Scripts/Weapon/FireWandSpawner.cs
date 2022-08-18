@@ -42,7 +42,7 @@ public class FireWandSpawner : WeaponSpawner
         if (GetWeaponData().GetParent().Equals(WeaponData.Parent.Self))
             weapon.transform.position += Player.GetInstance().GetPosition();
 
-        weapon.transform.localScale = new Vector3(weapon.transform.localScale.x * (GetAdditionalScale() / 100f), weapon.transform.localScale.y * (GetAdditionalScale() / 100f), weapon.transform.localScale.z);
+        weapon.transform.localScale = new Vector2(GetWeaponData().GetBaseScale().x * (GetAdditionalScale() / 100f), GetWeaponData().GetBaseScale().y * (GetAdditionalScale() / 100f));
         weapon.GetComponent<Weapon>().SetParameters(GetWeaponData(), GetAttackPower(), GetInactiveDelay(), Direction.Self);
 
         // 여러 갈래로 발사하기 위해 벡터 조절
@@ -73,12 +73,15 @@ public class FireWandSpawner : WeaponSpawner
     {
         switch (GetLevel())
         {
+            case 2:
+                IncreaseAdditionalScale(10f);
+                break;
             case 3:
                 IncreaseAttackPower(10);
                 break;
             case 4:
-                effectNum++;
                 IncreaseAdditionalScale(10f);
+                effectNum++;
                 break;
             case 5:
                 DecreaseAttackSpeed(10f);
