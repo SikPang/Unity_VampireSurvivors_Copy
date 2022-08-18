@@ -97,7 +97,7 @@ public class Enemy : Character
         GetComponent<EnemyMove>().isDead = true;
         GetComponent<CapsuleCollider2D>().enabled = false;
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
 
         ObjectPooling.ReturnObject(gameObject, GetCharacterType());
         GetAnimator().SetBool("die", false);

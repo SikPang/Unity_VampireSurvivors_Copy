@@ -74,10 +74,10 @@ public class FireWandSpawner : WeaponSpawner
         switch (GetLevel())
         {
             case 2:
-                IncreaseAdditionalScale(10f);
+                IncreaseAttackPower(10);
                 break;
             case 3:
-                IncreaseAttackPower(10);
+                DecreaseAttackSpeed(10f);
                 break;
             case 4:
                 IncreaseAdditionalScale(10f);

@@ -84,13 +84,13 @@ public abstract class WeaponSpawner : MonoBehaviour
                 break;
 
             case Direction.Up:
-                weapon.transform.localPosition = new Vector3(weapon.transform.localPosition.x, weapon.transform.localPosition.y + 2.4f, 0f);
+                weapon.transform.localPosition = new Vector3(0f, weapon.transform.localPosition.y + 3f, 0f);
                 weapon.GetComponent<SpriteRenderer>().flipX = false;
                 weapon.GetComponent<SpriteRenderer>().flipY = false;
                 break;
 
             case Direction.Down:
-                weapon.transform.localPosition = new Vector3(weapon.transform.localPosition.x, weapon.transform.localPosition.y - 2.4f, 0f);
+                weapon.transform.localPosition = new Vector3(0f, weapon.transform.localPosition.y - 3.5f, 0f);
                 weapon.GetComponent<SpriteRenderer>().flipX = false;
                 weapon.GetComponent<SpriteRenderer>().flipY = false;
                 break;

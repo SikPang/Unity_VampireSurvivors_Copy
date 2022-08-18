@@ -16,6 +16,6 @@ MonoBehaviour:
   controller: {fileID: 9100000, guid: b64cff682395bc14b9602b4caf27a145, type: 2}
   characterType: 3
   healthPoint: 30
-  attackPower: 100
+  attackPower: 75
   defencePower: 200
   speed: 15

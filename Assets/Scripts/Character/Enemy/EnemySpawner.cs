@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     List<GameObject> enemyList = new List<GameObject>(500);
     const float maxX = 10;
     const float maxY = 16;
+    const float DecreseSpawnDelayTime = 0.8f;
     float spawnDelay;
     int stage;
     int killCount;
@@ -152,6 +153,14 @@ public class EnemySpawner : MonoBehaviour
     public void IncreaseStage()
     {
         ++stage;
+
+        switch (stage)
+        {
+            case 3:
+            case 4:
+                spawnDelay *= DecreseSpawnDelayTime;
+                break;
+        }
     }
     
     public void IncreaseKillCount()

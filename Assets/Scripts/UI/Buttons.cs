@@ -9,6 +9,7 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("Start");
         Time.timeScale = 1f;
+        PauseMenu.isPaused = false;
     }
 
     public void ToGameScreen()
