@@ -6,8 +6,10 @@ using UnityEngine;
 public class Enemy : Character
 {
     [SerializeField] CrystalData.CrystalType crystalType;
-    private Shader shaderGUItext;
-    private Shader shaderSpritesDefault;
+    Shader shaderGUItext;
+    Shader shaderSpritesDefault;
+    EnemyMove enemyMove;
+    Rigidbody2D rigidbody;
 
     void Awake()
     {
@@ -26,6 +28,8 @@ public class Enemy : Character
 
         shaderGUItext = Shader.Find("GUI/Text Shader");
         shaderSpritesDefault = Shader.Find("Sprites/Default");
+        enemyMove = GetComponent<EnemyMove>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     public override void ReduceHealthPoint(int damage)
@@ -35,6 +39,7 @@ public class Enemy : Character
         if (hitCoroutine == null)
             hitCoroutine = StartCoroutine(UnderAttack());
 
+        KnockBack();
         FloatingDamage(damage);
     }
 
@@ -59,6 +64,11 @@ public class Enemy : Character
         rectTransform.position = new Vector3(transform.position.x, transform.position.y + 0.5f ,rectTransform.position.z);
 
         damageText.SetActive(true);
+    }
+
+    void KnockBack()
+    {
+        rigidbody.AddForce(enemyMove.GetDirection() * -2f, ForceMode2D.Impulse);
     }
 
     public override void Die()

@@ -9,6 +9,7 @@ public class EnemyMove : MonoBehaviour
     Enemy character;
     SpriteRenderer spriteRenderer;
     public bool isDead;
+    Vector2 direction;
 
     void Awake()
     {
@@ -22,7 +23,7 @@ public class EnemyMove : MonoBehaviour
 
     void Update()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
+        direction = (player.position - transform.position).normalized;
 
         if (direction.x >= 0)
             spriteRenderer.flipX = false;
@@ -30,12 +31,18 @@ public class EnemyMove : MonoBehaviour
             spriteRenderer.flipX = true;
 
         if (!isDead)
-            transform.Translate((Vector2)direction.normalized * character.GetSpeed()/15f * Time.deltaTime);
+            transform.Translate(direction.normalized * character.GetSpeed()/15f * Time.deltaTime);
     }
 
     void Initialize()
     {
         character = GetComponent<Enemy>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        direction = new Vector2();
+    }
+
+    public Vector2 GetDirection()
+    {
+        return direction;
     }
 }
