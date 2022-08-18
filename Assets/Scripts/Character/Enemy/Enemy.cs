@@ -6,6 +6,8 @@ using UnityEngine;
 public class Enemy : Character
 {
     [SerializeField] CrystalData.CrystalType crystalType;
+    private Shader shaderGUItext;
+    private Shader shaderSpritesDefault;
 
     void Awake()
     {
@@ -18,11 +20,32 @@ public class Enemy : Character
         GetComponent<CapsuleCollider2D>().enabled = true;
     }
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+
+        shaderGUItext = Shader.Find("GUI/Text Shader");
+        shaderSpritesDefault = Shader.Find("Sprites/Default");
+    }
+
     public override void ReduceHealthPoint(int damage)
     {
         base.ReduceHealthPoint(damage);
 
+        if (hitCoroutine == null)
+            hitCoroutine = StartCoroutine(UnderAttack());
+
         FloatingDamage(damage);
+    }
+
+    protected override IEnumerator UnderAttack()
+    {
+        spriteRenderer.material.shader = shaderGUItext;
+
+        yield return new WaitForSeconds(0.2f);
+
+        spriteRenderer.material.shader = shaderSpritesDefault;
+        hitCoroutine = null;
     }
 
     void FloatingDamage(int damage)

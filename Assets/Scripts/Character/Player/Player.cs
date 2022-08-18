@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +11,9 @@ public class Player : Character
     float attackSpeed;
     float expAdditional;
     int luck;
+    bool isColliding;
 
-    private Player() {}
+    private Player() { }
 
     void Awake()
     {
@@ -30,6 +30,8 @@ public class Player : Character
         luck = 0;
         hpSlider.maxValue = GetHealthPoint();
         hpSlider.value = GetHealthPoint();
+        isColliding = false;
+
         GetFirstWeapon();
     }
 
@@ -68,17 +70,6 @@ public class Player : Character
         luck += value;
     }
 
-    public override void ReduceHealthPoint(int damage)
-    {
-        if (!PlayerMove.GetInstance().isDead)
-        {
-            base.ReduceHealthPoint(damage);
-
-            hpSlider.value = GetHealthPoint();
-            bleeding.Play();
-        }
-    }
-
     public override void Die()
     {
         PlayerMove.GetInstance().isDead = true;
@@ -108,15 +99,34 @@ public class Player : Character
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public override void ReduceHealthPoint(int damage)
     {
-        if(collision.gameObject.layer == 6)
-            GetComponent<SpriteRenderer>().color = Color.red;
+        if (!PlayerMove.GetInstance().isDead)
+        {
+            base.ReduceHealthPoint(damage);
+
+            hpSlider.value = GetHealthPoint();
+            bleeding.Play();
+
+            isColliding = true;
+
+            if (hitCoroutine == null)
+                hitCoroutine = StartCoroutine(UnderAttack());
+        }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    protected override IEnumerator UnderAttack()
     {
-        if (collision.gameObject.layer == 6)
-            GetComponent<SpriteRenderer>().color = Color.white;
+        spriteRenderer.color = Color.red;
+
+        do
+        {
+            isColliding = false;
+            yield return new WaitForSeconds(0.2f);
+        }
+        while (isColliding);
+
+        spriteRenderer.color = Color.white;
+        hitCoroutine = null;
     }
 }

@@ -12,6 +12,8 @@ public abstract class Character : MonoBehaviour
     int defencePower;
     int speed;
     int maxHealth;
+    internal Coroutine hitCoroutine;
+    internal SpriteRenderer spriteRenderer;
 
     protected virtual void Initialize()
     {
@@ -22,6 +24,7 @@ public abstract class Character : MonoBehaviour
         maxHealth = characterData.GetHealthPoint();
         sprite = characterData.GetSprite();
         controller = characterData.GetController();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         GetComponent<SpriteRenderer>().sprite = GetSprite();
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = GetController();
@@ -120,4 +123,6 @@ public abstract class Character : MonoBehaviour
     public abstract void Die();
 
     protected abstract IEnumerator DieAnimation();
+
+    protected abstract IEnumerator UnderAttack();
 }

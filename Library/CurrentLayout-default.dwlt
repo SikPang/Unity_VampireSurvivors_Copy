@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 85
+  controlID: 139
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 86
+  controlID: 140
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 87
+  controlID: 64
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 17778
+  m_LastSelectedObjectID: 17164
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -455,9 +455,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 84490000
       m_LastClickedID: 0
-      m_ExpandedIDs: 3afbffff
+      m_ExpandedIDs: 3afbffff0c430000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -747,11 +747,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 8268289b8bb8e6b48b6d8e0715eef7b9,
+  m_AnimatorController: {fileID: 9100000, guid: 3c2a5b7097b0fe44394328c0bdb9252e,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -5639921363900255439, guid: 8268289b8bb8e6b48b6d8e0715eef7b9,
-      type: 2}
+  - m_Target: {fileID: 110716596, guid: 3c2a5b7097b0fe44394328c0bdb9252e, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -803,22 +802,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Character/Enemy
+    - Assets/ScriptableObjects/Enemy
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Character/Enemy
+  - Assets/ScriptableObjects/Enemy
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Song\Unity Projects\Unity_VampireSurvival_Copy
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 156}
-    m_SelectedIDs: aa4b0000
-    m_LastClickedID: 19370
-    m_ExpandedIDs: 000000006e4b0000704b0000724b0000744b0000764b0000784b00007a4b00007c4b00007e4b0000804b0000824b0000844b0000864b0000884b0000a64b000000ca9a3b
+    m_SelectedIDs: 984e0000
+    m_LastClickedID: 20120
+    m_ExpandedIDs: 000000006e4b0000704b0000724b0000744b0000764b0000784b00007a4b00007c4b00007e4b0000804b0000824b0000844b0000864b0000884b0000a44b0000a64b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -873,7 +872,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000784600008c4a0000e241000004420000544b0000e8c20500feeb050014ec050012eb050088eb0500ea570100fa4300005c520000a6500000b2070200a8f20100320302000cd801003ad901008ad90100e4d701003ed901009ed5010066dd0100d0b602006eaf290022641e00541a170010480600486a00009e6b00005a6b0000e2720000d474000026740000e8730000fc7300005e5110006c511000a25110004c5010008a51100012511000fc5010002a5a1000ec591000005a1000d85a1000e6581000eaa50400483b8400d45c01002a700300d8700300e66e030066430100e6650000487d0000327d00004a7d00001e4400001445000000450000104500009a170000e64d00004c470000f8480000aa480000b4500000a2500000985000007849000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
