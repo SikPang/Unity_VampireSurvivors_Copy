@@ -22,8 +22,8 @@ public class Player : Character
 
     protected override void Initialize()
     {
-        GameOverWindow.SetActive(false);
         base.Initialize();
+        GameOverWindow.SetActive(false);
         instance = this;
         attackSpeed = 100f;
         expAdditional = 100f;

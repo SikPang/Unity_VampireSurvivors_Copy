@@ -21,6 +21,7 @@ public class Enemy : Character
         InitHealthPoint();
         GetComponent<CapsuleCollider2D>().enabled = true;
         spriteRenderer.material.shader = shaderSpritesDefault;
+        hitCoroutine = null;
     }
 
     protected override void Initialize()

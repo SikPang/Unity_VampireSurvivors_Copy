@@ -28,6 +28,7 @@ public abstract class Character : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = GetSprite();
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = GetController();
+        hitCoroutine = null;
     }
 
     protected void InitHealthPoint()
