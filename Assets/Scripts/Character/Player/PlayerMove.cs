@@ -31,6 +31,9 @@ public class PlayerMove : MonoBehaviour
             {
                 horizontal = Input.GetAxisRaw("Horizontal");
                 vertical = Input.GetAxisRaw("Vertical");
+
+                horizontal = JoyStick.GetInstance().GetHorizontal();
+                vertical = JoyStick.GetInstance().GetVertical();
             }
 
             if (Mathf.Abs(horizontal) >= 0.7f && Mathf.Abs(vertical) >= 0.7f)
