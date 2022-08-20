@@ -44,15 +44,8 @@ public class DropdownTests : IPrebuildSetup
 
         PrefabUtility.SaveAsPrefabAsset(rootGO, kPrefabPath);
         GameObject.DestroyImmediate(rootGO);
-#endif
-    }
 
-    [SetUp]
-    public void TestSetup()
-    {
-        m_PrefabRoot = Object.Instantiate(Resources.Load("DropdownPrefab")) as GameObject;
-        m_CameraGO = new GameObject("Camera", typeof(Camera));
-#if UNITY_EDITOR
+
         // add a custom sorting layer before test. It doesn't seem to be serialized so no need to remove it after test
         SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
         SerializedProperty sortingLayers = tagManager.FindProperty("m_SortingLayers");
@@ -77,25 +70,41 @@ public class DropdownTests : IPrebuildSetup
 #endif
     }
 
+    [SetUp]
+    public void TestSetup()
+    {
+        m_PrefabRoot = Object.Instantiate(Resources.Load("DropdownPrefab")) as GameObject;
+        m_CameraGO = new GameObject("Camera", typeof(Camera));
+    }
+
     // test for case 958281 - [UI] Dropdown list does not copy the parent canvas layer when the panel is opened
     [UnityTest]
     public IEnumerator Dropdown_Canvas()
     {
         var dropdown = m_PrefabRoot.GetComponentInChildren<Dropdown>();
         var rootCanvas = m_PrefabRoot.GetComponentInChildren<Canvas>();
+        rootCanvas.sortingLayerName = "test layer";
         dropdown.Show();
         yield return null;
         var dropdownList = dropdown.transform.Find("Dropdown List");
         var dropdownListCanvas = dropdownList.GetComponentInChildren<Canvas>();
-        Assert.AreEqual(rootCanvas.sortingLayerID, dropdownListCanvas.sortingLayerID);
-        dropdown.Hide();
-        yield return new WaitForSeconds(1f); // hide is not instantaneous
-        rootCanvas.sortingLayerName = "test layer";
+        Assert.AreEqual(rootCanvas.sortingLayerID, dropdownListCanvas.sortingLayerID, "Sorting layers should match");
+    }
+
+    // test for case 1343542 - [UI] Child Canvas' Sorting Layer is changed to the same value as the parent
+    [UnityTest]
+    public IEnumerator Dropdown_Canvas_Already_Exists()
+    {
+        var dropdown = m_PrefabRoot.GetComponentInChildren<Dropdown>();
+        var rootCanvas = m_PrefabRoot.GetComponentInChildren<Canvas>();
+        var templateCanvas = dropdown.transform.Find("Template").gameObject.AddComponent<Canvas>();
+        templateCanvas.overrideSorting = true;
+        templateCanvas.sortingLayerName = "test layer";
         dropdown.Show();
         yield return null;
-        dropdownList = dropdown.transform.Find("Dropdown List");
-        dropdownListCanvas = dropdownList.GetComponentInChildren<Canvas>();
-        Assert.AreEqual(rootCanvas.sortingLayerID, dropdownListCanvas.sortingLayerID);
+        var dropdownList = dropdown.transform.Find("Dropdown List");
+        var dropdownListCanvas = dropdownList.GetComponentInChildren<Canvas>();
+        Assert.AreNotEqual(rootCanvas.sortingLayerName, dropdownListCanvas.sortingLayerName, "Sorting layers should not match");
     }
 
     // test for case 935649 - open dropdown menus become unresponsive when disabled and reenabled
@@ -143,6 +152,11 @@ public class DropdownTests : IPrebuildSetup
     {
 #if UNITY_EDITOR
         AssetDatabase.DeleteAsset(kPrefabPath);
+
+        SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
+        SerializedProperty sortingLayers = tagManager.FindProperty("m_SortingLayers");
+        sortingLayers.DeleteArrayElementAtIndex(sortingLayers.arraySize);
+        tagManager.ApplyModifiedProperties();
 #endif
     }
 }
