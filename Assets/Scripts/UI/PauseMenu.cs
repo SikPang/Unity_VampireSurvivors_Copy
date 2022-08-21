@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !Level.GetIsLevelUpTime())
         {
             if (!isPaused)
                 Pause();
@@ -20,15 +20,21 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        PauseWindow.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
+        if (!Level.GetIsLevelUpTime())
+        {
+            PauseWindow.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+        }
     }
 
     public void Resume()
     {
-        PauseWindow.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
+        if (!Level.GetIsLevelUpTime())
+        {
+            PauseWindow.SetActive(false);
+            Time.timeScale = 1f;
+            isPaused = false;
+        }
     }
 }

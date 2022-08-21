@@ -98,6 +98,8 @@ public class Level : MonoBehaviour
     void LevelUp()
     {
         isLevelUpTime = true;
+        JoyStick.GetInstance().InactiveJoystick();
+
         StartCoroutine(GetNewItem());
         StartCoroutine(LevelUpEffects());
 
