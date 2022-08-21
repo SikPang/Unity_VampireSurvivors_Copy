@@ -5,7 +5,7 @@
  
 <img src="https://user-images.githubusercontent.com/87380790/184260073-ec6a5674-392d-4175-acc6-c79661d91c49.png" width="80%">
 
-### [>> View All Source Codes <<](https://github.com/SikPang/Unity_VampireSurvivors_Copy/tree/main/Assets/Scripts)  <br/>
+### [>> View All Source Codes <<](https://github.com/SikPang/Unity_VampireSurvivors_Copy/tree/android/Assets/Scripts)  <br/>
 ### [>> Download Game (PC ver.) <<](https://drive.google.com/file/d/1tGWBtdpHSdv7wRL8RQ1wvmi3kwXcsKaI/view) <br/>
 ### [>> Download Game (Android ver.) <<](https://drive.google.com/file/d/1SiQrK_csoYX4-b9fRdXm9gapInbnVWD_/view?usp=sharing) <br/>
 
@@ -136,6 +136,16 @@
 <img src="https://user-images.githubusercontent.com/87380790/185333082-d4cbb604-a4fa-4837-93fa-13207d2c8678.gif" width="80%">
 
 
+<br/>
+<br/>
+<br/>
+
+## 10. 모바일 가상 컨트롤러
+> 화면의 원하는 곳을 터치 - 드래그하여 가상 컨트롤러 활성화
+
+
+<img src="https://user-images.githubusercontent.com/87380790/185814637-4e25291f-7f89-45b8-92ba-3085ec097c3b.jpg" width="80%">
+<img src="https://user-images.githubusercontent.com/87380790/185814640-6c252ca3-e90c-410f-bdf5-b7574cd57396.jpg" width="80%">
 
 
 <br/>
