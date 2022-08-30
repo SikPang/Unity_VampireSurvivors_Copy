@@ -54,15 +54,33 @@ namespace UnityEditor.U2D.Sprites
             public Type methodType;
         }
 
-        SpriteDataProviderFactory[] m_Factories;
-        TypeCache.MethodCollection m_AssetPathProvider;
-        TypeCache.MethodCollection m_SpriteObjectProvider;
+        static SpriteDataProviderFactory[] s_Factories;
+        static TypeCache.MethodCollection s_AssetPathProvider;
+        static TypeCache.MethodCollection s_SpriteObjectProvider;
 
-        /// <summary>
-        /// Initialized and collect methods with SpriteDataProviderFactoryAttribute and SpriteDataProviderAssetPathProviderAttribute.
-        /// </summary>
-        public void Init()
+        static SpriteDataProviderFactory[] GetFactories()
         {
+            CacheDataProviders();
+            return s_Factories;
+        }
+
+        static TypeCache.MethodCollection GetAssetPathProvider()
+        {
+            CacheDataProviders();
+            return s_AssetPathProvider;
+        }
+
+        static TypeCache.MethodCollection GetSpriteObjectProvider()
+        {
+            CacheDataProviders();
+            return s_SpriteObjectProvider;
+        }
+
+        static void CacheDataProviders()
+        {
+            if (s_Factories != null)
+                return;
+
             var factories = TypeCache.GetTypesDerivedFrom(typeof(ISpriteDataProviderFactory<>));
             var factoryList = new List<SpriteDataProviderFactory>();
             foreach (var factory in factories)
@@ -89,9 +107,17 @@ namespace UnityEditor.U2D.Sprites
                     Debug.LogAssertion(ex);
                 }
             }
-            m_Factories = factoryList.ToArray();
-            m_AssetPathProvider = TypeCache.GetMethodsWithAttribute<SpriteEditorAssetPathProviderAttribute>();
-            m_SpriteObjectProvider = TypeCache.GetMethodsWithAttribute<SpriteObjectProviderAttribute>();
+            s_Factories = factoryList.ToArray();
+            s_AssetPathProvider = TypeCache.GetMethodsWithAttribute<SpriteEditorAssetPathProviderAttribute>();
+            s_SpriteObjectProvider = TypeCache.GetMethodsWithAttribute<SpriteObjectProviderAttribute>();
+        }
+
+        /// <summary>
+        /// Initialized and collect methods with SpriteDataProviderFactoryAttribute and SpriteDataProviderAssetPathProviderAttribute.
+        /// </summary>
+        public void Init()
+        {
+            CacheDataProviders();
         }
 
         /// <summary>
@@ -107,7 +133,7 @@ namespace UnityEditor.U2D.Sprites
             if (obj != null)
             {
                 var objType = obj.GetType();
-                foreach (var factory in m_Factories)
+                foreach (var factory in GetFactories())
                 {
                     try
                     {
@@ -143,7 +169,7 @@ namespace UnityEditor.U2D.Sprites
         /// <returns>The asset path for the object</returns>
         internal string GetAssetPath(UnityEngine.Object obj)
         {
-            foreach (var assetPathProvider in m_AssetPathProvider)
+            foreach (var assetPathProvider in GetAssetPathProvider())
             {
                 try
                 {
@@ -168,7 +194,7 @@ namespace UnityEditor.U2D.Sprites
         /// <returns>The Sprite object</returns>
         internal Sprite GetSpriteObject(UnityEngine.Object obj)
         {
-            foreach (var spriteObjectProvider in m_SpriteObjectProvider)
+            foreach (var spriteObjectProvider in GetSpriteObjectProvider())
             {
                 try
                 {
@@ -199,7 +225,8 @@ namespace UnityEditor.U2D.Sprites
 
         private class SpriteEditorWindowStyles
         {
-            public static readonly GUIContent editingDisableMessageLabel = EditorGUIUtility.TrTextContent("Editing is disabled during play mode");
+            public static readonly GUIContent editingDisableMessageBecausePlaymodeLabel = EditorGUIUtility.TrTextContent("Editing is disabled during play mode");
+            public static readonly GUIContent editingDisableMessageBecauseNonEditableLabel = EditorGUIUtility.TrTextContent("Editing is disabled because the asset is not editable.");
             public static readonly GUIContent revertButtonLabel = EditorGUIUtility.TrTextContent("Revert");
             public static readonly GUIContent applyButtonLabel = EditorGUIUtility.TrTextContent("Apply");
 
@@ -240,6 +267,7 @@ namespace UnityEditor.U2D.Sprites
 
         public static bool s_OneClickDragStarted = false;
         string m_SelectedAssetPath;
+        bool m_AssetNotEditable;
 
         private IEventSystem m_EventSystem;
         private IUndoSystem m_UndoSystem;
@@ -289,7 +317,7 @@ namespace UnityEditor.U2D.Sprites
 
         private void OnFocus()
         {
-            if (m_SelectedObject != Selection.activeObject)
+            if (selectedObject != Selection.activeObject)
                 OnSelectionChange();
             if (selectedProviderChanged)
                 RefreshSpriteEditorWindow();
@@ -305,13 +333,23 @@ namespace UnityEditor.U2D.Sprites
             }
         }
 
+        string selectedAssetPath
+        {
+            get => m_SelectedAssetPath;
+            set
+            {
+                m_SelectedAssetPath = value;
+                m_AssetNotEditable = !AssetDatabase.IsOpenForEdit(m_SelectedAssetPath);
+            }
+        }
+
         public void RefreshPropertiesCache()
         {
-            var obj = AssetDatabase.LoadMainAssetAtPath(m_SelectedAssetPath);
+            var obj = AssetDatabase.LoadMainAssetAtPath(selectedAssetPath);
             m_SpriteDataProvider = spriteDataProviderFactories.GetSpriteEditorDataProviderFromObject(obj);
             if (!IsSpriteDataProviderValid())
             {
-                m_SelectedAssetPath = "";
+                selectedAssetPath = "";
                 return;
             }
 
@@ -329,9 +367,9 @@ namespace UnityEditor.U2D.Sprites
 
         internal string GetSelectionAssetPath()
         {
-            var path = spriteDataProviderFactories.GetAssetPath(m_SelectedObject);
+            var path = spriteDataProviderFactories.GetAssetPath(selectedObject);
             if (string.IsNullOrEmpty(path))
-                path = m_AssetDatabase.GetAssetPath(m_SelectedObject);
+                path = m_AssetDatabase.GetAssetPath(selectedObject);
             return path;
         }
 
@@ -380,19 +418,14 @@ namespace UnityEditor.U2D.Sprites
             get
             {
                 var assetPath = GetSelectionAssetPath();
-                var dataProvider = spriteDataProviderFactories.GetSpriteEditorDataProviderFromObject(m_SelectedObject);
-                return dataProvider != null && m_SelectedAssetPath != assetPath;
+                var dataProvider = spriteDataProviderFactories.GetSpriteEditorDataProviderFromObject(selectedObject);
+                return dataProvider != null && selectedAssetPath != assetPath;
             }
-        }
-
-        public bool IsEditingDisabled()
-        {
-            return EditorApplication.isPlayingOrWillChangePlaymode;
         }
 
         void OnSelectionChange()
         {
-            m_SelectedObject = Selection.activeObject;
+            selectedObject = Selection.activeObject;
             RefreshSpriteEditorWindow();
         }
 
@@ -403,8 +436,8 @@ namespace UnityEditor.U2D.Sprites
             if (selectedProviderChanged)
             {
                 HandleApplyRevertDialog(SpriteEditorWindowStyles.applyRevertDialogTitle.text,
-                    String.Format(SpriteEditorWindowStyles.applyRevertDialogContent.text, m_SelectedAssetPath));
-                m_SelectedAssetPath = GetSelectionAssetPath();
+                    String.Format(SpriteEditorWindowStyles.applyRevertDialogContent.text, selectedAssetPath));
+                selectedAssetPath = GetSelectionAssetPath();
                 ResetWindow();
                 ResetZoomAndScroll();
                 RefreshPropertiesCache();
@@ -465,7 +498,7 @@ namespace UnityEditor.U2D.Sprites
         void OnEnable()
         {
             this.name = "SpriteEditorWindow";
-            m_SelectedObject = Selection.activeObject;
+            selectedObject = Selection.activeObject;
             minSize = new Vector2(360, 200);
             titleContent = SpriteEditorWindowStyles.spriteEditorWindowTitle;
             m_UndoSystem.RegisterUndoCallback(UndoRedoPerformed);
@@ -474,7 +507,7 @@ namespace UnityEditor.U2D.Sprites
             EditorApplication.quitting += OnEditorApplicationQuit;
 
             if (selectedProviderChanged)
-                m_SelectedAssetPath = GetSelectionAssetPath();
+                selectedAssetPath = GetSelectionAssetPath();
 
             ResetWindow();
             RefreshPropertiesCache();
@@ -486,6 +519,15 @@ namespace UnityEditor.U2D.Sprites
 
             if (SetupVisualElements())
                 InitModules();
+        }
+
+        void CreateGUI()
+        {
+            if (m_MainViewElement == null)
+            {
+                if (SetupVisualElements())
+                    InitModules();
+            }
         }
 
         private bool SetupVisualElements()
@@ -548,11 +590,7 @@ namespace UnityEditor.U2D.Sprites
 
         void OnGUI()
         {
-            if (m_MainViewIMGUIElement == null)
-            {
-                if (SetupVisualElements())
-                    InitModules();
-            }
+            CreateGUI();
         }
 
         public override void SaveChanges()
@@ -560,7 +598,7 @@ namespace UnityEditor.U2D.Sprites
             var oldDelegate = onHandleApplyRevertDialog;
             onHandleApplyRevertDialog = (x, y) => true;
             HandleApplyRevertDialog(SpriteEditorWindowStyles.applyRevertDialogTitle.text,
-                String.Format(SpriteEditorWindowStyles.applyRevertDialogContent.text, m_SelectedAssetPath));
+                String.Format(SpriteEditorWindowStyles.applyRevertDialogContent.text, selectedAssetPath));
             onHandleApplyRevertDialog = oldDelegate;
             base.SaveChanges();
         }
@@ -588,6 +626,11 @@ namespace UnityEditor.U2D.Sprites
             if (m_CurrentModule != null)
                 m_CurrentModule.OnModuleDeactivate();
             UnityEditor.SpriteUtilityWindow.SetApplySpriteEditorWindow(null);
+            if (m_MainViewElement != null)
+            {
+                rootVisualElement.Remove(m_MainViewElement);
+                m_MainViewElement = null;
+            }
         }
 
         void OnPlayModeStateChanged(PlayModeStateChange playModeState)
@@ -601,7 +644,7 @@ namespace UnityEditor.U2D.Sprites
         void OnEditorApplicationQuit()
         {
             HandleApplyRevertDialog(SpriteEditorWindowStyles.applyRevertDialogTitle.text,
-                String.Format(SpriteEditorWindowStyles.applyRevertDialogContent.text, m_SelectedAssetPath));
+                String.Format(SpriteEditorWindowStyles.applyRevertDialogContent.text, selectedAssetPath));
         }
 
         static bool ShowHandleApplyRevertDialog(string dialogTitle, string dialogContent)
@@ -650,7 +693,7 @@ namespace UnityEditor.U2D.Sprites
             {
                 m_ResetCommandSent = false;
                 if (selectedProviderChanged || !IsSpriteDataProviderValid())
-                    m_SelectedAssetPath = GetSelectionAssetPath();
+                    selectedAssetPath = GetSelectionAssetPath();
                 RebuildCache();
             }
         }
@@ -669,7 +712,7 @@ namespace UnityEditor.U2D.Sprites
                     Debug.LogError("Existing reset not completed for " + m_CurrentResetContext.assetPath);
                 m_CurrentResetContext = new CurrentResetContext()
                 {
-                    assetPath = m_SelectedAssetPath
+                    assetPath = selectedAssetPath
                 };
             }
         }
@@ -824,10 +867,11 @@ namespace UnityEditor.U2D.Sprites
 
         private void DoEditingDisabledMessage()
         {
-            if (IsEditingDisabled())
+            if (editingDisabled)
             {
                 GUILayout.BeginArea(warningMessageRect);
-                EditorGUILayout.HelpBox(SpriteEditorWindowStyles.editingDisableMessageLabel.text, MessageType.Warning);
+                var disableMessage = m_AssetNotEditable ? SpriteEditorWindowStyles.editingDisableMessageBecauseNonEditableLabel.text : SpriteEditorWindowStyles.editingDisableMessageBecausePlaymodeLabel.text;
+                EditorGUILayout.HelpBox(disableMessage, MessageType.Warning);
                 GUILayout.EndArea();
             }
         }
@@ -857,11 +901,11 @@ namespace UnityEditor.U2D.Sprites
             // Do this so that asset change save dialog will not show
             var originalValue = EditorPrefs.GetBool("VerifySavingAssets", false);
             EditorPrefs.SetBool("VerifySavingAssets", false);
-            AssetDatabase.ForceReserializeAssets(new[] {m_SelectedAssetPath}, ForceReserializeAssetsOptions.ReserializeMetadata);
+            AssetDatabase.ForceReserializeAssets(new[] {selectedAssetPath}, ForceReserializeAssetsOptions.ReserializeMetadata);
             EditorPrefs.SetBool("VerifySavingAssets", originalValue);
 
             if (reimport)
-                DoTextureReimport(m_SelectedAssetPath);
+                DoTextureReimport(selectedAssetPath);
             Repaint();
             RefreshRects();
         }
@@ -1224,10 +1268,7 @@ namespace UnityEditor.U2D.Sprites
             get { return m_Texture; }
         }
 
-        public bool editingDisabled
-        {
-            get { return EditorApplication.isPlayingOrWillChangePlaymode; }
-        }
+        public bool editingDisabled => EditorApplication.isPlayingOrWillChangePlaymode || m_AssetNotEditable;
 
         public void SetPreviewTexture(UnityTexture2D texture, int width, int height)
         {
@@ -1277,7 +1318,7 @@ namespace UnityEditor.U2D.Sprites
 
         static internal void OnTextureReimport(SpriteEditorWindow win, string path)
         {
-            if (win.m_SelectedAssetPath == path)
+            if (win.selectedAssetPath == path)
             {
                 win.ResetOnNextRepaint();
             }

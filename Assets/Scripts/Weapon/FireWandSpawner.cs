@@ -4,8 +4,9 @@ using UnityEngine;
 public class FireWandSpawner : WeaponSpawner
 {
     int effectNum = 3;
-    float speed = 200f;
-    Vector2 destination;
+    const float spreadAngle = 15f;
+    const float speed = 200f;
+    const float delay = 0.07f;
 
     protected override IEnumerator StartAttack()
     {
@@ -18,19 +19,27 @@ public class FireWandSpawner : WeaponSpawner
 
             if (enemySpawner.GetListCount() > 0)
             {
-                destination = enemySpawner.GetRandomEnemyPosition();
+                // 목표로의 단위 벡터
+                Vector2 destination = (enemySpawner.GetRandomEnemyPosition() - (Vector2)transform.position).normalized;
+                float newSpreadAngle = 0f;
+
                 for (int i = 0; i < effectNum; ++i)
                 {
-                    SpawnWeapon(i);
-                    yield return new WaitForSeconds(0.1f);
+                    if (i % 2 == 1)
+                        newSpreadAngle += spreadAngle;
+
+                    SpawnWeapon(newSpreadAngle, destination);
+
+                    yield return new WaitForSeconds(delay);
+
+                    newSpreadAngle *= -1;
                 }
             }
-
             yield return new WaitForSeconds(GetAttackSpeed());
         }
     }
 
-    void SpawnWeapon(int i)
+    void SpawnWeapon(float spreadAngle, Vector2 destination)
     {
         GameObject weapon = ObjectPooling.GetObject(GetWeaponType());
         float destLength = (destination - (Vector2)transform.position).magnitude;
@@ -45,14 +54,15 @@ public class FireWandSpawner : WeaponSpawner
         weapon.transform.localScale = new Vector2(GetWeaponData().GetBaseScale().x * (GetAdditionalScale() / 100f), GetWeaponData().GetBaseScale().y * (GetAdditionalScale() / 100f));
         weapon.GetComponent<Weapon>().SetParameters(GetWeaponData(), GetAttackPower(), GetInactiveDelay(), Direction.Self);
 
-        // 여러 갈래로 발사하기 위해 벡터 조절
-        if (i == 0 || i % 2 == 0)
-            destination.x += i * destLength * 0.25f;
-        else
-            destination.x -= i * destLength * 0.25f;
+        // 여러 갈래로 발사하기 위해 벡터 조절 : 회전 행렬
+        if (spreadAngle != 0f)
+        {
+            destination.x = destination.x * Mathf.Cos(spreadAngle / 180f * Mathf.PI) - destination.y * Mathf.Sin(spreadAngle / 180f * Mathf.PI);
+            destination.y = destination.x * Mathf.Sin(spreadAngle / 180f * Mathf.PI) + destination.y * Mathf.Cos(spreadAngle / 180f * Mathf.PI);
+        }
 
-        // 목표로의 단위벡터
-        destVector = (destination - (Vector2)transform.position).normalized;
+        // 단위벡터
+        destVector = destination.normalized;
 
         // 이펙트 회전 각 설정
         if (destVector.y < 0)

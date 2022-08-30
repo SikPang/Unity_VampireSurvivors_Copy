@@ -72,7 +72,7 @@ namespace UnityEngine.EventSystems
         /// </summary>
         public virtual Vector2 mousePosition
         {
-            get { return MultipleDisplayUtilities.GetMousePositionRelativeToMainDisplayResolution(); }
+            get { return Input.mousePosition; }
         }
 
         /// <summary>
