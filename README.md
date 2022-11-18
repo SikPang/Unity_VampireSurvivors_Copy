@@ -158,3 +158,20 @@
 <img src="https://user-images.githubusercontent.com/87380790/184268592-8edbb618-4eab-4e08-b52c-cece56e9f15d.png" width="80%">
 <img src="https://user-images.githubusercontent.com/87380790/186140219-2336666a-4386-4e55-a310-3575132506dd.jpg" width="80%">
 <img src="https://user-images.githubusercontent.com/87380790/186140230-56a2b7df-68ef-4d84-8e4e-96d7c2b2c9af.jpg" width="80%">
+
+<br/>
+<br/>
+<br/>
+
+## Assets Credit
+> Please write down the credit when using this project
+
+### - Graphics
+Monsters_Creatures_Fantasy - Luiz Melo - [Unity Asset Store Link](https://assetstore.unity.com/packages/2d/characters/monsters-creatures-fantasy-167949)
+
+Hero Knight - Pixel Art - Sven Thole - [Unity Asset Store Link](https://assetstore.unity.com/packages/2d/characters/hero-knight-pixel-art-165188)
+
+Pixel Art Top Down - Basic - Cainos - [Unity Asset Store Link](https://assetstore.unity.com/packages/2d/environments/pixel-art-top-down-basic-187605)
+
+### - Code
+SikPang - https://github.com/SikPang/Unity_VampireSurvivors_Copy
