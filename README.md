@@ -9,7 +9,7 @@
 ### [>> Download Game [Windows]](https://drive.google.com/file/d/1tGWBtdpHSdv7wRL8RQ1wvmi3kwXcsKaI/view) <br/>
 ### [>> Download Game [MacOS]](https://drive.google.com/file/d/1PGxx8P-M8Ph8j4mRweQPi6QLz1eX90Ug/view?usp=sharing) <br/>
 ### [>> Download Game [Android]](https://drive.google.com/file/d/1SiQrK_csoYX4-b9fRdXm9gapInbnVWD_/view?usp=sharing) <br/>
-### [>> Download Build(need XCode) [iOS]](https://drive.google.com/file/d/1eikto2OBk8gGUPl9WagoHgBoyGuL7x-G/view?usp=sharing) <br/>
+### [>> Download Build(need Xcode) [iOS]](https://drive.google.com/file/d/1eikto2OBk8gGUPl9WagoHgBoyGuL7x-G/view?usp=sharing) <br/>
 
 <br/>
 <br/>
