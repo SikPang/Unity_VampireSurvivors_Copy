@@ -5,9 +5,11 @@
  
 <img src="https://user-images.githubusercontent.com/87380790/184260073-ec6a5674-392d-4175-acc6-c79661d91c49.png" width="80%">
 
-### [>> View All Source Codes <<](https://github.com/SikPang/Unity_VampireSurvivors_Copy/tree/android/Assets/Scripts)  <br/>
-### [>> Download Game (PC ver.) <<](https://drive.google.com/file/d/1tGWBtdpHSdv7wRL8RQ1wvmi3kwXcsKaI/view) <br/>
-### [>> Download Game (Android ver.) <<](https://drive.google.com/file/d/1SiQrK_csoYX4-b9fRdXm9gapInbnVWD_/view?usp=sharing) <br/>
+### [>> View All Source Codes](https://github.com/SikPang/Unity_VampireSurvivors_Copy/tree/android/Assets/Scripts)  <br/>
+### [>> Download Game [Windows]](https://drive.google.com/file/d/1tGWBtdpHSdv7wRL8RQ1wvmi3kwXcsKaI/view) <br/>
+### [>> Download Game [MacOS]](https://drive.google.com/file/d/1PGxx8P-M8Ph8j4mRweQPi6QLz1eX90Ug/view?usp=sharing) <br/>
+### [>> Download Game [Android]](https://drive.google.com/file/d/1SiQrK_csoYX4-b9fRdXm9gapInbnVWD_/view?usp=sharing) <br/>
+### [>> Download Build(need XCode) [iOS]](https://drive.google.com/file/d/1eikto2OBk8gGUPl9WagoHgBoyGuL7x-G/view?usp=sharing) <br/>
 
 <br/>
 <br/>
